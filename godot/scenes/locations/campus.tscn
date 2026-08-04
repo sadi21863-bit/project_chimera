@@ -1,0 +1,149 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/locations/campus.gd" id="1_j27ie"]
+[ext_resource type="Texture2D" path="res://assets/buildings/campus_backdrop.png" id="2_o70an"]
+[ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="3_l4wsc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obtox"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t48xs"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5kth"]
+radius = 30.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6n4tv"]
+vertices = PackedVector2Array(40, 40, 1360, 40, 1360, 860, 40, 860)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 40, 1360, 40, 1360, 860, 40, 860)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4i7e"]
+size = Vector2(1400, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bow7d"]
+size = Vector2(1400, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk2ei"]
+size = Vector2(40, 820)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de4vg"]
+size = Vector2(40, 820)
+
+[node name="Campus" type="Node2D" unique_id=1296891332]
+script = ExtResource("1_j27ie")
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=1207158212]
+position = Vector2(700, 450)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_o70an")
+
+[node name="Label_university" type="Label" parent="." unique_id=738627913]
+offset_left = 377.0
+offset_top = 90.0
+offset_right = 377.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "University"
+
+[node name="DoorToUniversity" type="Area2D" parent="." unique_id=1631638857]
+position = Vector2(437, 200)
+script = ExtResource("3_l4wsc")
+dest_id = "university"
+dest_label = "University"
+
+[node name="@CollisionShape2D@2" type="CollisionShape2D" parent="DoorToUniversity" unique_id=68847149]
+shape = SubResource("CircleShape2D_obtox")
+
+[node name="Label_police_station" type="Label" parent="." unique_id=386637443]
+offset_left = 377.0
+offset_top = 480.0
+offset_right = 377.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "Police Station"
+
+[node name="DoorToPoliceStation" type="Area2D" parent="." unique_id=1780630443]
+position = Vector2(437, 590)
+script = ExtResource("3_l4wsc")
+dest_id = "police_station"
+dest_label = "Police Station"
+
+[node name="@CollisionShape2D@3" type="CollisionShape2D" parent="DoorToPoliceStation" unique_id=1856844444]
+shape = SubResource("CircleShape2D_t48xs")
+
+[node name="Label_dorm" type="Label" parent="." unique_id=783322736]
+offset_left = 902.0
+offset_top = 480.0
+offset_right = 902.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "Crestwood Hall"
+
+[node name="DoorToDorm" type="Area2D" parent="." unique_id=1603088122]
+position = Vector2(962, 590)
+script = ExtResource("3_l4wsc")
+dest_id = "dorm"
+dest_label = "Crestwood Hall"
+
+[node name="@CollisionShape2D@4" type="CollisionShape2D" parent="DoorToDorm" unique_id=1533560835]
+shape = SubResource("CircleShape2D_j5kth")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1411080252]
+navigation_polygon = SubResource("NavigationPolygon_6n4tv")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=652366621]
+collision_mask = 0
+
+[node name="North" type="CollisionShape2D" parent="Walls" unique_id=1723695687]
+position = Vector2(700, 20)
+shape = SubResource("RectangleShape2D_n4i7e")
+
+[node name="NorthVisual" type="ColorRect" parent="Walls" unique_id=2067295637]
+offset_right = 1400.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.1, 0.09, 0.08, 1)
+
+[node name="South" type="CollisionShape2D" parent="Walls" unique_id=4532842]
+position = Vector2(700, 880)
+shape = SubResource("RectangleShape2D_bow7d")
+
+[node name="SouthVisual" type="ColorRect" parent="Walls" unique_id=1630360328]
+offset_top = 860.0
+offset_right = 1400.0
+offset_bottom = 900.0
+mouse_filter = 2
+color = Color(0.1, 0.09, 0.08, 1)
+
+[node name="West" type="CollisionShape2D" parent="Walls" unique_id=90825171]
+position = Vector2(20, 450)
+shape = SubResource("RectangleShape2D_qk2ei")
+
+[node name="WestVisual" type="ColorRect" parent="Walls" unique_id=61599198]
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 860.0
+mouse_filter = 2
+color = Color(0.1, 0.09, 0.08, 1)
+
+[node name="East" type="CollisionShape2D" parent="Walls" unique_id=1665293486]
+position = Vector2(1380, 450)
+shape = SubResource("RectangleShape2D_de4vg")
+
+[node name="EastVisual" type="ColorRect" parent="Walls" unique_id=1932038794]
+offset_left = 1360.0
+offset_top = 40.0
+offset_right = 1400.0
+offset_bottom = 860.0
+mouse_filter = 2
+color = Color(0.1, 0.09, 0.08, 1)

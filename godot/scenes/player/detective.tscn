@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://detective_scene"]
+
+[ext_resource type="Script" path="res://scenes/player/detective.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/player/interactor.gd" id="2"]
+[ext_resource type="SpriteFrames" path="res://resources/sprite_frames/detective.tres" id="3"]
+
+[sub_resource type="CircleShape2D" id="body_shape"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="reach_shape"]
+radius = 40.0
+
+[node name="Detective" type="CharacterBody2D"]
+script = ExtResource("1")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("3")
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("body_shape")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 6.0
+target_desired_distance = 6.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Interactor" type="Area2D" parent="."]
+script = ExtResource("2")
+
+[node name="ReachShape" type="CollisionShape2D" parent="Interactor"]
+shape = SubResource("reach_shape")

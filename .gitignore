@@ -1,0 +1,38 @@
+# Godot
+godot/.godot/
+godot/.import/
+godot/export/
+*.translation
+*.import
+# GDExtension hot-reload leaves a transient backup copy of the native library
+godot/addons/**/~*.dll
+godot/addons/**/~*.so
+godot/addons/**/~*.dylib
+
+# Python
+ai-server/.venv/
+ai-server/__pycache__/
+ai-server/**/__pycache__/
+ai-server/.pytest_cache/
+ai-server/data/chroma/
+*.pyc
+*.pyo
+.venv/
+uv.lock
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Raw downloaded CC0 asset packs (source zips, not project content — see HANDOFF.md)
+/asset dump/
+
+# Large Godot native extension binary removed from GitHub uploads
+
+godot/addons/nobodywho/libnobodywho-godot-x86_64-pc-windows-msvc-release.dll

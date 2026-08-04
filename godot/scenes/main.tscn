@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bwhjd4cunafvs"]
+
+[ext_resource type="Script" uid="uid://ct6w6cq0v4jvq" path="res://scenes/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/observer_panel.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/interaction_prompt.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/story_screen.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/ui/case_panel.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/clue_toast.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/interrogation_panel.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_screen.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/ui/search_panel.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/ui/travel_map.tscn" id="11"]
+
+[node name="Main" type="Node2D" unique_id=541120224]
+script = ExtResource("1")
+
+[node name="DayNightModulate" type="CanvasModulate" parent="." unique_id=1823695911]
+
+[node name="LocationHost" type="Node2D" parent="." unique_id=969309871]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1904032549]
+position = Vector2(640, 360)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1817523221]
+
+[node name="ObserverPanel" parent="UI" unique_id=1088929143 instance=ExtResource("3")]
+
+[node name="InteractionPrompt" parent="UI" unique_id=343801188 instance=ExtResource("4")]
+
+[node name="StoryScreen" parent="UI" unique_id=172049828 instance=ExtResource("5")]
+
+[node name="CasePanel" parent="UI" unique_id=1095732661 instance=ExtResource("6")]
+
+[node name="ClueToast" parent="UI" unique_id=1996479881 instance=ExtResource("7")]
+
+[node name="InterrogationPanel" parent="UI" unique_id=329378261 instance=ExtResource("8")]
+
+[node name="SettingsScreen" parent="UI" unique_id=1779384082 instance=ExtResource("9")]
+
+[node name="SearchPanel" parent="UI" unique_id=1166410941 instance=ExtResource("10")]
+
+[node name="TravelMap" parent="UI" unique_id=674635170 instance=ExtResource("11")]

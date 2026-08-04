@@ -1,0 +1,130 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/detective/idle_down/frame_0.png" id="1_juwuc"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_down/frame_0.png" id="2_uf7i0"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_down/frame_1.png" id="3_e75cy"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_down/frame_2.png" id="4_suhd1"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_down/frame_3.png" id="5_770yy"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_down/frame_4.png" id="6_3ppn8"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_down/frame_5.png" id="7_18u3h"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_left/frame_0.png" id="8_fv8vy"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_left/frame_1.png" id="9_e3b08"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_left/frame_2.png" id="10_ok21g"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_left/frame_3.png" id="11_nh43x"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_left/frame_4.png" id="12_tay0f"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_left/frame_5.png" id="13_q575i"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_right/frame_0.png" id="14_d2tx1"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_right/frame_1.png" id="15_8667x"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_right/frame_2.png" id="16_alx70"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_right/frame_3.png" id="17_lpjcs"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_right/frame_4.png" id="18_4xwvr"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_right/frame_5.png" id="19_6m7v7"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_up/frame_0.png" id="20_42jcv"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_up/frame_1.png" id="21_8q7od"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_up/frame_2.png" id="22_j2q8l"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_up/frame_3.png" id="23_4e1tq"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_up/frame_4.png" id="24_0m05h"]
+[ext_resource type="Texture2D" path="res://assets/characters/detective/walk_up/frame_5.png" id="25_k8eff"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_juwuc")
+}],
+"loop": 1,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uf7i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e75cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_suhd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_770yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3ppn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_18u3h")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fv8vy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e3b08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ok21g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nh43x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tay0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_q575i")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_d2tx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8667x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_alx70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lpjcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4xwvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6m7v7")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_42jcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8q7od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_j2q8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4e1tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_0m05h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_k8eff")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 8.0
+}]

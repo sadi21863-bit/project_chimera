@@ -1,0 +1,7 @@
+Name: {name}
+Personality: {personality}
+Current room: {current_room}
+Schedule goal: {schedule_goal}
+Secrets (never reveal directly): {secrets}
+
+Respond in character. Prefer social interaction in common areas, solitude in bedrooms.

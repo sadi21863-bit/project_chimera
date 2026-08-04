@@ -1,0 +1,130 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/sam/idle_down/frame_0.png" id="1_l0o83"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_down/frame_0.png" id="2_e5no0"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_down/frame_1.png" id="3_1plvt"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_down/frame_2.png" id="4_woyj5"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_down/frame_3.png" id="5_6t702"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_down/frame_4.png" id="6_5m0mr"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_down/frame_5.png" id="7_w5sdy"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_left/frame_0.png" id="8_jgeld"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_left/frame_1.png" id="9_ypa8n"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_left/frame_2.png" id="10_6vgwl"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_left/frame_3.png" id="11_u6dst"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_left/frame_4.png" id="12_7ehol"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_left/frame_5.png" id="13_704fb"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_right/frame_0.png" id="14_j70m8"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_right/frame_1.png" id="15_gdp0e"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_right/frame_2.png" id="16_kupec"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_right/frame_3.png" id="17_odw2h"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_right/frame_4.png" id="18_8b8dk"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_right/frame_5.png" id="19_nxifu"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_up/frame_0.png" id="20_ptdyg"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_up/frame_1.png" id="21_d7der"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_up/frame_2.png" id="22_lw1bg"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_up/frame_3.png" id="23_62toc"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_up/frame_4.png" id="24_k1lqm"]
+[ext_resource type="Texture2D" path="res://assets/characters/sam/walk_up/frame_5.png" id="25_p50cx"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l0o83")
+}],
+"loop": 1,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e5no0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1plvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_woyj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6t702")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5m0mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w5sdy")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jgeld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ypa8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6vgwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u6dst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7ehol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_704fb")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_j70m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gdp0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kupec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_odw2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8b8dk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nxifu")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ptdyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_d7der")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lw1bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_62toc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_k1lqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_p50cx")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 8.0
+}]
