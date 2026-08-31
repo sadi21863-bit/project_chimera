@@ -11,10 +11,15 @@ var mode: Mode = Mode.PLAY
 @onready var _prompt: CanvasLayer = $UI/InteractionPrompt
 @onready var _story: CanvasLayer = $UI/StoryScreen
 @onready var _case_panel: CanvasLayer = $UI/CasePanel
-@onready var _interrogation: CanvasLayer = $UI/InterrogationPanel
+@onready var _interrogation = $UI/InterrogationPanel
 @onready var _settings: CanvasLayer = $UI/SettingsScreen
 @onready var _search_panel: CanvasLayer = $UI/SearchPanel
 @onready var _travel_map: CanvasLayer = $UI/TravelMap
+@onready var _cinematic: CanvasLayer = $UI/OpeningCinematic
+@onready var _notebook: CanvasLayer = $UI/NotebookPanel
+@onready var _evidence_board: CanvasLayer = $UI/EvidenceBoard
+@onready var _npc_relationships: CanvasLayer = $UI/NPCRelationshipPanel
+@onready var _quit_case_btn: CanvasLayer = $UI/QuitCaseButton
 
 const CAMERA_SPEED := 300.0
 const ZOOM_MIN := 0.5
@@ -22,7 +27,7 @@ const ZOOM_MAX := 2.0
 
 var _dragging := false
 var _drag_start := Vector2.ZERO
-var _location: Node2D = null
+var _location = null
 
 
 func _ready() -> void:
@@ -33,17 +38,32 @@ func _ready() -> void:
 	EventLog.log_action("Crestwood Hall simulation started", "system")
 	_story.choice_made.connect(_on_choice_made)
 	_story.settings_requested.connect(_settings.open)
+	_story.new_game_requested.connect(_on_new_game)
+	_story.quit_case_requested.connect(_on_quit_case_requested)
 	_case_panel.accuse_requested.connect(_on_accuse_requested)
 	GameFlow.phase_changed.connect(_on_phase_changed)
 	_case_panel.set_open(false)
-	_on_phase_changed(GameFlow.phase)  # show the First Choice on start
 	_interrogation.free_text_submitted.connect(_on_free_text)
-	_travel_map.travel_requested.connect(func(d): LocationManager.travel(d))
+	_interrogation.confess_triggered.connect(_on_confess_triggered)
+	_travel_map.travel_requested.connect(func(d):
+		Effects.fade_transition(func(): LocationManager.travel(d))
+	)
 	_search_panel.action_selected.connect(_on_search_action_selected)
+	_cinematic.cinematic_finished.connect(_on_cinematic_finished)
+	Investigation.clue_discovered.connect(func(_c): Tutorial.on_clue_found())
+	Investigation.clue_discovered.connect(_on_clue_discovered)
+	Scheduler.time_changed.connect(func(_h, _m, _d): Tutorial.on_day_passed())
+	Effects.set_camera(_camera)
+	_quit_case_btn.get_node("Panel/Button").pressed.connect(_on_quit_case_pressed)
+	if GameFlow.phase == GameFlow.Phase.CHOICE:
+		_cinematic.start_cinematic()
+	else:
+		_on_phase_changed(GameFlow.phase)
 
 
 func _load_location(id: String) -> void:
 	if _location != null:
+		SFXHelper.travel()
 		_location.queue_free()
 	var scene: PackedScene = load(LocationManager.location_scene(id))
 	_location = scene.instantiate()
@@ -59,17 +79,25 @@ func _bind_location(loc: Node2D) -> void:
 	for npc in loc.npcs:
 		var area: Area2D = npc.get_node("ClickArea")
 		area.input_pickable = true
-		area.input_event.connect(_on_npc_input.bind(npc))
+		if not area.input_event.is_connected(_on_npc_input):
+			area.input_event.connect(_on_npc_input.bind(npc))
 		for ch in npc.get_children():
 			if ch is NpcInteractable:
-				ch.talk_requested.connect(_on_talk_requested)
+				if not ch.talk_requested.is_connected(_on_talk_requested):
+					ch.talk_requested.connect(_on_talk_requested)
+				if not ch.talk_requested.is_connected(func(_s): Tutorial.on_npc_approached()):
+					ch.talk_requested.connect(func(_s): Tutorial.on_npc_approached())
+	# Location-level interactables must wire even when loc.npcs is empty
 	for ch in loc.get_children():
 		if ch is SearchPoint:
-			ch.search_requested.connect(_on_search_requested)
+			if not ch.search_requested.is_connected(_on_search_requested):
+				ch.search_requested.connect(_on_search_requested)
 		elif ch is RestPoint:
-			ch.rest_requested.connect(_on_rest_requested)
+			if not ch.rest_requested.is_connected(_on_rest_requested):
+				ch.rest_requested.connect(_on_rest_requested)
 		elif ch is DoorTrigger:
-			ch.door_triggered.connect(func(d): LocationManager.travel(d))
+			if not ch.door_triggered.is_connected(func(d): Effects.fade_transition(func(): LocationManager.travel(d))):
+				ch.door_triggered.connect(func(d): Effects.fade_transition(func(): LocationManager.travel(d)))
 
 
 func _process(delta: float) -> void:
@@ -101,6 +129,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("toggle_map") and GameFlow.phase == GameFlow.Phase.INVESTIGATION:
 		_travel_map.open()
+		return
+	if event.is_action_pressed("toggle_notebook") and GameFlow.phase == GameFlow.Phase.INVESTIGATION:
+		_notebook.set_open(not _notebook.visible)
+		return
+	if event.is_action_pressed("toggle_board") and GameFlow.phase == GameFlow.Phase.INVESTIGATION:
+		_evidence_board.set_open(not _evidence_board.visible)
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
@@ -142,7 +176,24 @@ func _update_day_night(hour: float, _m: int, _d: int) -> void:
 		color = day_color.lerp(dawn_dusk, (t - 0.5) / 0.25)
 	else:
 		color = dawn_dusk.lerp(night_color, (t - 0.75) / 0.25)
+
+	# Reduce day/night effect for indoor locations (they have artificial lighting)
+	if _is_indoor(LocationManager.current_id):
+		color = Color(1.0, 1.0, 1.0).lerp(color, 0.3)
+
 	_day_night.color = color
+
+
+func _is_indoor(loc_id: String) -> bool:
+	match loc_id:
+		"dorm", "bedroom_1", "bedroom_2", "bedroom_3", "bedroom_4", "bedroom_5", "bedroom_6":
+			return true
+		"daniel_room", "detective_room", "police_station", "university":
+			return true
+		"server_room", "library", "hospital", "bar":
+			return true
+		_:
+			return false
 
 
 static func _next_mode(m: int) -> int:
@@ -176,9 +227,12 @@ func _on_choice_made(is_murder: bool) -> void:
 
 
 func _on_accuse_requested(suspect_id: String) -> void:
+	SFXHelper.accuse()
+	Effects.shake_dramatic()
 	var result: Dictionary = CaseFile.accuse(suspect_id)
 	if result["accepted"]:
 		_case_panel.set_open(false)
+		SFXHelper.ending()
 		GameFlow.trigger_ending(result["ending_id"])
 	else:
 		EventLog.log_action("Not enough evidence to accuse %s (%d/%d)" % [
@@ -189,9 +243,13 @@ func _on_phase_changed(phase: int) -> void:
 	match phase:
 		GameFlow.Phase.CHOICE:
 			_story.show_choice()
+			_quit_case_btn.visible = false
 		GameFlow.Phase.INVESTIGATION:
 			_story.hide_screen()
+			_quit_case_btn.visible = true
+			Tutorial.start()
 		GameFlow.Phase.ENDING:
+			_quit_case_btn.visible = false
 			_story.show_ending(GameFlow.current_ending_id, _collect_discovered_clue_ids())
 
 
@@ -203,12 +261,21 @@ func _collect_discovered_clue_ids() -> Array:
 	return ids
 
 
+func _on_clue_discovered(_clue_id: String) -> void:
+	Effects.shake_subtle()
+	Effects.flash(Color(0.2, 0.4, 0.8, 0.3), 0.2)
+
+
 func _on_talk_requested(suspect_id: String) -> void:
 	_interrogation.open(suspect_id, Investigation, Standing)
+	Tutorial.on_interrogation_started()
+	EventLog.log_action("Interrogating %s" % str(CaseData.SUSPECTS.get(suspect_id, {}).get("name", suspect_id)), "interrogation")
 
 
 func _on_search_requested(point_id: String) -> void:
 	_search_panel.open(point_id, Investigation)
+	if _location != null and _location.detective != null:
+		Effects.glow(_location.detective.global_position, Color(0.4, 0.8, 1.0))
 
 
 func _on_rest_requested() -> void:
@@ -247,3 +314,34 @@ func _on_free_text(suspect_id: String, text: String) -> void:
 		)
 	else:
 		_interrogation.show_response("Ask me something specific, detective.")
+
+
+func _on_new_game() -> void:
+	Scheduler.reset()
+	GameFlow.reset()
+	Investigation.reset()
+	Standing.reset()
+	CaseFile.reset()
+	Consequences.reset()
+	LocalMemory.clear()
+	EventLog.clear_log()
+	Notebook.reset()
+	LocationManager.reset()
+	Tutorial.reset()
+	get_tree().reload_current_scene()
+
+
+func _on_quit_case_requested() -> void:
+	Consequences.trigger_walk_away()
+
+
+func _on_quit_case_pressed() -> void:
+	_story.show_quit_case()
+
+
+func _on_confess_triggered() -> void:
+	Consequences.trigger_sacrifice()
+
+
+func _on_cinematic_finished() -> void:
+	_story.show_choice()

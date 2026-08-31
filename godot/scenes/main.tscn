@@ -6,10 +6,18 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/story_screen.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/ui/case_panel.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/ui/clue_toast.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/ui/interrogation_panel.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/ui/enhanced_interrogation_panel.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/ui/settings_screen.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://scenes/ui/search_panel.tscn" id="10"]
-[ext_resource type="PackedScene" path="res://scenes/ui/travel_map.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/ui/travel_map_v2.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/ui/opening_cinematic.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/ui/notebook_panel.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://scenes/ui/evidence_board.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tutorial_panel.tscn" id="15"]
+[ext_resource type="PackedScene" path="res://scenes/ui/npc_relationship_panel.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/ui/particle_canvas.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://scenes/ui/debug_panel.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud_clock.tscn" id="19"]
 
 [node name="Main" type="Node2D" unique_id=541120224]
 script = ExtResource("1")
@@ -40,3 +48,36 @@ position = Vector2(640, 360)
 [node name="SearchPanel" parent="UI" unique_id=1166410941 instance=ExtResource("10")]
 
 [node name="TravelMap" parent="UI" unique_id=674635170 instance=ExtResource("11")]
+
+[node name="OpeningCinematic" parent="UI" instance=ExtResource("12")]
+
+[node name="NotebookPanel" parent="UI" instance=ExtResource("13")]
+
+[node name="EvidenceBoard" parent="UI" instance=ExtResource("14")]
+
+[node name="TutorialPanel" parent="UI" instance=ExtResource("15")]
+
+[node name="NPCRelationshipPanel" parent="UI" instance=ExtResource("16")]
+
+[node name="ParticleCanvas" parent="UI" instance=ExtResource("17")]
+
+[node name="DebugPanel" parent="UI" instance=ExtResource("18")]
+
+[node name="HUDClock" parent="UI" instance=ExtResource("19")]
+
+[node name="QuitCaseButton" type="CanvasLayer" parent="UI"]
+visible = false
+
+[node name="Panel" type="PanelContainer" parent="UI/QuitCaseButton"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="UI/QuitCaseButton/Panel"]
+layout_mode = 2
+text = "Quit Case"

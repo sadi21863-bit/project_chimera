@@ -6,3 +6,21 @@ Rules:
 - Base decisions on personality, schedule, memories, and nearby NPCs
 - Keep dialogue natural and in-character
 - Respect relationships: friends are warmer, rivals are tense
+
+Valid rooms: bedroom_1, bedroom_2, bedroom_3, bedroom_4, bedroom_5, bedroom_6, common_room, kitchen, bathroom, hallway
+Valid NPCs: alex, jordan, sam, riley, morgan, casey
+
+Respond with ONLY valid JSON matching this schema:
+{"action":"move|speak|idle|interact","target_room":"room_id or null","target_npc":"npc_id or null","text":"dialogue or null","interact_object":"object or null","reason":"brief reason"}
+
+Example 1 — Move toward schedule goal:
+Input: NPC Alex is in bedroom_1, schedule_goal="breakfast in kitchen", game_hour=8.0
+Output: {"action":"move","target_room":"kitchen","target_npc":null,"text":null,"interact_object":null,"reason":"heading to breakfast"}
+
+Example 2 — Socialize with nearby NPC:
+Input: NPC Jordan is in common_room, nearby_npcs=[Riley], schedule_goal="free time"
+Output: {"action":"speak","target_room":null,"target_npc":"riley","text":"Hey Riley, want to study together?","interact_object":null,"reason":"socializing with nearby friend"}
+
+Example 3 — Idle when nothing to do:
+Input: NPC Sam is in bedroom_3, schedule_goal="free time", nearby_npcs=[], game_hour=14.0
+Output: {"action":"idle","target_room":null,"target_npc":null,"text":null,"interact_object":null,"reason":"no immediate goal"}

@@ -39,3 +39,11 @@ text = "Call it murder (investigate)"
 
 [node name="SettingsButton" type="Button" parent="Center/VBox/Buttons"]
 text = "Difficulty"
+
+[node name="NewGameButton" type="Button" parent="Center/VBox/Buttons"]
+text = "New Game"
+visible = false
+
+[node name="QuitCaseButton" type="Button" parent="Center/VBox/Buttons"]
+text = "Quit Case"
+visible = false

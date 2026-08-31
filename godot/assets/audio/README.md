@@ -1,19 +1,72 @@
-# Audio Assets
+# Audio Assets Directory
 
-All files below are CC0 (public domain) — no attribution required, but credited here for traceability.
+## Directory Structure
+```
+audio/
+├── music/               # Background music tracks
+├── sfx/                 # Sound effects (footsteps, doors, UI)
+└── ambience/            # Ambient sounds (rain, wind, room tone)
+```
 
-## Footsteps
+## Import Guidelines
 
-Source: [Kenney RPG Audio pack](https://kenney.nl/assets/rpg-audio) (CC0, see `LICENSE_kenney_rpg_audio.txt`).
-Mapped per room surface (see `npc.gd` `ROOM_FOOTSTEP_SOUNDS`):
+### Supported Formats
+- **WAV** (preferred for SFX): Uncompressed, lowest latency
+- **OGG** (preferred for music): Compressed, streaming support
+- **MP3**: Compressed, good compatibility
 
-- `footstep_ceramic_00/01/02.ogg` — kitchen, bathroom
-- `footstep_linoleum_00/01/02.ogg` — hallway, common_room
-- `footstep_carpet_00/01/02.ogg` — bedrooms (default)
+### Import Settings
+1. **SFX (WAV)**:
+   - Compress mode: Disabled (fastest loading)
+   - Loop: OFF
+   - Mono: ON for 2D, OFF for 3D
+   - Max polyphony: 8-16
 
-`npc.gd` picks a random variant per step and applies slight pitch randomization to avoid repetition.
+2. **Music (OGG)**:
+   - Compress mode: RAM (fast playback)
+   - Loop: ON
+   - Mono: OFF (stereo)
+   - Max polyphony: 1-2
 
-## Ambient
+3. **Ambience (OGG/WAV)**:
+   - Compress mode: RAM
+   - Loop: ON
+   - Mono: ON for 2D, OFF for 3D
+   - Max polyphony: 2-4
 
-Source: `noise_01.ogg` from [30 CC0 SFX loops](https://opengameart.org/content/30-cc0-sfx-loops) (OpenGameArt, CC0), renamed to `ambient_dorm.ogg`.
-Looped at low volume (-20dB) by `crestwood_hall.gd`. If this file is ever removed, `crestwood_hall.gd` falls back to a procedurally generated low hum via `AudioStreamGenerator` rather than playing silence.
+### Naming Convention
+```
+[category]_[name]_[variant].[format]
+Examples:
+- sfx_footstep_concrete_01.wav
+- sfx_door_creak_01.wav
+- music_dormitory_night_01.ogg
+- ambience_rain_light_01.ogg
+```
+
+### Audio Bus Setup
+Create audio buses in Godot:
+```
+Master
+├── Music
+├── SFX
+├── Ambience
+└── Voice
+```
+
+### Placement in Godot
+1. Use `AudioStreamPlayer` for 2D non-positional audio
+2. Use `AudioStreamPlayer2D` for 2D positional audio
+3. Use `AudioStreamPlayer3D` for 3D positional audio
+4. Use `AudioBus` for volume control and effects
+
+### Music System Integration
+- Use `MusicManager` autoload for crossfading
+- Set mood-based tracks (exploration, investigation, tension)
+- Implement volume sliders in settings
+
+## Sources
+- Kenney: https://kenney.nl (CC0)
+- Freesound: https://freesound.org (CC0/CC-BY)
+- OpenGameArt: https://opengameart.org
+- Mixkit: https://mixkit.co (free)

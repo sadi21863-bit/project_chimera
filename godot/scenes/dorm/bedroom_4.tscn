@@ -1,104 +1,227 @@
-[gd_scene format=4]
+[gd_scene load_steps=16 format=4]
 
-[ext_resource type="Script" path="res://scenes/dorm/bedroom.gd" id="1_0pp6j"]
-[ext_resource type="TileSet" path="res://resources/tilesets/floor.tres" id="2_2p3kg"]
-[ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="3_exrto"]
+[ext_resource type="TileSet" path="res://resources/tilesets/floor.tres" id="ext_1"]
+[ext_resource type="Script" path="res://scenes/dorm/bedroom.gd" id="ext_2"]
+[ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="ext_3"]
+[ext_resource type="Script" path="res://scripts/player/search_point.gd" id="ext_4"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6e7t0"]
-vertices = PackedVector2Array(100, 100, 500, 100, 500, 400, 100, 400)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+[sub_resource type="RectangleShape2D" id="sub_1"]
+size = Vector2(192, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r6px"]
-size = Vector2(420, 10)
+[sub_resource type="RectangleShape2D" id="sub_2"]
+size = Vector2(192, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ingy1"]
-size = Vector2(420, 10)
+[sub_resource type="RectangleShape2D" id="sub_3"]
+size = Vector2(10, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8s0n"]
-size = Vector2(10, 300)
+[sub_resource type="RectangleShape2D" id="sub_4"]
+size = Vector2(10, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t4rg"]
-size = Vector2(10, 300)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f8ng5"]
+[sub_resource type="CircleShape2D" id="sub_5"]
 radius = 20.0
 
-[node name="Bedroom" type="Node2D" unique_id=1291463788]
-script = ExtResource("1_0pp6j")
+[sub_resource type="CircleShape2D" id="sub_6"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="sub_7"]
+size = Vector2(48, 32)
+
+[sub_resource type="RectangleShape2D" id="sub_8"]
+size = Vector2(40, 24)
+
+[sub_resource type="RectangleShape2D" id="sub_9"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="sub_10"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="sub_11"]
+size = Vector2(40, 32)
+
+[node name="Riley" type="Node2D"]
+script = ExtResource("ext_2")
 room_id = "bedroom_4"
 display_name = "Riley's Room"
 
-[node name="Floor" type="TileMapLayer" parent="." unique_id=1370385232]
-modulate = Color(0.88, 0.82, 1, 1)
-tile_map_data = PackedByteArray("AAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAFABIAAAAAAAAAAAAFABMAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAAGABEAAAAAAAAAAAAGABIAAAAAAAAAAAAGABMAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAHABEAAAAAAAAAAAAHABIAAAAAAAAAAAAHABMAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA8AAAAAAAAAAAAIABAAAAAAAAAAAAAIABEAAAAAAAAAAAAIABIAAAAAAAAAAAAIABMAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAAAAAAAAKABAAAAAAAAAAAAAKABEAAAAAAAAAAAAKABIAAAAAAAAAAAAKABMAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAALABAAAAAAAAAAAAALABEAAAAAAAAAAAALABIAAAAAAAAAAAALABMAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAAAAAAMABEAAAAAAAAAAAAMABIAAAAAAAAAAAAMABMAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAANAA8AAAAAAAAAAAANABAAAAAAAAAAAAANABEAAAAAAAAAAAANABIAAAAAAAAAAAANABMAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAOAA8AAAAAAAAAAAAOABAAAAAAAAAAAAAOABEAAAAAAAAAAAAOABIAAAAAAAAAAAAOABMAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA8AAAAAAAAAAAAPABAAAAAAAAAAAAAPABEAAAAAAAAAAAAPABIAAAAAAAAAAAAPABMAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAAQABIAAAAAAAAAAAAQABMAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAARABEAAAAAAAAAAAARABIAAAAAAAAAAAARABMAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAAAAAAAASABAAAAAAAAAAAAASABEAAAAAAAAAAAASABIAAAAAAAAAAAASABMAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAATAA8AAAAAAAAAAAATABAAAAAAAAAAAAATABEAAAAAAAAAAAATABIAAAAAAAAAAAATABMAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAAUAA8AAAAAAAAAAAAUABAAAAAAAAAAAAAUABEAAAAAAAAAAAAUABIAAAAAAAAAAAAUABMAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAVAA8AAAAAAAAAAAAVABAAAAAAAAAAAAAVABEAAAAAAAAAAAAVABIAAAAAAAAAAAAVABMAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA8AAAAAAAAAAAAWABAAAAAAAAAAAAAWABEAAAAAAAAAAAAWABIAAAAAAAAAAAAWABMAAAAAAAAAAAAXAAUAAAAAAAAAAAAXAAYAAAAAAAAAAAAXAAcAAAAAAAAAAAAXAAgAAAAAAAAAAAAXAAkAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAwAAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAXABEAAAAAAAAAAAAXABIAAAAAAAAAAAAXABMAAAAAAAAAAAAYAAUAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAYAAgAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAYAA4AAAAAAAAAAAAYAA8AAAAAAAAAAAAYABAAAAAAAAAAAAAYABEAAAAAAAAAAAAYABIAAAAAAAAAAAAYABMAAAAAAAAAAAA=")
-tile_set = ExtResource("2_2p3kg")
+[node name="Floor" type="TileMapLayer" parent="."]
+modulate = Color(1, 0.95, 0.9, 1)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAA=")
+tile_set = ExtResource("ext_1")
 
-[node name="NameLabel" type="Label" parent="." unique_id=1143540552]
-offset_left = 110.0
-offset_top = 108.0
-offset_right = 110.0
-offset_bottom = 108.0
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 140.0
+offset_right = 136.0
+offset_bottom = 160.0
 text = "Riley's Room"
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1836667963]
-navigation_polygon = SubResource("NavigationPolygon_6e7t0")
-
-[node name="Walls" type="StaticBody2D" parent="." unique_id=590687896]
+[node name="Walls" type="StaticBody2D" parent="."]
 collision_mask = 0
 
-[node name="North" type="CollisionShape2D" parent="Walls" unique_id=443653570]
-position = Vector2(300, 95)
-shape = SubResource("RectangleShape2D_3r6px")
+[node name="North" type="CollisionShape2D" parent="Walls"]
+position = Vector2(96, 5)
+shape = SubResource("sub_1")
 
-[node name="NorthVisual" type="ColorRect" parent="Walls" unique_id=887683517]
-offset_left = 90.0
-offset_top = 90.0
-offset_right = 510.0
-offset_bottom = 100.0
+[node name="NorthVisual" type="ColorRect" parent="Walls"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 192.0
+offset_bottom = 10.0
 mouse_filter = 2
 color = Color(0.1, 0.09, 0.08, 1)
 
-[node name="South" type="CollisionShape2D" parent="Walls" unique_id=355126425]
-position = Vector2(300, 405)
-shape = SubResource("RectangleShape2D_ingy1")
+[node name="South" type="CollisionShape2D" parent="Walls"]
+position = Vector2(96, 155)
+shape = SubResource("sub_2")
 
-[node name="SouthVisual" type="ColorRect" parent="Walls" unique_id=1328211044]
-offset_left = 90.0
-offset_top = 400.0
-offset_right = 510.0
-offset_bottom = 410.0
+[node name="SouthVisual" type="ColorRect" parent="Walls"]
+offset_left = 0.0
+offset_top = 150.0
+offset_right = 192.0
+offset_bottom = 160.0
 mouse_filter = 2
 color = Color(0.1, 0.09, 0.08, 1)
 
-[node name="West" type="CollisionShape2D" parent="Walls" unique_id=264312440]
-position = Vector2(95, 250)
-shape = SubResource("RectangleShape2D_g8s0n")
+[node name="West" type="CollisionShape2D" parent="Walls"]
+position = Vector2(5, 80)
+shape = SubResource("sub_3")
 
-[node name="WestVisual" type="ColorRect" parent="Walls" unique_id=1891373395]
-offset_left = 90.0
-offset_top = 100.0
-offset_right = 100.0
-offset_bottom = 400.0
+[node name="WestVisual" type="ColorRect" parent="Walls"]
+offset_left = 0.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 150.0
 mouse_filter = 2
 color = Color(0.1, 0.09, 0.08, 1)
 
-[node name="East" type="CollisionShape2D" parent="Walls" unique_id=409153247]
-position = Vector2(505, 250)
-shape = SubResource("RectangleShape2D_5t4rg")
+[node name="East" type="CollisionShape2D" parent="Walls"]
+position = Vector2(187, 80)
+shape = SubResource("sub_4")
 
-[node name="EastVisual" type="ColorRect" parent="Walls" unique_id=1241361187]
-offset_left = 500.0
-offset_top = 100.0
-offset_right = 510.0
-offset_bottom = 400.0
+[node name="EastVisual" type="ColorRect" parent="Walls"]
+offset_left = 182.0
+offset_top = 10.0
+offset_right = 192.0
+offset_bottom = 150.0
 mouse_filter = 2
 color = Color(0.1, 0.09, 0.08, 1)
 
-[node name="ExitDoor" type="Area2D" parent="." unique_id=58388629]
-position = Vector2(300, 385)
-script = ExtResource("3_exrto")
+[node name="ExitDoor" type="Area2D" parent="."]
+position = Vector2(96, 152)
+script = ExtResource("ext_3")
 dest_id = "dorm"
 dest_label = "the hallway"
 
-[node name="@CollisionShape2D@5" type="CollisionShape2D" parent="ExitDoor" unique_id=1677059112]
-shape = SubResource("CircleShape2D_f8ng5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
+shape = SubResource("sub_5")
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="Bed" type="StaticBody2D" parent="Furniture"]
+position = Vector2(24, 24)
+
+[node name="Visual" type="ColorRect" parent="Furniture/Bed"]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.6, 0.4, 0.3, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Bed"]
+shape = SubResource("sub_7")
+
+[node name="Desk" type="StaticBody2D" parent="Furniture"]
+position = Vector2(120, 24)
+
+[node name="Visual" type="ColorRect" parent="Furniture/Desk"]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.5, 0.4, 0.3, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Desk"]
+shape = SubResource("sub_8")
+
+[node name="Chair" type="StaticBody2D" parent="Furniture"]
+position = Vector2(136, 56)
+
+[node name="Visual" type="ColorRect" parent="Furniture/Chair"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(0.4, 0.3, 0.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Chair"]
+shape = SubResource("sub_9")
+
+[node name="Bookcase" type="StaticBody2D" parent="Furniture"]
+position = Vector2(24, 80)
+
+[node name="Visual" type="ColorRect" parent="Furniture/Bookcase"]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.45, 0.35, 0.25, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Bookcase"]
+shape = SubResource("sub_10")
+
+[node name="Dresser" type="StaticBody2D" parent="Furniture"]
+position = Vector2(120, 100)
+
+[node name="Visual" type="ColorRect" parent="Furniture/Dresser"]
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.4, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Dresser"]
+shape = SubResource("sub_11")
+
+[node name="SearchPoints" type="Node2D" parent="."]
+
+[node name="Bed" type="Area2D" parent="SearchPoints"]
+position = Vector2(48, 40)
+script = ExtResource("ext_4")
+point_id = "bedroom_4_bed"
+label = "Riley's bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchPoints/Bed"]
+shape = SubResource("sub_6")
+
+[node name="Label" type="Label" parent="SearchPoints/Bed"]
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -4.0
+text = "Riley's bed"
+visible = false
+
+[node name="Closet" type="Area2D" parent="SearchPoints"]
+position = Vector2(140, 104)
+script = ExtResource("ext_4")
+point_id = "riley_closet"
+label = "Riley's closet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchPoints/Closet"]
+shape = SubResource("sub_6")
+
+[node name="Label" type="Label" parent="SearchPoints/Closet"]
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = -4.0
+text = "Riley's closet"
+visible = false
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(96, 80)

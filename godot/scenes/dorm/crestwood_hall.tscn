@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="2"]
 [ext_resource type="TileSet" path="res://resources/tilesets/floor.tres" id="2_wx6aq"]
 [ext_resource type="Script" path="res://scripts/player/locked_door_trigger.gd" id="4_8csuf"]
+[ext_resource type="Script" path="res://scripts/ui/scene_decorator.gd" id="5_decorator"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8csuf"]
 vertices = PackedVector2Array(1240, 255, 1240, 680, 1160, 500, 1160, 490, 40, 680, 660, 500, 500, 500, 60, 500, 40, 255, 60, 490, 650, 255, 660, 490, 450, 255, 500, 490, 40, 245, 40, 40, 1240, 40, 450, 245, 1240, 245, 650, 245)
@@ -305,6 +306,42 @@ dest_label = "the campus"
 [node name="@CollisionShape2D@2" type="CollisionShape2D" parent="DoorToCampus" unique_id=1893173847]
 shape = SubResource("CircleShape2D_trc5h")
 
+[node name="DoorToHallway" type="Area2D" parent="." unique_id=2001000001]
+position = Vector2(450, 120)
+script = ExtResource("2")
+dest_id = "hallway"
+dest_label = "the hallway"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToHallway" unique_id=2001000002]
+shape = SubResource("door_shape")
+
+[node name="DoorToKitchen" type="Area2D" parent="." unique_id=2001000003]
+position = Vector2(140, 140)
+script = ExtResource("2")
+dest_id = "kitchen"
+dest_label = "the kitchen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToKitchen" unique_id=2001000004]
+shape = SubResource("door_shape")
+
+[node name="DoorToCommonRoom" type="Area2D" parent="." unique_id=2001000005]
+position = Vector2(580, 320)
+script = ExtResource("2")
+dest_id = "common_room"
+dest_label = "the common room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToCommonRoom" unique_id=2001000006]
+shape = SubResource("door_shape")
+
+[node name="DoorToBathroom" type="Area2D" parent="." unique_id=2001000007]
+position = Vector2(950, 140)
+script = ExtResource("2")
+dest_id = "bathroom"
+dest_label = "the bathroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToBathroom" unique_id=2001000008]
+shape = SubResource("door_shape")
+
 [node name="InteriorWalls" type="StaticBody2D" parent="." unique_id=1556625283]
 collision_mask = 0
 
@@ -331,3 +368,7 @@ offset_right = 1240.0
 offset_bottom = 255.0
 mouse_filter = 2
 color = Color(0.1, 0.09, 0.08, 1)
+
+[node name="Furniture" type="Node2D" parent="."]
+script = ExtResource("5_decorator")
+room_type = "common_room"

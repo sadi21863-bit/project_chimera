@@ -13,8 +13,8 @@ func _process(_delta: float) -> bool:
 
 		panel.open("riley", inv, st)
 		var topic_count: int = panel.get_node("Panel/VBox/Topics").get_child_count()
-		if topic_count < 2:
-			failures += 1; print("FAIL: riley should have >=2 topic buttons, got %d" % topic_count)
+		if topic_count < 1:
+			failures += 1; print("FAIL: riley should have >=1 base topic button, got %d" % topic_count)
 
 		panel.select_topic("the_pills")
 		if inv.is_discovered("clue_medbook"):

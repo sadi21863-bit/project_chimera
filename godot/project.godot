@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Project Chimera"
 config/description="Isometric dorm simulation with 6 autonomous NPCs"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -32,10 +32,22 @@ GameFlow="*res://autoload/game_flow.gd"
 Consequences="*res://autoload/consequences.gd"
 LocationManager="*res://autoload/location_manager.gd"
 EventLog="*res://autoload/event_log.gd"
+MusicManager="*res://autoload/music_manager.gd"
 EventBus="*res://addons/event_bus/event_bus.gd"
 AIClient="*res://autoload/ai_client.gd"
 DialogSystem="*res://addons/dialog_system/dialog_system.gd"
 SaveManager="*res://addons/locker/save_manager.gd"
+Notebook="*res://autoload/notebook.gd"
+Tutorial="*res://autoload/tutorial.gd"
+NPCRelationships="*res://autoload/npc_relationships.gd"
+Effects="*res://autoload/effects.gd"
+SFXHelper="*res://scripts/audio/sfx_helper.gd"
+EvidenceQuality="*res://autoload/evidence_quality.gd"
+ScheduledEvents="*res://autoload/scheduled_events.gd"
+MCPBridge="*res://autoload/mcp_bridge.gd"
+MCPRuntimeBridge="*res://addons/godot_mcp/services/mcp_runtime_bridge.gd"
+MCPInputBridge="*res://addons/godot_mcp/services/mcp_input_bridge.gd"
+MCPScreenshotBridge="*res://addons/godot_mcp/services/mcp_screenshot_bridge.gd"
 
 [display]
 
@@ -53,7 +65,11 @@ nobodywho_model_path="res://models/Llama-3.2-1B-Instruct-Q4_K_M.gguf"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/dialog_system/plugin.cfg", "res://addons/event_bus/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/locker/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 
@@ -108,6 +124,21 @@ toggle_case={
 toggle_map={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+toggle_notebook={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":78,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+toggle_board={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+toggle_debug={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194340,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

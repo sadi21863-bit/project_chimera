@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import re
 import time
 from pathlib import Path
@@ -10,14 +9,10 @@ from typing import Any
 
 import httpx
 
+from chimera.config import get_settings
 from chimera.models import ActionType, NpcAction, NpcContext
 
 logger = logging.getLogger(__name__)
-
-OLLAMA_URL = os.environ.get("CHIMERA_OLLAMA_URL", "http://localhost:11434")
-DEFAULT_MODEL = os.environ.get("CHIMERA_OLLAMA_MODEL", "phi3:mini")
-GENERATE_TIMEOUT = float(os.environ.get("CHIMERA_OLLAMA_TIMEOUT", "30.0"))
-HEALTH_TIMEOUT = float(os.environ.get("CHIMERA_OLLAMA_HEALTH_TIMEOUT", "2.0"))
 
 # Circuit breaker: after enough consecutive failures, skip the health check
 # and go straight to the rule-based fallback for a cooldown window instead of
@@ -29,6 +24,9 @@ _consecutive_failures = 0
 _circuit_open_until = 0.0
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
+
+# Shared HTTP client — created lazily, reused across all requests
+_http_client: httpx.AsyncClient | None = None
 
 
 def _load_prompt(name: str) -> str:
@@ -67,11 +65,39 @@ def _record_failure() -> None:
         )
 
 
+async def get_http_client() -> httpx.AsyncClient:
+    """Get or create the shared async HTTP client."""
+    global _http_client
+    if _http_client is None or _http_client.is_closed:
+        settings = get_settings()
+        _http_client = httpx.AsyncClient(
+            timeout=httpx.Timeout(settings.ollama_timeout, connect=5.0),
+            limits=httpx.Limits(
+                max_connections=10,
+                max_keepalive_connections=5,
+                keepalive_expiry=120,
+            ),
+        )
+    return _http_client
+
+
+async def close_http_client() -> None:
+    """Shut down the shared HTTP client."""
+    global _http_client
+    if _http_client is not None and not _http_client.is_closed:
+        await _http_client.aclose()
+        _http_client = None
+
+
 async def check_ollama_available() -> bool:
+    settings = get_settings()
     try:
-        async with httpx.AsyncClient(timeout=HEALTH_TIMEOUT) as client:
-            response = await client.get(f"{OLLAMA_URL}/api/tags")
-            return response.status_code == 200
+        client = await get_http_client()
+        response = await client.get(
+            f"{settings.ollama_url}/api/tags",
+            timeout=httpx.Timeout(settings.ollama_health_timeout),
+        )
+        return response.status_code == 200
     except Exception:
         return False
 
@@ -91,19 +117,72 @@ def _extract_json(text: str) -> dict[str, Any] | None:
     return None
 
 
+def _safe_room_from_npc_id(npc_id: str) -> str:
+    """Extract bedroom number from NPC ID, fallback to bedroom_1."""
+    # Try numeric suffix first (alex -> 1, jordan -> 2, etc.)
+    suffix = npc_id[-1] if npc_id else ""
+    if suffix.isdigit():
+        return f"bedroom_{suffix}"
+    # Try known mappings
+    npc_room_map = {
+        "alex": "bedroom_1",
+        "jordan": "bedroom_2",
+        "sam": "bedroom_3",
+        "riley": "bedroom_4",
+        "morgan": "bedroom_5",
+        "casey": "bedroom_6",
+    }
+    return npc_room_map.get(npc_id.lower(), "bedroom_1")
+
+
+def _time_based_goal(game_hour: float) -> str:
+    """Infer a reasonable goal from time of day."""
+    if game_hour < 7.0:
+        return "sleeping in bedroom"
+    elif game_hour < 9.0:
+        return "breakfast in kitchen"
+    elif game_hour < 12.0:
+        return "morning activities"
+    elif game_hour < 14.0:
+        return "lunch in kitchen"
+    elif game_hour < 17.0:
+        return "afternoon activities"
+    elif game_hour < 19.0:
+        return "dinner in kitchen"
+    elif game_hour < 22.0:
+        return "evening in common_room"
+    else:
+        return "sleeping in bedroom"
+
+
 def rule_based_action(context: NpcContext) -> NpcAction:
     """Fallback when Ollama unavailable."""
     goal = context.schedule_goal.lower()
+
+    # Time-based inference if no explicit goal
+    if not goal or goal in ("free time", "idle", ""):
+        goal = _time_based_goal(context.game_hour).lower()
+
     room_map = {
         "kitchen": "kitchen",
         "common": "common_room",
-        "bedroom": f"bedroom_{context.npc_id[-1] if context.npc_id[-1].isdigit() else '1'}",
+        "bedroom": _safe_room_from_npc_id(context.npc_id),
         "bathroom": "bathroom",
         "hallway": "hallway",
+        "dorm": "common_room",
+        "study": "common_room",
+        "library": "common_room",
     }
+
     for keyword, room in room_map.items():
         if keyword in goal and room != context.current_room:
             return NpcAction(action=ActionType.MOVE, target_room=room, reason="schedule fallback")
+
+    # Night hours: go to bedroom
+    if context.game_hour >= 22.0 or context.game_hour < 6.0:
+        bedroom = _safe_room_from_npc_id(context.npc_id)
+        if context.current_room != bedroom:
+            return NpcAction(action=ActionType.MOVE, target_room=bedroom, reason="nighttime rest")
 
     if context.nearby_npcs:
         other = context.nearby_npcs[0]
@@ -155,26 +234,27 @@ async def generate_action(context: NpcContext, memories: list[str]) -> tuple[Npc
         logger.info("Ollama unavailable — using rule-based fallback")
         return rule_based_action(context), "rule_based"
 
+    settings = get_settings()
     prompt = _build_prompt(context, memories)
 
     payload = {
-        "model": DEFAULT_MODEL,
+        "model": settings.ollama_model,
         "prompt": prompt,
         "stream": False,
         "format": "json",
     }
 
     try:
-        async with httpx.AsyncClient(timeout=GENERATE_TIMEOUT) as client:
-            response = await client.post(f"{OLLAMA_URL}/api/generate", json=payload)
-            response.raise_for_status()
-            body = response.json()
-            raw = body.get("response", "")
-            parsed = _extract_json(raw)
-            if parsed:
-                action = NpcAction.model_validate(parsed)
-                _record_success()
-                return action, "ollama"
+        client = await get_http_client()
+        response = await client.post(f"{settings.ollama_url}/api/generate", json=payload)
+        response.raise_for_status()
+        body = response.json()
+        raw = body.get("response", "")
+        parsed = _extract_json(raw)
+        if parsed:
+            action = NpcAction.model_validate(parsed)
+            _record_success()
+            return action, "ollama"
     except Exception as exc:
         logger.warning("Ollama generation failed: %s", exc)
 

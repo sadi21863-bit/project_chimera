@@ -5,7 +5,16 @@ import pytest
 import respx
 
 from chimera import llm
+from chimera.config import get_settings
 from chimera.models import ActionType, NpcContext
+
+
+@pytest.fixture(autouse=True)
+def _reset_circuit_breaker():
+    """Reset circuit breaker state between tests."""
+    llm.reset_circuit_breaker()
+    yield
+    llm.reset_circuit_breaker()
 
 
 def _make_context(**overrides) -> NpcContext:
@@ -45,6 +54,8 @@ def test_rule_based_action_moves_toward_schedule_goal():
 def test_rule_based_action_socializes_when_nearby_npc_present():
     ctx = _make_context(
         schedule_goal="free time",
+        game_hour=20.0,
+        current_room="common_room",
         nearby_npcs=[{"id": "jordan", "name": "Jordan", "room": "common_room"}],
     )
     action = llm.rule_based_action(ctx)
@@ -53,7 +64,7 @@ def test_rule_based_action_socializes_when_nearby_npc_present():
 
 
 def test_rule_based_action_idles_with_no_goal_match_or_npcs():
-    ctx = _make_context(schedule_goal="free time")
+    ctx = _make_context(schedule_goal="free time", game_hour=10.0, current_room="bathroom")
     action = llm.rule_based_action(ctx)
     assert action.action == ActionType.IDLE
 
@@ -75,8 +86,9 @@ async def test_generate_action_falls_back_when_ollama_down(monkeypatch):
 @pytest.mark.asyncio
 async def test_generate_action_uses_ollama_when_available(monkeypatch):
     monkeypatch.setattr(llm, "check_ollama_available", _async_true)
+    settings = get_settings()
     with respx.mock:
-        respx.post(f"{llm.OLLAMA_URL}/api/generate").mock(
+        respx.post(f"{settings.ollama_url}/api/generate").mock(
             return_value=httpx.Response(
                 200, json={"response": '{"action":"idle","reason":"testing"}'}
             )
@@ -89,8 +101,9 @@ async def test_generate_action_uses_ollama_when_available(monkeypatch):
 @pytest.mark.asyncio
 async def test_circuit_breaker_opens_after_repeated_failures_and_short_circuits(monkeypatch):
     monkeypatch.setattr(llm, "check_ollama_available", _async_true)
+    settings = get_settings()
     with respx.mock:
-        respx.post(f"{llm.OLLAMA_URL}/api/generate").mock(return_value=httpx.Response(500))
+        respx.post(f"{settings.ollama_url}/api/generate").mock(return_value=httpx.Response(500))
         for _ in range(llm.CIRCUIT_FAILURE_THRESHOLD):
             _, source = await llm.generate_action(_make_context(), [])
             assert source == "rule_based"

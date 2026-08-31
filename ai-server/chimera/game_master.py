@@ -35,6 +35,9 @@ VALID_ROOMS = {
 
 VALID_NPCS = {"alex", "jordan", "sam", "riley", "morgan", "casey"}
 
+# Track which NPC is in which room (updated by decide calls)
+_npc_rooms: dict[str, str] = {}
+
 _injected_events: list[str] = []
 
 
@@ -46,12 +49,24 @@ class GameMaster:
         msg = f"[{request.severity}] {request.text}"
         if request.target_room:
             msg += f" (room: {request.target_room})"
+
         _injected_events.append(msg)
         if len(_injected_events) > 50:
             _injected_events.pop(0)
-        for npc in VALID_NPCS:
+
+        # If target_room specified, only record for NPCs currently in that room
+        if request.target_room:
+            targets = [npc_id for npc_id, room in _npc_rooms.items() if room == request.target_room]
+            if not targets:
+                # Fallback: record for all known NPCs if room tracking is empty
+                targets = list(VALID_NPCS)
+        else:
+            targets = list(VALID_NPCS)
+
+        for npc in targets:
             self.memory.record(npc, msg, {"event_type": "injected"})
-        return {"status": "ok", "event": msg}
+
+        return {"status": "ok", "event": msg, "recipients": targets}
 
     def validate_action(self, action: NpcAction, context: NpcContext) -> NpcAction:
         if action.action == ActionType.MOVE:
@@ -74,6 +89,10 @@ class GameMaster:
 
     async def decide(self, request: DecideRequest) -> DecideResponse:
         ctx = request.context
+
+        # Update room tracking
+        _npc_rooms[ctx.npc_id] = ctx.current_room
+
         query = f"{ctx.schedule_goal} {ctx.current_room} {' '.join(ctx.recent_events[-3:])}"
         for event in _injected_events[-3:]:
             ctx.recent_events.append(event)

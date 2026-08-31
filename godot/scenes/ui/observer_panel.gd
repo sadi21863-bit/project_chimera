@@ -110,6 +110,7 @@ func _on_save_pressed() -> void:
 		"consequences": Consequences.get_save_data(),
 		"location_manager": LocationManager.get_save_data(),
 		"case_file": CaseFile.get_save_data(),
+		"notebook": Notebook.get_save_data(),
 	}
 	if hall:
 		data["hall"] = hall.get_save_data()
@@ -126,6 +127,7 @@ func _on_load_pressed() -> void:
 	Consequences.load_save_data(data.get("consequences", {}))
 	LocationManager.load_save_data(data.get("location_manager", {}))
 	CaseFile.load_save_data(data.get("case_file", {}))
+	Notebook.load_save_data(data.get("notebook", {}))
 	var hall := get_tree().root.get_node_or_null("Main/LocationHost/CrestwoodHall")
 	if hall and data.has("hall"):
 		hall.load_save_data(data["hall"])

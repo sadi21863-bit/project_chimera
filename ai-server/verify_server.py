@@ -2,12 +2,14 @@
 
 import asyncio
 import sys
+from pathlib import Path
 
-sys.path.insert(0, ".")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 
 async def main() -> None:
     from httpx import ASGITransport, AsyncClient
+
     from main import app
 
     transport = ASGITransport(app=app)

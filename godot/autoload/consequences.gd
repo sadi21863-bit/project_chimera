@@ -35,6 +35,18 @@ func record_risky_search(restricted: bool, witnessed: bool) -> void:
 	_add_strike("botched intrusive search")
 
 
+func trigger_walk_away() -> void:
+	if GameFlow.phase != GameFlow.Phase.INVESTIGATION:
+		return
+	GameFlow.trigger_ending("ending_walk_away")
+
+
+func trigger_sacrifice() -> void:
+	if GameFlow.phase != GameFlow.Phase.INVESTIGATION:
+		return
+	GameFlow.trigger_ending("ending_sacrifice")
+
+
 func reset() -> void:
 	strikes = 0
 	_case_start_day = -1

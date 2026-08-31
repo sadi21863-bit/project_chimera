@@ -12,6 +12,49 @@ const ACCIDENT := {
 		+ "being right — because you were.",
 }
 
+const TRUTH := {
+	"title": "The Truth, Untarnished",
+	"body": "You piece it together: the pills, the camera, the ghost, the sketch — all of it "
+		+ "points to the same thing. Daniel died alone, by accident, in a building full of people "
+		+ "who almost helped. The truth doesn't save him, but it saves them. Each resident leaves "
+		+ "Crestwood carrying a little less guilt than they arrived with.",
+}
+
+const PARTIAL_TRUTH := {
+	"title": "Close Enough",
+	"body": "You get the broad strokes right — it was an accident, not murder. But some details "
+		+ "slip through your fingers. The pills, the camera, the ghost — you never connect them all. "
+		+ "The residents leave with questions they'll never answer. So do you.",
+}
+
+const COVERUP := {
+	"title": "The Quiet Settlement",
+	"body": "The family accepts your conclusion: accidental death. But the standing you've "
+		+ "maintained comes at a cost. You've smoothed over cracks instead of filling them. The "
+		+ "residents suspect you chose convenience over truth. They're right.",
+}
+
+const TABLOID := {
+	"title": "Headlines Over Honesty",
+	"body": "The Crestwood Courier runs the story before you close the case. 'Dorm Death: "
+		+ "Detective Blames Wrong Suspect.' Your reputation is ash. The residents refuse to speak "
+		+ "to reporters. You've turned a tragedy into content.",
+}
+
+const WALK_AWAY := {
+	"title": "The Case That Stayed Open",
+	"body": "You hand in your badge before the deadline. The case goes cold, then frozen, then "
+		+ "forgotten. Daniel's family gets a letter: 'Investigation suspended due to insufficient "
+		+ "evidence.' It's the kindest lie you've ever told.",
+}
+
+const SACRIFICE := {
+	"title": "The Wrong Confession",
+	"body": "You confess to tampering with evidence. It's not true — but it protects someone who "
+		+ "needs protecting. The case closes with your name in the file, not Daniel's. You'll carry "
+		+ "that weight longer than anyone will carry his memory.",
+}
+
 const GAME_OVER := {
 	"ending_fired_strikes": {"title": "Taken Off the Case",
 		"body": "The chief calls you in. Too many complaints, too many nights caught somewhere you "
@@ -52,6 +95,18 @@ const WRONG := {
 static func ending_for(ending_id: String) -> Dictionary:
 	if ending_id == "ending_accident":
 		return ACCIDENT
+	if ending_id == "ending_truth":
+		return TRUTH
+	if ending_id == "ending_partial_truth":
+		return PARTIAL_TRUTH
+	if ending_id == "ending_coverup":
+		return COVERUP
+	if ending_id == "ending_tabloid":
+		return TABLOID
+	if ending_id == "ending_walk_away":
+		return WALK_AWAY
+	if ending_id == "ending_sacrifice":
+		return SACRIFICE
 	if GAME_OVER.has(ending_id):
 		return GAME_OVER[ending_id]
 	var suspect_id := ending_id.trim_prefix("ending_")
@@ -67,3 +122,22 @@ static func build_flashback(discovered_clue_ids: Array) -> Array:
 			var data: Dictionary = CaseData.CLUES[clue_id]
 			result.append({"title": str(data["title"]), "truth": str(data["truth"])})
 	return result
+
+
+static func get_ending_count() -> int:
+	return 6 + GAME_OVER.size() + WRONG.size()  # 6 special + game_over + wrong suspect endings
+
+
+static func get_all_ending_ids() -> Array:
+	var ids: Array = []
+	ids.append("ending_accident")
+	ids.append("ending_truth")
+	ids.append("ending_partial_truth")
+	ids.append("ending_coverup")
+	ids.append("ending_tabloid")
+	ids.append("ending_walk_away")
+	ids.append("ending_sacrifice")
+	ids.append_array(GAME_OVER.keys())
+	for suspect_id in WRONG.keys():
+		ids.append("ending_" + suspect_id)
+	return ids

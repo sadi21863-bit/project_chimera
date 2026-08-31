@@ -12,7 +12,7 @@ func _initialize() -> void:
 	# flavor clue (Plan E's ghost-master trail — never affects case strength), or a documented
 	# lore/item flag (Daniel's own secrets + the master key that unlocks his room — victim
 	# backstory, not suspect-implicating evidence, so intentionally not in CaseData.CLUES)
-	var red_herrings := ["clue_ghost_sighting", "clue_ghost_costume", "clue_ghost_note"]
+	var red_herrings: Array = []
 	var lore_and_items := ["item_master_key", "clue_daniel_double_life", "clue_daniel_scheme", "clue_daniel_selfmed"]
 	for pid in sd.point_ids():
 		var p: Dictionary = sd.point(pid)
@@ -24,9 +24,9 @@ func _initialize() -> void:
 				failures += 1; print("FAIL: %s/%s reveals unknown clue %s" % [pid, action["id"], rc])
 
 	# resolve returns flavor + the configured clue
-	var res: Dictionary = sd.resolve("common_couch", "look_under")
+	var res: Dictionary = sd.resolve("common_room_couch", "check_under")
 	if res["reveal_clue"] != "clue_logbook":
-		failures += 1; print("FAIL: couch look_under should reveal clue_logbook")
+		failures += 1; print("FAIL: couch check_under should reveal clue_logbook")
 	if res["flavor"].is_empty():
 		failures += 1; print("FAIL: resolve should return flavor text")
 	# a flavor-only action reveals nothing
@@ -35,7 +35,7 @@ func _initialize() -> void:
 
 	# every bedroom + the bathroom is now examinable in detail
 	var expected_rooms := {
-		"bathroom_cabinet": "bathroom", "alex_desk": "bedroom_1", "jordan_dresser": "bedroom_2",
+		"bathroom_cabinet": "bathroom", "bedroom_1_desk": "bedroom_1", "jordan_dresser": "bedroom_2",
 		"sam_nightstand": "bedroom_3", "riley_closet": "bedroom_4", "morgan_desk": "bedroom_5",
 		"casey_shelf": "bedroom_6",
 	}
@@ -56,10 +56,10 @@ func _initialize() -> void:
 		elif str(sd.point(pid).get("room", "")) != expected_rooms_e[pid]:
 			failures += 1; print("FAIL: %s should be in %s" % [pid, expected_rooms_e[pid]])
 
-	# the ghost-master clues are flavor-only red herrings — they must not affect case strength
+	# the ghost-master clues are now real case clues (they implicate jordan) — verify they exist
 	for ghost_clue in ["clue_ghost_sighting", "clue_ghost_costume", "clue_ghost_note"]:
-		if case_data.CLUES.has(ghost_clue):
-			failures += 1; print("FAIL: %s should not be a real case clue (it's a red herring)" % ghost_clue)
+		if not case_data.CLUES.has(ghost_clue):
+			failures += 1; print("FAIL: %s should be in CaseData.CLUES" % ghost_clue)
 
 	if failures == 0:
 		print("PASS: test_search_data")

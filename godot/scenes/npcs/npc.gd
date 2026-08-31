@@ -236,10 +236,16 @@ func _find_npc(id: String) -> DormNpc:
 
 
 func get_save_data() -> Dictionary:
+	var schedule_target: String = current_room
+	if has_node("BehaviorTree"):
+		var tree: BehaviorTree = get_node("BehaviorTree")
+		schedule_target = str(tree.get_blackboard().get_value("schedule_target_room", current_room))
 	return {
 		"npc_id": npc_id,
 		"position": {"x": global_position.x, "y": global_position.y},
 		"current_room": current_room,
+		"current_activity": current_activity,
+		"schedule_target_room": schedule_target,
 	}
 
 
@@ -248,3 +254,8 @@ func load_save_data(data: Dictionary) -> void:
 		var pos: Dictionary = data["position"]
 		global_position = Vector2(pos.get("x", 0.0), pos.get("y", 0.0))
 	current_room = str(data.get("current_room", current_room))
+	current_activity = str(data.get("current_activity", ""))
+	if has_node("BehaviorTree"):
+		var tree: BehaviorTree = get_node("BehaviorTree")
+		var target: String = str(data.get("schedule_target_room", current_room))
+		tree.get_blackboard().set_value("schedule_target_room", target)

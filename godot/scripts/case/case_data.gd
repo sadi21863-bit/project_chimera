@@ -56,6 +56,12 @@ const CLUES := {
 		"truth": "Casey sketched the window the night before."},
 	"clue_portraits": {"title": "Secret portrait series", "room": "bedroom_6", "implicates": ["casey"],
 		"truth": "The portraits are art, not surveillance."},
+	"clue_ghost_costume": {"title": "White sheet in Jordan's closet", "room": "bedroom_2", "implicates": ["jordan"],
+		"truth": "Jordan was paid to fake a haunting for tabloid clicks."},
+	"clue_ghost_note": {"title": "Payment note from a tabloid", "room": "bedroom_2", "implicates": ["jordan"],
+		"truth": "Jordan took money to scare residents — tasteless, not murderous."},
+	"clue_ghost_sighting": {"title": "Ghost near the courtyard", "room": "hallway", "implicates": ["jordan"],
+		"truth": "Jordan in a costume, practicing for the tabloid gig."},
 }
 
 

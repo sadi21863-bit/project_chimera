@@ -11,7 +11,6 @@ const SUSPICION_WATCHER := preload("res://scenes/suspicion_watcher.gd")
 const EAVESDROP_WATCHER := preload("res://scenes/eavesdrop_watcher.gd")
 const ACCESS_DATA := preload("res://scripts/access/access_data.gd")
 const CATCH_MODEL := preload("res://scripts/access/catch_model.gd")
-const AMBIENT_STREAM_PATH := "res://assets/audio/ambient_dorm.ogg"
 const ROOM_RADIUS := 90.0
 const VISION_CONE_RANGE := 140.0
 const VISION_CONE_HALF_ANGLE := 45.0
@@ -27,6 +26,18 @@ var detective: CharacterBody2D = null
 var _suspicion_fired: Dictionary = {}
 var _conversation_fired: Dictionary = {}
 var _catch_meter := 0.0
+var _evidence_quality: Node = null
+
+
+func _ready() -> void:
+	_evidence_quality = get_node_or_null("/root/EvidenceQuality")
+	_collect_markers()
+	_spawn_npcs()
+	_spawn_detective()
+	_spawn_clue_hotspots()
+	# No search points here: every SearchData room has its own LocationManager
+	# scene with dedicated spawners (bedroom.gd / *_room.gd / static tscn points).
+	_decorate_scene()
 
 
 func _process(delta: float) -> void:
@@ -100,6 +111,8 @@ func _check_suspicion() -> void:
 				var clue_id: String = str(m["reveal_clue"])
 				if Investigation.discover_clue(clue_id):
 					EventLog.log_action("You witnessed: %s" % str(m["description"]), "witness")
+					if _evidence_quality != null:
+						_evidence_quality.record(clue_id, _evidence_quality.EvidenceQuality.MODERATE, _evidence_quality.EvidenceSource.FOUND)
 
 
 func _check_eavesdrop() -> void:
@@ -113,13 +126,19 @@ func _check_eavesdrop() -> void:
 		_conversation_fired[cid] = true
 		for convo in GossipData.conversations():
 			if str(convo["id"]) == cid:
+				SFXHelper.suspicion()
 				var clue: String = str(convo["reveal_clue"])
 				if clue != "" and Investigation.discover_clue(clue):
 					EventLog.log_action("You overheard something revealing...", "overheard")
-				_play_conversation(convo)
+					if _evidence_quality != null:
+						_evidence_quality.record(clue, _evidence_quality.EvidenceQuality.STRONG, _evidence_quality.EvidenceSource.TESTIMONIAL)
+					_play_conversation(convo)
+					Standing.adjust(str(convo["npc_a"]), -0.05)
+					Standing.adjust(str(convo["npc_b"]), -0.05)
 
 
 func _play_conversation(convo: Dictionary) -> void:
+	SFXHelper.interrogation_start()
 	for line in convo["lines"]:
 		var speaker_id: String = str(line["speaker"])
 		var speaker_name: String = _npc_display_name(speaker_id)
@@ -133,15 +152,6 @@ func _npc_display_name(npc_id: String) -> String:
 		if npc.npc_id == npc_id:
 			return npc.display_name
 	return npc_id
-
-
-func _ready() -> void:
-	_collect_markers()
-	_spawn_npcs()
-	_setup_ambient_audio()
-	_spawn_detective()
-	_spawn_clue_hotspots()
-	_spawn_search_points()
 
 
 func _collect_markers() -> void:
@@ -208,73 +218,25 @@ func _spawn_clue_hotspots() -> void:
 			hotspot.global_position = marker.global_position
 
 
-func _spawn_search_points() -> void:
-	# Detailed-examination objects (look under / dig / lift), placed near their room marker.
-	for pid in SearchData.point_ids():
-		var data: Dictionary = SearchData.point(pid)
-		var point_room: String = str(data.get("room", ""))
-		if point_room.begins_with("bedroom_"):
-			continue  # these now live inside each suspect's own bedroom scene
-		var sp := SearchPoint.new()
-		sp.point_id = pid
-		sp.label = str(data.get("label", pid))
-		sp.prompt_text = "Search"
-		var shape := CollisionShape2D.new()
-		var circle := CircleShape2D.new()
-		circle.radius = 20.0
-		shape.shape = circle
-		sp.add_child(shape)
-		add_child(sp)
-		var room_id: String = str(data.get("room", ""))
-		if room_markers.has(room_id):
-			var marker: Marker2D = room_markers[room_id]
-			sp.global_position = marker.global_position + Vector2(0, -28)
-
-
-func _setup_ambient_audio() -> void:
-	var ambient := AudioStreamPlayer.new()
-	ambient.name = "AmbientLoop"
-	ambient.volume_db = -20.0
-	ambient.bus = "Master"
-	add_child(ambient)
-	if ResourceLoader.exists(AMBIENT_STREAM_PATH):
-		var stream: AudioStream = load(AMBIENT_STREAM_PATH)
-		if stream is AudioStreamOggVorbis:
-			stream.loop = true
-		ambient.stream = stream
-		EventLog.log_action("Ambient dorm loop playing", "system")
-	else:
-		ambient.stream = _make_procedural_ambient()
-		EventLog.log_action("Ambient dorm file missing — using procedural hum fallback", "system")
-	ambient.play()
-
-
-func _make_procedural_ambient() -> AudioStreamWAV:
-	var mix_rate := 22050
-	var sample_count := mix_rate * 4
-	var data := PackedByteArray()
-	data.resize(sample_count * 2)
-	var smoothed := 0.0
-	for i in range(sample_count):
-		smoothed = lerpf(smoothed, randf_range(-1.0, 1.0), 0.05)
-		data.encode_s16(i * 2, int(clampf(smoothed, -1.0, 1.0) * 4000.0))
-	var stream := AudioStreamWAV.new()
-	stream.format = AudioStreamWAV.FORMAT_16_BITS
-	stream.mix_rate = mix_rate
-	stream.stereo = false
-	stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	stream.loop_end = sample_count
-	stream.data = data
-	return stream
-
-
 func get_save_data() -> Dictionary:
 	var npc_data: Array = []
 	for npc in npcs:
 		npc_data.append(npc.get_save_data())
-	return {"npcs": npc_data}
+	return {
+		"npcs": npc_data,
+		"suspicion_fired": _suspicion_fired.duplicate(),
+		"conversation_fired": _conversation_fired.duplicate(),
+	}
 
 
 func load_save_data(data: Dictionary) -> void:
 	for i in range(mini(npcs.size(), data.get("npcs", []).size())):
 		npcs[i].load_save_data(data["npcs"][i])
+	_suspicion_fired = data.get("suspicion_fired", {})
+	_conversation_fired = data.get("conversation_fired", {})
+
+
+func _decorate_scene() -> void:
+	var furniture := get_node_or_null("Furniture")
+	if furniture and furniture is SceneDecorator:
+		furniture.decorate()

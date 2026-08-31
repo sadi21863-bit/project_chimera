@@ -42,7 +42,13 @@ func _draw() -> void:
 		var score: float = float(rel.get("score", 0.0))
 		var color := Color.GREEN.lerp(Color.RED, 0.5 - score * 0.5)
 		color.a = 0.3 + absf(score) * 0.5
-		draw_line(_node_positions[a], _node_positions[b], color, 2.0 + absf(score) * 3.0)
+		var from_pos: Vector2 = _node_positions[a]
+		var to_pos: Vector2 = _node_positions[b]
+		draw_line(from_pos, to_pos, color, 2.0 + absf(score) * 3.0)
+		_draw_arrow(from_pos, to_pos, color, absf(score) * 0.3 + 0.1)
+		var mid: Vector2 = (from_pos + to_pos) * 0.5
+		var label_text: String = "%.1f" % score
+		draw_string(ThemeDB.fallback_font, mid + Vector2(-8, -5), label_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 9)
 
 	for npc in _npcs:
 		var pos: Vector2 = _node_positions.get(npc.npc_id, Vector2.ZERO)
@@ -51,6 +57,18 @@ func _draw() -> void:
 		draw_circle(pos, NODE_RADIUS, npc.profile.color if npc.profile else Color.WHITE)
 		draw_arc(pos, NODE_RADIUS, 0, TAU, 32, Color.BLACK, 1.5)
 		draw_string(ThemeDB.fallback_font, pos + Vector2(-20, 28), npc.display_name, HORIZONTAL_ALIGNMENT_LEFT, -1, 11)
+
+
+func _draw_arrow(from: Vector2, to: Vector2, color: Color, size: float) -> void:
+	var dir: Vector2 = (to - from).normalized()
+	var arrow_pos: Vector2 = from + dir * (from.distance_to(to) * 0.65)
+	var perp: Vector2 = Vector2(-dir.y, dir.x)
+	var points: PackedVector2Array = [
+		arrow_pos + dir * 6.0,
+		arrow_pos - dir * 3.0 + perp * 4.0,
+		arrow_pos - dir * 3.0 - perp * 4.0,
+	]
+	draw_colored_polygon(points, color)
 
 
 func _gui_input(event: InputEvent) -> void:

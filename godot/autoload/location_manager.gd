@@ -15,6 +15,15 @@ const LOCATIONS := {
 	"bedroom_6": {"name": "Casey's Room", "scene": "res://scenes/dorm/bedroom_6.tscn", "travel_hours": 0.0},
 	"daniel_room": {"name": "Daniel's Room", "scene": "res://scenes/dorm/daniel_room.tscn", "travel_hours": 0.0},
 	"campus": {"name": "The Campus", "scene": "res://scenes/locations/campus.tscn", "travel_hours": 0.0},
+	"courtyard": {"name": "Courtyard", "scene": "res://scenes/locations/courtyard.tscn", "travel_hours": 0.0},
+	"server_room": {"name": "Server Room", "scene": "res://scenes/locations/server_room.tscn", "travel_hours": 0.0},
+	"library": {"name": "Library", "scene": "res://scenes/locations/library.tscn", "travel_hours": 1.0},
+	"hospital": {"name": "Hospital", "scene": "res://scenes/locations/hospital.tscn", "travel_hours": 2.0},
+	"bar": {"name": "The Rusty Anchor", "scene": "res://scenes/locations/bar.tscn", "travel_hours": 1.0},
+	"hallway": {"name": "Hallway", "scene": "res://scenes/dorm/hallway.tscn", "travel_hours": 0.0},
+	"kitchen": {"name": "Kitchen", "scene": "res://scenes/dorm/kitchen.tscn", "travel_hours": 0.0},
+	"common_room": {"name": "Common Room", "scene": "res://scenes/dorm/common_room.tscn", "travel_hours": 0.0},
+	"bathroom": {"name": "Bathroom", "scene": "res://scenes/dorm/bathroom.tscn", "travel_hours": 0.0},
 }
 
 signal location_changing(dest_id: String)
@@ -60,4 +69,10 @@ func load_save_data(data: Dictionary) -> void:
 	current_id = str(data.get("current_id", "dorm"))
 	var raw_visited: Variant = data.get("visited", {"dorm": true})
 	visited = raw_visited if raw_visited is Dictionary else {"dorm": true}
+	location_changing.emit(current_id)
+
+
+func reset() -> void:
+	current_id = "dorm"
+	visited = {"dorm": true}
 	location_changing.emit(current_id)

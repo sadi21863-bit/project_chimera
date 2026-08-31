@@ -14,10 +14,18 @@ var detective: CharacterBody2D = null
 var npcs: Array = []
 var room_markers: Dictionary = {}
 
+const SPOT_OFFSETS := [
+	Vector2(300, 220),
+	Vector2(220, 300),
+	Vector2(380, 300),
+	Vector2(300, 350),
+]
+
 
 func _ready() -> void:
 	_collect_markers()
 	_spawn_dean()
+	_spawn_search_points()
 	detective = DETECTIVE_SCENE.instantiate() as CharacterBody2D
 	add_child(detective)
 	detective.global_position = Vector2(400, 300)
@@ -57,3 +65,23 @@ func _add_talk_area(npc: Node) -> void:
 	shape.shape = circle
 	talk.add_child(shape)
 	npc.add_child(talk)
+
+
+func _spawn_search_points() -> void:
+	var index := 0
+	for pid in SearchData.point_ids():
+		var data: Dictionary = SearchData.point(pid)
+		if str(data.get("room", "")) != "university":
+			continue
+		var sp := SearchPoint.new()
+		sp.point_id = pid
+		sp.label = str(data.get("label", pid))
+		sp.prompt_text = "Search"
+		var shape := CollisionShape2D.new()
+		var circle := CircleShape2D.new()
+		circle.radius = 20.0
+		shape.shape = circle
+		sp.add_child(shape)
+		sp.position = SPOT_OFFSETS[index % SPOT_OFFSETS.size()]
+		index += 1
+		add_child(sp)

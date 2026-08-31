@@ -22,12 +22,14 @@ Stable 60 FPS with 6 NPCs at 4x simulation speed.
 - Relationship cache in-memory with ChromaDB persistence for dialogue events
 
 ### Rendering
-- Simple `ColorRect` NPC sprites (no sprite sheets) minimize draw calls
+- `AnimatedSprite2D` with PIPOYA 32x32 sprite sheets (3 frames × 4 directions per NPC)
+- SpriteFrames stored as `.tres` resources, loaded once per NPC type
 - `CanvasModulate` for day/night (single full-screen tint, no per-light calculations)
+- Furniture rendered as static `Sprite2D` nodes (pixelinterior pack, no animation overhead)
 
 ## Profiling Checklist
 
-Run in Godot 4.4 with Debug → Monitor:
+Run in Godot 4.7 with Debug → Monitor:
 - [ ] FPS ≥ 60 at 1x speed, 6 NPCs
 - [ ] FPS ≥ 55 at 4x speed, 6 NPCs
 - [ ] Draw calls < 50

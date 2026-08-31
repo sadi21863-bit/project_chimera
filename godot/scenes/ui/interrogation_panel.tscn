@@ -23,6 +23,21 @@ grow_vertical = 2
 [node name="NameLabel" type="Label" parent="Panel/VBox"]
 text = "Interrogating"
 
+[node name="StyleLabel" type="Label" parent="Panel/VBox"]
+text = "Style: Direct"
+
+[node name="StyleRow" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="DirectButton" type="Button" parent="Panel/VBox/StyleRow"]
+text = "Direct"
+disabled = true
+
+[node name="EmpatheticButton" type="Button" parent="Panel/VBox/StyleRow"]
+text = "Empathetic"
+
+[node name="ConfrontationalButton" type="Button" parent="Panel/VBox/StyleRow"]
+text = "Confrontational"
+
 [node name="Response" type="Label" parent="Panel/VBox"]
 autowrap_mode = 3
 custom_minimum_size = Vector2(580, 80)
@@ -40,3 +55,7 @@ text = "Ask"
 
 [node name="CloseButton" type="Button" parent="Panel/VBox"]
 text = "End interrogation"
+
+[node name="ConfessButton" type="Button" parent="Panel/VBox"]
+text = "Confess & End Case"
+visible = false

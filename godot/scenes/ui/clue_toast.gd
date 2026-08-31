@@ -22,10 +22,13 @@ func _on_clue_discovered(clue_id: String) -> void:
 	var names: Array = []
 	for sid in data.get("implicates", []):
 		names.append(str(CaseData.SUSPECTS[sid]["name"]) if CaseData.SUSPECTS.has(sid) else str(sid))
-	_label.text = "🔎 Found: %s — points to %s    (press C for the case file)" % [
+	_label.text = "🔎 Found: %s — points to %s    (C: case file | N: notebook)" % [
 		str(data["title"]), ", ".join(names)]
 	_label.visible = true
 	_timer = 4.0
+	SFXHelper.clue_found()
+	var screen_center := Vector2(640, 360)
+	Effects.sparkle(screen_center, Color(1.0, 0.95, 0.4))
 
 
 func _process(delta: float) -> void:

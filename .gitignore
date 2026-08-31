@@ -18,7 +18,7 @@ ai-server/data/chroma/
 *.pyc
 *.pyo
 .venv/
-uv.lock
+# uv.lock is tracked for reproducibility
 
 # OS / IDE
 .DS_Store

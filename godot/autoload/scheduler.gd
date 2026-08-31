@@ -112,3 +112,12 @@ func load_save_data(data: Dictionary) -> void:
 	speed_multiplier = float(data.get("speed_multiplier", 1.0))
 	is_paused = bool(data.get("is_paused", false))
 	time_changed.emit(get_hour(), get_minute_int(), game_day)
+
+
+func reset() -> void:
+	game_day = 1
+	game_minute = START_HOUR * 60.0
+	speed_multiplier = 1.0
+	is_paused = false
+	_accumulator = 0.0
+	time_changed.emit(get_hour(), get_minute_int(), game_day)

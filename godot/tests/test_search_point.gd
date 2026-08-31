@@ -18,10 +18,10 @@ func _initialize() -> void:
 
 	# interact() emits search_requested with the point id.
 	var captured := {"id": ""}
-	sp.point_id = "common_couch"
+	sp.point_id = "common_room_couch"
 	sp.search_requested.connect(func(pid): captured["id"] = pid)
 	sp.interact()
-	if captured["id"] != "common_couch":
+	if captured["id"] != "common_room_couch":
 		failures += 1; print("FAIL: interact should emit search_requested(point_id)")
 
 	sp.free(); npc.free()

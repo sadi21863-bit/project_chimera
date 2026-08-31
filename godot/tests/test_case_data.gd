@@ -8,8 +8,8 @@ func _initialize() -> void:
 		failures += 1; print("FAIL: expected 6 suspects, got %d" % ids.size())
 	for sid in ids:
 		var clues: Array = cd.clues_for_suspect(sid)
-		if clues.size() != 2:
-			failures += 1; print("FAIL: suspect %s has %d clues (expected 2)" % [sid, clues.size()])
+		if clues.size() < 2:
+			failures += 1; print("FAIL: suspect %s has %d clues (expected at least 2)" % [sid, clues.size()])
 		var threshold: int = cd.SUSPECTS[sid]["threshold"]
 		if threshold != 2:
 			failures += 1; print("FAIL: suspect %s threshold %d (expected 2)" % [sid, threshold])

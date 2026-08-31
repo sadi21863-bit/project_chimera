@@ -10,12 +10,12 @@ func _process(_delta: float) -> bool:
 		root.add_child(panel)
 		var failures := 0
 
-		panel.open("common_couch", inv)
+		panel.open("common_room_couch", inv)
 		var btns: int = panel.get_node("Panel/VBox/Actions").get_child_count()
 		if btns != 2:
 			failures += 1; print("FAIL: couch should have 2 action buttons, got %d" % btns)
 
-		panel.select_action("look_under")
+		panel.select_action("check_under")
 		if not inv.is_discovered("clue_logbook"):
 			failures += 1; print("FAIL: look_under should reveal clue_logbook")
 		if panel.get_node("Panel/VBox/Response").text.is_empty():

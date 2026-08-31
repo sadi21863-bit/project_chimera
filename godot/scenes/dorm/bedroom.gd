@@ -36,12 +36,31 @@ func _ready() -> void:
 func _spawn_detective() -> void:
 	detective = DETECTIVE_SCENE.instantiate() as CharacterBody2D
 	add_child(detective)
-	detective.global_position = Vector2(300, 380)
+	# Prefer the scene's own PlayerSpawn marker (generated rooms place it inside
+	# their walls); fall back to daniel_room's legacy center position.
+	var spawn := Vector2(300, 380)
+	var marker := get_node_or_null("PlayerSpawn") as Marker2D
+	if marker != null:
+		spawn = marker.position
+	detective.global_position = spawn
 
 
 func _spawn_search_points() -> void:
+	# Collect existing point_ids to avoid duplicates from static SearchPoints nodes
+	var existing: Dictionary = {}
+	for child in get_children():
+		if child is SearchPoint:
+			existing[child.point_id] = true
+		elif child.name == "SearchPoints":
+			for sp_child in child.get_children():
+				if sp_child is SearchPoint:
+					existing[sp_child.point_id] = true
+				elif sp_child.has_method("get") and "point_id" in sp_child:
+					existing[str(sp_child.get("point_id"))] = true
 	var index := 0
 	for pid in SearchData.point_ids():
+		if existing.has(pid):
+			continue
 		var data: Dictionary = SearchData.point(pid)
 		if str(data.get("room", "")) != room_id:
 			continue
@@ -102,4 +121,4 @@ func _on_caught(owner_id: String) -> void:
 	var msg := "Caught trespassing in %s's room!" % owner_id if owner_id != "" else "Caught trespassing!"
 	EventLog.log_action(msg, "caught")
 	Consequences.record_catch(Scheduler.get_hour())
-	LocationManager.travel("dorm")
+	Effects.fade_transition(func(): LocationManager.travel("dorm"))
