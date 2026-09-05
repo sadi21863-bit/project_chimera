@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "chimera-hub": {
+      "command": "node",
+      "args": ["tools/mcp/chimera-hub/index.js"],
+      "env": {
+        "CHIMERA_ROOT": "C:/Users/aditya/Desktop/project-chimera/godot"
+      }
+    },
+    "godot-mcp": {
+      "command": "node",
+      "args": ["tools/godot-mcp/server/build/index.js"],
+      "env": {
+        "GODOT_MCP_PORT": "6505"
+      }
+    },
+    "audacity-mcp": {
+      "command": "python",
+      "args": ["-m", "audacity_mcp"],
+      "env": {}
+    },
+    "tiled-mcp": {
+      "command": "node",
+      "args": ["tools/mcp/node_modules/tiled-mcp/dist/index.js"],
+      "env": {}
+    },
+    "blender-godot": {
+      "command": "python",
+      "args": ["tools/mcp/blender_godot_server.py"],
+      "env": {}
+    }
+  }
+}

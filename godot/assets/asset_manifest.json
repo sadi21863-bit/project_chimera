@@ -1,0 +1,1233 @@
+{
+  "version": "1.0",
+  "generated": "2026-08-11T00:36:17.398115",
+  "project": "Project Chimera",
+  "assets": {
+    "ASSET_CATALOG.md": {
+      "path": "ASSET_CATALOG.md",
+      "type": "other",
+      "size": 10146,
+      "hash": "fd676ef35701dd483df3cb5a573deded",
+      "modified": "2026-08-11T00:26:14.737560",
+      "imported": false
+    },
+    "2d\\README.md": {
+      "path": "2d\\README.md",
+      "type": "other",
+      "size": 1715,
+      "hash": "88833343082002d6ccc92f5c603e4785",
+      "modified": "2026-08-11T00:30:32.283708",
+      "imported": false
+    },
+    "3d\\README.md": {
+      "path": "3d\\README.md",
+      "type": "other",
+      "size": 1531,
+      "hash": "18dd0f4686b6e809008cc318722803d0",
+      "modified": "2026-08-11T00:29:56.942955",
+      "imported": false
+    },
+    "audio\\ambient_dorm.ogg": {
+      "path": "audio\\ambient_dorm.ogg",
+      "type": "audio",
+      "size": 274225,
+      "hash": "7b9ea795dda5bcc89d60cea2754d4369",
+      "modified": "2026-06-22T23:50:40.124850",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_carpet_00.ogg": {
+      "path": "audio\\footstep_carpet_00.ogg",
+      "type": "audio",
+      "size": 9885,
+      "hash": "b40458eca161d223ff842390d37128fc",
+      "modified": "2026-06-22T23:50:39.515432",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_carpet_01.ogg": {
+      "path": "audio\\footstep_carpet_01.ogg",
+      "type": "audio",
+      "size": 10264,
+      "hash": "3f4cc66efd903b83a7723076489532c7",
+      "modified": "2026-06-22T23:50:39.624816",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_carpet_02.ogg": {
+      "path": "audio\\footstep_carpet_02.ogg",
+      "type": "audio",
+      "size": 9242,
+      "hash": "6d36b2eabd66d42d97019dc99e03ad59",
+      "modified": "2026-06-22T23:50:39.734197",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_ceramic_00.ogg": {
+      "path": "audio\\footstep_ceramic_00.ogg",
+      "type": "audio",
+      "size": 9475,
+      "hash": "e5ba26b141619b182b206145b4047edb",
+      "modified": "2026-06-22T23:50:35.482658",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_ceramic_01.ogg": {
+      "path": "audio\\footstep_ceramic_01.ogg",
+      "type": "audio",
+      "size": 9900,
+      "hash": "e9b4a723aec382f25f5b8f3b97711384",
+      "modified": "2026-06-22T23:50:35.935813",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_ceramic_02.ogg": {
+      "path": "audio\\footstep_ceramic_02.ogg",
+      "type": "audio",
+      "size": 9528,
+      "hash": "9b1fbd49f2b5b756e160a6c9ba398191",
+      "modified": "2026-06-22T23:50:36.529603",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_linoleum_00.ogg": {
+      "path": "audio\\footstep_linoleum_00.ogg",
+      "type": "audio",
+      "size": 10559,
+      "hash": "69a23043ecf3b78576866c6b06135dfe",
+      "modified": "2026-06-22T23:50:37.190536",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_linoleum_01.ogg": {
+      "path": "audio\\footstep_linoleum_01.ogg",
+      "type": "audio",
+      "size": 11303,
+      "hash": "e7db2bcac543ead3f10942ca8f5b0422",
+      "modified": "2026-06-22T23:50:38.999772",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\footstep_linoleum_02.ogg": {
+      "path": "audio\\footstep_linoleum_02.ogg",
+      "type": "audio",
+      "size": 10288,
+      "hash": "1c69433ec01ae273b0cc1e971d8fa21c",
+      "modified": "2026-06-22T23:50:39.265415",
+      "imported": true,
+      "format": ".ogg",
+      "category": "general"
+    },
+    "audio\\LICENSE_kenney_rpg_audio.txt": {
+      "path": "audio\\LICENSE_kenney_rpg_audio.txt",
+      "type": "other",
+      "size": 478,
+      "hash": "f7fcfe34b5ccff41c6cc830ece998db7",
+      "modified": "2026-06-22T23:50:40.312360",
+      "imported": false
+    },
+    "audio\\README.md": {
+      "path": "audio\\README.md",
+      "type": "other",
+      "size": 1779,
+      "hash": "cc6308aafbbd3f03709c01bb7a7610fa",
+      "modified": "2026-08-11T00:31:04.931146",
+      "imported": false
+    },
+    "buildings\\campus_backdrop.png": {
+      "path": "buildings\\campus_backdrop.png",
+      "type": "textures",
+      "size": 1594070,
+      "hash": "0680810511b5649d3fd6432d8e7ab5a8",
+      "modified": "2026-07-14T16:16:36.228057",
+      "imported": true,
+      "format": ".png",
+      "category": "ui"
+    },
+    "fonts\\README.md": {
+      "path": "fonts\\README.md",
+      "type": "other",
+      "size": 2150,
+      "hash": "9e415c4f075db0c4d6d23ca0f5afc1ac",
+      "modified": "2026-08-11T00:32:03.418561",
+      "imported": false
+    },
+    "textures\\README.md": {
+      "path": "textures\\README.md",
+      "type": "other",
+      "size": 1831,
+      "hash": "de69afcea6695f039ef4a02cd2ed2c3e",
+      "modified": "2026-08-11T00:31:38.608654",
+      "imported": false
+    },
+    "tiles\\floor_tile.png": {
+      "path": "tiles\\floor_tile.png",
+      "type": "textures",
+      "size": 171,
+      "hash": "684a3747e78c0e1f4c98fb56ed9acba3",
+      "modified": "2026-07-14T02:58:51.380895",
+      "imported": true,
+      "format": ".png",
+      "category": "tileset"
+    },
+    "tilesets\\pipoya\\LightShadow_pipo.png": {
+      "path": "tilesets\\pipoya\\LightShadow_pipo.png",
+      "type": "textures",
+      "size": 6134,
+      "hash": "5a16696c154ece7b3d86899370e0ce7e",
+      "modified": "2015-01-10T22:27:44",
+      "imported": true,
+      "format": ".png",
+      "category": "tileset"
+    },
+    "tilesets\\pipoya\\samplemap.png": {
+      "path": "tilesets\\pipoya\\samplemap.png",
+      "type": "textures",
+      "size": 1813835,
+      "hash": "544e82a0284c4757fd17b4c71342c06d",
+      "modified": "2019-08-01T10:14:06",
+      "imported": true,
+      "format": ".png",
+      "category": "tileset"
+    },
+    "furniture\\bathroom\\cabinets_BA.png": {
+      "path": "furniture\\bathroom\\cabinets_BA.png",
+      "type": "textures",
+      "size": 1034,
+      "hash": "2bb6677bf6980e151fee3a7f2e413044",
+      "modified": "2025-08-24T03:10:06",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\bathroom\\fixtures_BA.png": {
+      "path": "furniture\\bathroom\\fixtures_BA.png",
+      "type": "textures",
+      "size": 2982,
+      "hash": "b235a72365f8e84da95a4f3c5d2304c7",
+      "modified": "2025-08-24T03:09:12",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\bathroom\\textiles_BA.png": {
+      "path": "furniture\\bathroom\\textiles_BA.png",
+      "type": "textures",
+      "size": 3828,
+      "hash": "980420f7275cdc228ff6eb64576fa55a",
+      "modified": "2025-08-24T03:09:44",
+      "imported": true,
+      "format": ".png",
+      "category": "tileset"
+    },
+    "furniture\\bedroom\\beds_BR.png": {
+      "path": "furniture\\bedroom\\beds_BR.png",
+      "type": "textures",
+      "size": 5087,
+      "hash": "2e8ffd059c98864c11b482092d7608c8",
+      "modified": "2025-08-21T20:12:48",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\bedroom\\decorations_BR.png": {
+      "path": "furniture\\bedroom\\decorations_BR.png",
+      "type": "textures",
+      "size": 3196,
+      "hash": "3ba5acff627fb100431ca5be8ee664eb",
+      "modified": "2025-10-03T15:49:46",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\bedroom\\wardrobes_BR.png": {
+      "path": "furniture\\bedroom\\wardrobes_BR.png",
+      "type": "textures",
+      "size": 10592,
+      "hash": "0d8afb8347fa0fcb76f4f9979499ef93",
+      "modified": "2025-10-03T15:49:36",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\living_kitchen\\cabinets_LRK.png": {
+      "path": "furniture\\living_kitchen\\cabinets_LRK.png",
+      "type": "textures",
+      "size": 19150,
+      "hash": "7067227d1f0a741f73dcb8557ee93f18",
+      "modified": "2025-08-22T16:50:12",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\living_kitchen\\decorations_LRK.png": {
+      "path": "furniture\\living_kitchen\\decorations_LRK.png",
+      "type": "textures",
+      "size": 4500,
+      "hash": "bfa5e90e01234082677a05647275a8cf",
+      "modified": "2025-08-19T00:01:58",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\living_kitchen\\doorswindowsstairs_LRK.png": {
+      "path": "furniture\\living_kitchen\\doorswindowsstairs_LRK.png",
+      "type": "textures",
+      "size": 13973,
+      "hash": "acb054889d2b7e3ab4bde707c9950b64",
+      "modified": "2025-08-22T17:23:14",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\living_kitchen\\floorswalls_LRK.png": {
+      "path": "furniture\\living_kitchen\\floorswalls_LRK.png",
+      "type": "textures",
+      "size": 3214,
+      "hash": "4fbd2694cc7db466919b66a8ab054998",
+      "modified": "2025-08-19T00:01:58",
+      "imported": true,
+      "format": ".png",
+      "category": "floor"
+    },
+    "furniture\\living_kitchen\\kitchen_LRK.png": {
+      "path": "furniture\\living_kitchen\\kitchen_LRK.png",
+      "type": "textures",
+      "size": 15939,
+      "hash": "8cdb05efd596ce6142ae1fc140f25641",
+      "modified": "2025-08-22T17:03:42",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "furniture\\living_kitchen\\livingroom_LRK.png": {
+      "path": "furniture\\living_kitchen\\livingroom_LRK.png",
+      "type": "textures",
+      "size": 19202,
+      "hash": "0eeec3a4179d34970022d7d0be4bfc4f",
+      "modified": "2025-08-22T16:50:14",
+      "imported": true,
+      "format": ".png",
+      "category": "general"
+    },
+    "characters\\alex\\sheet.png": {
+      "path": "characters\\alex\\sheet.png",
+      "type": "textures",
+      "size": 3060,
+      "hash": "cb929f6311c1ed614d587c9d5127d937",
+      "modified": "2019-09-07T14:01:50",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\sheet.png": {
+      "path": "characters\\casey\\sheet.png",
+      "type": "textures",
+      "size": 3101,
+      "hash": "708829ca0f92134ac446bf40974ba066",
+      "modified": "2019-09-07T14:02:18",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\sheet.png": {
+      "path": "characters\\detective\\sheet.png",
+      "type": "textures",
+      "size": 2869,
+      "hash": "e2abec1133ddfcb63c4ca3117ab82cd4",
+      "modified": "2019-09-07T13:54:10",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\sheet.png": {
+      "path": "characters\\jordan\\sheet.png",
+      "type": "textures",
+      "size": 2867,
+      "hash": "a56d8425b84c178dcf0e200cec77e62b",
+      "modified": "2019-09-07T13:53:32",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\sheet.png": {
+      "path": "characters\\morgan\\sheet.png",
+      "type": "textures",
+      "size": 3488,
+      "hash": "ebbb4aa049182afb3551cd62f8344a71",
+      "modified": "2019-09-07T13:53:26",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\sheet.png": {
+      "path": "characters\\riley\\sheet.png",
+      "type": "textures",
+      "size": 3270,
+      "hash": "2b6080040cd90facc97e1a33b8703cea",
+      "modified": "2019-09-07T14:02:06",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\sheet.png": {
+      "path": "characters\\sam\\sheet.png",
+      "type": "textures",
+      "size": 2838,
+      "hash": "5015abcb2b143b2b46f9e4d69d593dbf",
+      "modified": "2019-09-07T13:53:46",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_down\\frame_0.png": {
+      "path": "characters\\sam\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1226,
+      "hash": "c097be8b3bbdd3d63d744dc3e7992162",
+      "modified": "2026-08-06T22:53:44.252640",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_down\\frame_1.png": {
+      "path": "characters\\sam\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1199,
+      "hash": "32990c799b3c435ca7565eed16ed21a3",
+      "modified": "2026-08-06T22:53:44.255641",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_down\\frame_2.png": {
+      "path": "characters\\sam\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1206,
+      "hash": "330fb95d0d2b40c36d2cea78822ae6f2",
+      "modified": "2026-08-06T22:53:44.257641",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_left\\frame_0.png": {
+      "path": "characters\\sam\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1146,
+      "hash": "251bbf70bb0c8b399a62ee735da6b036",
+      "modified": "2026-08-06T22:53:44.287649",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_left\\frame_1.png": {
+      "path": "characters\\sam\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1095,
+      "hash": "08e715b643563764c533d645c3ed18c7",
+      "modified": "2026-08-06T22:53:44.289649",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_left\\frame_2.png": {
+      "path": "characters\\sam\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1109,
+      "hash": "48d4afeb4d76b2fa8a38d04d10c9c5c6",
+      "modified": "2026-08-06T22:53:44.291649",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_right\\frame_0.png": {
+      "path": "characters\\sam\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1160,
+      "hash": "1511ab12c2a3aaeb57d9a92a4012c0f1",
+      "modified": "2026-08-06T22:53:44.300652",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_right\\frame_1.png": {
+      "path": "characters\\sam\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1119,
+      "hash": "c2e6e245ba185be001bbc90e25e01a0e",
+      "modified": "2026-08-06T22:53:44.303654",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_right\\frame_2.png": {
+      "path": "characters\\sam\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1152,
+      "hash": "f1764788d3aa690003385e1a3446f161",
+      "modified": "2026-08-06T22:53:44.305654",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_up\\frame_0.png": {
+      "path": "characters\\sam\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 1061,
+      "hash": "647b3a4d95d0b35a7f90fd7b8b8ed55f",
+      "modified": "2026-08-06T22:53:44.427685",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_up\\frame_1.png": {
+      "path": "characters\\sam\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 1135,
+      "hash": "86c6ada9266b51845acd71b856a0f292",
+      "modified": "2026-08-06T22:53:44.429684",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\sam\\walk_up\\frame_2.png": {
+      "path": "characters\\sam\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 1097,
+      "hash": "78e0e5a660c055d4e113a1b9e2c77de0",
+      "modified": "2026-08-06T22:53:44.431687",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_down\\frame_0.png": {
+      "path": "characters\\riley\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1391,
+      "hash": "f9bd870af60f69d0586da10fca4cd45a",
+      "modified": "2026-08-06T22:53:45.093851",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_down\\frame_1.png": {
+      "path": "characters\\riley\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1382,
+      "hash": "143e5b2360645187e072cfa77bab1e8a",
+      "modified": "2026-08-06T22:53:45.096851",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_down\\frame_2.png": {
+      "path": "characters\\riley\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1407,
+      "hash": "90c7f0ec4d2f4fffa823170a0d7e1bfa",
+      "modified": "2026-08-06T22:53:45.098853",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_left\\frame_0.png": {
+      "path": "characters\\riley\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1176,
+      "hash": "311799334ed40531489bc13059ba9344",
+      "modified": "2026-08-06T22:53:45.107853",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_left\\frame_1.png": {
+      "path": "characters\\riley\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1170,
+      "hash": "c72fc2413cd9a7184c14d85f4c3776dc",
+      "modified": "2026-08-06T22:53:45.109854",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_left\\frame_2.png": {
+      "path": "characters\\riley\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1192,
+      "hash": "de479ca3fc89bec2520ceff34c6a4f33",
+      "modified": "2026-08-06T22:53:45.111855",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_right\\frame_0.png": {
+      "path": "characters\\riley\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1187,
+      "hash": "a3ff32c5806b7424cdb1e1478ec5e03e",
+      "modified": "2026-08-06T22:53:45.133860",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_right\\frame_1.png": {
+      "path": "characters\\riley\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1132,
+      "hash": "ca7b77b7eadb1ad571b0f655c49c302a",
+      "modified": "2026-08-06T22:53:45.135865",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_right\\frame_2.png": {
+      "path": "characters\\riley\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1136,
+      "hash": "b78febf342c8258713c541bf2336c4a8",
+      "modified": "2026-08-06T22:53:45.137861",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_up\\frame_0.png": {
+      "path": "characters\\riley\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 1085,
+      "hash": "e782d163bb675fd677a8354ef4e60a6f",
+      "modified": "2026-08-06T22:53:45.159868",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_up\\frame_1.png": {
+      "path": "characters\\riley\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 1129,
+      "hash": "8b2fa8983cea712ee42c4fb34691196e",
+      "modified": "2026-08-06T22:53:45.161869",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\riley\\walk_up\\frame_2.png": {
+      "path": "characters\\riley\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 1124,
+      "hash": "72020396ce417dffb68fdbf6576762ba",
+      "modified": "2026-08-06T22:53:45.165871",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_down\\frame_0.png": {
+      "path": "characters\\morgan\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1453,
+      "hash": "451a315119d6261082846c66d1713be2",
+      "modified": "2026-08-06T22:53:45.358917",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_down\\frame_1.png": {
+      "path": "characters\\morgan\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1463,
+      "hash": "8ac192138605f6b040141c3fecf57754",
+      "modified": "2026-08-06T22:53:45.361920",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_down\\frame_2.png": {
+      "path": "characters\\morgan\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1445,
+      "hash": "3f8956b3adf2a315c6e4c9e80eea5392",
+      "modified": "2026-08-06T22:53:45.367921",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_left\\frame_0.png": {
+      "path": "characters\\morgan\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1311,
+      "hash": "12e5c9d6baeb62b39c28a6211d8c8b20",
+      "modified": "2026-08-06T22:53:45.374922",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_left\\frame_1.png": {
+      "path": "characters\\morgan\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1267,
+      "hash": "816ca03e67f28dc60d602d9798be0699",
+      "modified": "2026-08-06T22:53:45.376921",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_left\\frame_2.png": {
+      "path": "characters\\morgan\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1318,
+      "hash": "64158b2c1937186cdad5ca553d9f50c4",
+      "modified": "2026-08-06T22:53:45.378922",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_right\\frame_0.png": {
+      "path": "characters\\morgan\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1272,
+      "hash": "a260b47977f046a0b06622a52f1a1176",
+      "modified": "2026-08-06T22:53:45.425936",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_right\\frame_1.png": {
+      "path": "characters\\morgan\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1227,
+      "hash": "09c7ba8cf46c363d124e058b79719e7c",
+      "modified": "2026-08-06T22:53:45.427939",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_right\\frame_2.png": {
+      "path": "characters\\morgan\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1256,
+      "hash": "975fd4d6edaebe3c7c7f7962bf9d36f7",
+      "modified": "2026-08-06T22:53:45.430936",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_up\\frame_0.png": {
+      "path": "characters\\morgan\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 1001,
+      "hash": "c9d0990c09b7d8e22bcf6ae583d4bda4",
+      "modified": "2026-08-06T22:53:45.449942",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_up\\frame_1.png": {
+      "path": "characters\\morgan\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 982,
+      "hash": "9ff7a71d4a7a86d100be72d2605e13ff",
+      "modified": "2026-08-06T22:53:45.452941",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\morgan\\walk_up\\frame_2.png": {
+      "path": "characters\\morgan\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 984,
+      "hash": "adf39d52a5a0c6d9d1c4f01c5ffba1b6",
+      "modified": "2026-08-06T22:53:45.454943",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_down\\frame_0.png": {
+      "path": "characters\\jordan\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1220,
+      "hash": "83634e3b4fe5d561b3821b385451f09e",
+      "modified": "2026-08-06T22:53:43.347411",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_down\\frame_1.png": {
+      "path": "characters\\jordan\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1217,
+      "hash": "53efbdd91f270d39f68aee432549d8be",
+      "modified": "2026-08-06T22:53:43.350413",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_down\\frame_2.png": {
+      "path": "characters\\jordan\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1204,
+      "hash": "4efa59a463169bc11f55419cb236ae95",
+      "modified": "2026-08-06T22:53:43.352414",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_left\\frame_0.png": {
+      "path": "characters\\jordan\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1103,
+      "hash": "df39687047beab686bda32245e14e4a7",
+      "modified": "2026-08-06T22:53:43.364416",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_left\\frame_1.png": {
+      "path": "characters\\jordan\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1118,
+      "hash": "0f9d7f91d8f2c34b6a002f8a79e16c8a",
+      "modified": "2026-08-06T22:53:43.366416",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_left\\frame_2.png": {
+      "path": "characters\\jordan\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1135,
+      "hash": "a86101179df3d8bd108a698acff52101",
+      "modified": "2026-08-06T22:53:43.377418",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_right\\frame_0.png": {
+      "path": "characters\\jordan\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1123,
+      "hash": "49494a1fc9d79f0ddd3582e7647b192d",
+      "modified": "2026-08-06T22:53:43.426433",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_right\\frame_1.png": {
+      "path": "characters\\jordan\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1068,
+      "hash": "c700675c34b439bb23bed095b44ce382",
+      "modified": "2026-08-06T22:53:43.428433",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_right\\frame_2.png": {
+      "path": "characters\\jordan\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1063,
+      "hash": "7712143417f05abe5159cc3420c8eb5f",
+      "modified": "2026-08-06T22:53:43.430434",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_up\\frame_0.png": {
+      "path": "characters\\jordan\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 1095,
+      "hash": "ff9b7f6f16325e812b721ef1d2eb9760",
+      "modified": "2026-08-06T22:53:43.441434",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_up\\frame_1.png": {
+      "path": "characters\\jordan\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 1102,
+      "hash": "0701b0b431a2d0cc083fb0ff0cefa156",
+      "modified": "2026-08-06T22:53:43.444435",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\jordan\\walk_up\\frame_2.png": {
+      "path": "characters\\jordan\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 1091,
+      "hash": "3273a92da7b251566a3d3f3acc95b696",
+      "modified": "2026-08-06T22:53:43.446435",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_down\\frame_0.png": {
+      "path": "characters\\detective\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1255,
+      "hash": "28511cb91a6494d03c975a2d4075fd04",
+      "modified": "2026-08-06T22:53:42.336159",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_down\\frame_1.png": {
+      "path": "characters\\detective\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1254,
+      "hash": "b3a66c421a11e67383b4e79786fc2dd3",
+      "modified": "2026-08-06T22:53:42.339157",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_down\\frame_2.png": {
+      "path": "characters\\detective\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1274,
+      "hash": "714280e0e720d31db5e69f3537e3f622",
+      "modified": "2026-08-06T22:53:42.364164",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_left\\frame_0.png": {
+      "path": "characters\\detective\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1118,
+      "hash": "90679b3a9cbd6b7d7f489cd337a850ef",
+      "modified": "2026-08-06T22:53:42.418177",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_left\\frame_1.png": {
+      "path": "characters\\detective\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1097,
+      "hash": "f513bd3b1694c43e136278d01e981f04",
+      "modified": "2026-08-06T22:53:42.420179",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_left\\frame_2.png": {
+      "path": "characters\\detective\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1128,
+      "hash": "194a33b46a6a770a473a90164cfae5e8",
+      "modified": "2026-08-06T22:53:42.422179",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_right\\frame_0.png": {
+      "path": "characters\\detective\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1149,
+      "hash": "150dd6b4f1b5f696753f70272a0bb94f",
+      "modified": "2026-08-06T22:53:42.435184",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_right\\frame_1.png": {
+      "path": "characters\\detective\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1100,
+      "hash": "0d493a9add7ad3529478e514e6aca6ea",
+      "modified": "2026-08-06T22:53:42.437183",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_right\\frame_2.png": {
+      "path": "characters\\detective\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1146,
+      "hash": "a9afd2d5b28b10a6eec8ada28bd4f6fc",
+      "modified": "2026-08-06T22:53:42.440190",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_up\\frame_0.png": {
+      "path": "characters\\detective\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 1005,
+      "hash": "02bbd727bd1c556fa9a4a3b8f3a67fb0",
+      "modified": "2026-08-06T22:53:42.452186",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_up\\frame_1.png": {
+      "path": "characters\\detective\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 989,
+      "hash": "41d259bfa78e20d512147600e19546f2",
+      "modified": "2026-08-06T22:53:42.454186",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\detective\\walk_up\\frame_2.png": {
+      "path": "characters\\detective\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 978,
+      "hash": "781fbc089e4e6f2ca9e28c088a17c7af",
+      "modified": "2026-08-06T22:53:42.520202",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_down\\frame_0.png": {
+      "path": "characters\\casey\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1370,
+      "hash": "251e5f5e2b4dc197cf19ceef9bafab0f",
+      "modified": "2026-08-06T22:53:47.120872",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_down\\frame_1.png": {
+      "path": "characters\\casey\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1392,
+      "hash": "f0c2e95fcd6054383e0efcc99d0b3db7",
+      "modified": "2026-08-06T22:53:47.123872",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_down\\frame_2.png": {
+      "path": "characters\\casey\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1365,
+      "hash": "1070530681c1c48e56a437e6ccd5d67e",
+      "modified": "2026-08-06T22:53:47.126873",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_left\\frame_0.png": {
+      "path": "characters\\casey\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1279,
+      "hash": "cb320f5673d253c86efe873feff32d27",
+      "modified": "2026-08-06T22:53:47.135877",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_left\\frame_1.png": {
+      "path": "characters\\casey\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1211,
+      "hash": "dd6f008b5bea55856c209e9071029666",
+      "modified": "2026-08-06T22:53:47.138879",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_left\\frame_2.png": {
+      "path": "characters\\casey\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1283,
+      "hash": "132dfaa1a1a42f0a0d2170765ed4bf66",
+      "modified": "2026-08-06T22:53:47.141878",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_right\\frame_0.png": {
+      "path": "characters\\casey\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1190,
+      "hash": "2a60420bbf155d9d44b8f1a1ec0a822b",
+      "modified": "2026-08-06T22:53:47.149879",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_right\\frame_1.png": {
+      "path": "characters\\casey\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1165,
+      "hash": "712ca4ccfe8dd0a1c7ff8aa3613d2e81",
+      "modified": "2026-08-06T22:53:47.151880",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_right\\frame_2.png": {
+      "path": "characters\\casey\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1175,
+      "hash": "37a683b6fc832c6c6015d875efd164a1",
+      "modified": "2026-08-06T22:53:47.194895",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_up\\frame_0.png": {
+      "path": "characters\\casey\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 876,
+      "hash": "79021e887ff213e9f36f9f5a71e4b9d7",
+      "modified": "2026-08-06T22:53:47.217899",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_up\\frame_1.png": {
+      "path": "characters\\casey\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 754,
+      "hash": "41b403de75a11d9bce0a2d39ea28b101",
+      "modified": "2026-08-06T22:53:47.219898",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\casey\\walk_up\\frame_2.png": {
+      "path": "characters\\casey\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 866,
+      "hash": "ed5fe4c7ebbb5e5d42b7513a0f68ece4",
+      "modified": "2026-08-06T22:53:47.222897",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_down\\frame_0.png": {
+      "path": "characters\\alex\\walk_down\\frame_0.png",
+      "type": "textures",
+      "size": 1323,
+      "hash": "1307ab4e2f4f59c5fe64b82c20bdd5d9",
+      "modified": "2026-08-06T22:53:43.018332",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_down\\frame_1.png": {
+      "path": "characters\\alex\\walk_down\\frame_1.png",
+      "type": "textures",
+      "size": 1365,
+      "hash": "8dad24fc052d4684b826cd7b2f73aa3a",
+      "modified": "2026-08-06T22:53:43.020328",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_down\\frame_2.png": {
+      "path": "characters\\alex\\walk_down\\frame_2.png",
+      "type": "textures",
+      "size": 1312,
+      "hash": "6e10294d5669ae69b61ab787d78dcd8b",
+      "modified": "2026-08-06T22:53:43.022328",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_left\\frame_0.png": {
+      "path": "characters\\alex\\walk_left\\frame_0.png",
+      "type": "textures",
+      "size": 1186,
+      "hash": "835fe931ae19b9353966a5a73f2daee3",
+      "modified": "2026-08-06T22:53:43.032333",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_left\\frame_1.png": {
+      "path": "characters\\alex\\walk_left\\frame_1.png",
+      "type": "textures",
+      "size": 1178,
+      "hash": "1fc713acd735f818daf7f89e5ca580ed",
+      "modified": "2026-08-06T22:53:43.034332",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_left\\frame_2.png": {
+      "path": "characters\\alex\\walk_left\\frame_2.png",
+      "type": "textures",
+      "size": 1235,
+      "hash": "0b5ef71373b282924bf31db62118d3b2",
+      "modified": "2026-08-06T22:53:43.036333",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_right\\frame_0.png": {
+      "path": "characters\\alex\\walk_right\\frame_0.png",
+      "type": "textures",
+      "size": 1172,
+      "hash": "8b04466acf8f5ddd8adb492553636f95",
+      "modified": "2026-08-06T22:53:43.053338",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_right\\frame_1.png": {
+      "path": "characters\\alex\\walk_right\\frame_1.png",
+      "type": "textures",
+      "size": 1141,
+      "hash": "59c63b9e9d9897a33cac16f10de02d33",
+      "modified": "2026-08-06T22:53:43.059340",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_right\\frame_2.png": {
+      "path": "characters\\alex\\walk_right\\frame_2.png",
+      "type": "textures",
+      "size": 1139,
+      "hash": "bfc50e16bb2f1001928e23e88bd14468",
+      "modified": "2026-08-06T22:53:43.062339",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_up\\frame_0.png": {
+      "path": "characters\\alex\\walk_up\\frame_0.png",
+      "type": "textures",
+      "size": 883,
+      "hash": "ccb217f834999b97542db7e5c7927d0a",
+      "modified": "2026-08-06T22:53:43.094347",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_up\\frame_1.png": {
+      "path": "characters\\alex\\walk_up\\frame_1.png",
+      "type": "textures",
+      "size": 869,
+      "hash": "7be0e2af6e2d5ac9f3a8c28cfc508e63",
+      "modified": "2026-08-06T22:53:43.097348",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    },
+    "characters\\alex\\walk_up\\frame_2.png": {
+      "path": "characters\\alex\\walk_up\\frame_2.png",
+      "type": "textures",
+      "size": 881,
+      "hash": "365c4727c40b1fec9737327a46895229",
+      "modified": "2026-08-06T22:53:43.100348",
+      "imported": true,
+      "format": ".png",
+      "category": "character"
+    }
+  }
+}
