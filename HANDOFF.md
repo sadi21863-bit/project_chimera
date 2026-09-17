@@ -59,6 +59,27 @@ don't share memory or a runtime — treat this file as the handoff baton.
      - `kenney_indoor.tres` now loads headless as a real TileSet. Adoption remains optional: switching generated rooms off `floor.tres` is a visual change — use the new pixel gate (`run_visual_shots.py --init` to rebaseline after eyeballing).
      - Regression after import pass: test_all 15/15, dorm scenes 12/12, validation ALL CHECKS PASSED.
 
+  16. **Additive merge of the consolidated zip's asset/presentation layer (no overwrites)**:
+     - Triaged `Downloads/project_chimera_consolidated.zip` (779 entries) with hash diffs: zip keeps our session fixes but replaces 7 autoloads with reduced variants (mcp_bridge gutted to 89B, scheduled_events stubbed, evidence_quality missing quality_strength()) and deletes the 11 tests covering those systems — wholesale adoption would break accusations, deadlines, MCP play and 11 suites. Chose additive-only.
+     - Copied: `assets/2d/dorm_props` (10 PNGs), `location_props` (10 SVGs), `investigation` (2 SVGs), `3d/dorm` (10 GLBs), `ui/portraits` (7 SVGs), ambient/footstep audio, `prop_visuals/suspect_portrait_factory/investigation_hud/accusation_reveal/dialogue_panel/asset_gallery` scripts+scenes, `generic_location.gd` template, blender generator + GLB renderer + static audit script, asset docs. Zero existing files overwritten.
+     - Fixed 3 parse errors the zip's new scripts shipped with (never runtime-tested there): C-style `?:` ternary + `str()` truthiness trap in accusation_reveal, `:=` inference on ternary/`and` in investigation_hud. Added one-line `SFXHelper.accusation_reveal()` the new panel calls.
+     - Wired `PropVisuals.decorate_bedroom` into `bedroom.gd` via preload (coordinates match our generator furniture); new `test_prop_visuals.gd` verifies ≥5 Prop_ sprites + legacy hidden + 4 new UI scenes load.
+     - Test-lifecycle lesson relearned the hard way: in `--script` runs, child `_ready()` flushes on later frames — asserting in `_initialize` (or fire-and-forget `await` there) sees pre-ready state and yields false failures.
+     - Left staged-unwired (next slice): instancing investigation_hud/dialogue/accusation panels in main.tscn + decorate_generic coordinates (tuned for larger rooms than our small sub-rooms).
+
+  17. **Prop dressing wired everywhere + coordinates refitted (zip follow-through)**:
+     - Rewrote `decorate_generic` arms for common_room/kitchen/hallway/bathroom (zip coords assumed ~700px rooms; ours are 224-384px) and split university out of the courtyard/campus arm (trees/suitcase landed outside its 570x360 walls); verified server_room/library/hospital/bar/courtyard/campus/detective/police arms fit their real wall bounds.
+     - Wired calls: `bedroom.gd` dispatches sub-rooms to `decorate_generic`, bedrooms to `decorate_bedroom`; all 9 location scripts (`server_room/library/hospital/courtyard/bar/campus/university/detective_room/police_station`) call it in `_ready`.
+     - `test_prop_visuals.gd` now covers 20 scenes: asserts every Prop_*/LocationProp_* sprite lies inside the Floor TileMapLayer bounds and bedroom legacy visuals stay hidden — all in-bounds on first run.
+     - Fixed my own `//`-comment slip in bedroom.gd before it ever ran.
+
+  17. **Wired the staged panels into main.tscn/main.gd (two-step talk + accuse flows)**:
+     - Instanced `InvestigationHUD` (self-driving via autoload signals, shows during INVESTIGATION), `DialoguePanel`, `AccusationReveal` under `UI` with fresh unique_ids.
+     - Talk is now card-first: `_on_talk_requested` opens the dialogue card; interrogation (+EventLog/Tutorial side effects) moved to `_on_dialogue_finished`.
+     - Accuse is now preview-then-commit: `_on_accuse_requested` builds a read-only preview (`can_accuse`/`quality_strength`/`_determine_ending`, no side effects) and opens the reveal screen; `_on_accuse_confirmed` runs the original commit logic; cancel just hides.
+     - Fixed `accusation_reveal.gd`'s 8 `@onready` paths (tscn has an extra `VBox` level the script omitted — `_ready` crashed on open); new `tools/check_ui_paths.py` + `test_ui_node_paths.gd` lock all three panels' script↔tscn paths permanently.
+     - Updated `test_interrogation_wiring` + `test_flow_wiring` to the two-step contracts; regression green (incl. full_playthrough, case_flow, accusations, prop_visuals, ui_node_paths).
+
   **Left for next time**: adopting `kenney_indoor.tres` tiles for generated rooms is optional and visual — if wanted, switch `TILESET_PATH` in `tools/generate_dorm_scenes.py`, regenerate, eyeball, then rebaseline the pixel gate (`run_visual_shots.py --init`). 7 off-campus locations remain fast-travel-only by design. MCP playthrough reruns any time with Godot headless in background + `uv run --with mcp python -u tools/play_game_v5.py` (~3 min).
 
 - **2026-08-15, Claude Code**: MCP Utilization Complete + Playtest Ready.

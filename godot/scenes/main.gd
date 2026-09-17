@@ -20,6 +20,9 @@ var mode: Mode = Mode.PLAY
 @onready var _evidence_board: CanvasLayer = $UI/EvidenceBoard
 @onready var _npc_relationships: CanvasLayer = $UI/NPCRelationshipPanel
 @onready var _quit_case_btn: CanvasLayer = $UI/QuitCaseButton
+@onready var _investigation_hud: CanvasLayer = $UI/InvestigationHUD
+@onready var _dialogue: CanvasLayer = $UI/DialoguePanel
+@onready var _accuse_reveal: CanvasLayer = $UI/AccusationReveal
 
 const CAMERA_SPEED := 300.0
 const ZOOM_MIN := 0.5
@@ -49,6 +52,9 @@ func _ready() -> void:
 		Effects.fade_transition(func(): LocationManager.travel(d))
 	)
 	_search_panel.action_selected.connect(_on_search_action_selected)
+	_dialogue.finished.connect(_on_dialogue_finished)
+	_accuse_reveal.confirmed.connect(_on_accuse_confirmed)
+	_accuse_reveal.cancelled.connect(_on_accuse_cancelled)
 	_cinematic.cinematic_finished.connect(_on_cinematic_finished)
 	Investigation.clue_discovered.connect(func(_c): Tutorial.on_clue_found())
 	Investigation.clue_discovered.connect(_on_clue_discovered)
@@ -227,6 +233,28 @@ func _on_choice_made(is_murder: bool) -> void:
 
 
 func _on_accuse_requested(suspect_id: String) -> void:
+	# Asset-pass flow: preview the case on the reveal screen first; nothing is
+	# committed until the player confirms there (confirmed signal).
+	var preview := _preview_accusation(suspect_id)
+	_accuse_reveal.open(suspect_id, preview)
+
+
+## Read-only preview of what accuse() would decide — no standing fallout,
+## no resolution, safe to show before the player commits.
+func _preview_accusation(suspect_id: String) -> Dictionary:
+	if not CaseData.SUSPECTS.has(suspect_id):
+		return {"accepted": false, "ending_id": "", "strength": 0.0, "threshold": 0}
+	var threshold: int = int(CaseData.SUSPECTS[suspect_id]["threshold"])
+	var strength: float = CaseFile.quality_strength(suspect_id)
+	var accepted: bool = CaseFile.can_accuse(suspect_id)
+	var ending_id := ""
+	if accepted:
+		ending_id = CaseFile._determine_ending(suspect_id)
+	return {"accepted": accepted, "ending_id": ending_id,
+		"strength": strength, "threshold": threshold}
+
+
+func _on_accuse_confirmed(suspect_id: String, _ending_id: String) -> void:
 	SFXHelper.accuse()
 	Effects.shake_dramatic()
 	var result: Dictionary = CaseFile.accuse(suspect_id)
@@ -237,6 +265,10 @@ func _on_accuse_requested(suspect_id: String) -> void:
 	else:
 		EventLog.log_action("Not enough evidence to accuse %s (%d/%d)" % [
 			suspect_id, result["strength"], result["threshold"]], "case")
+
+
+func _on_accuse_cancelled() -> void:
+	_accuse_reveal.hide()
 
 
 func _on_phase_changed(phase: int) -> void:
@@ -267,6 +299,12 @@ func _on_clue_discovered(_clue_id: String) -> void:
 
 
 func _on_talk_requested(suspect_id: String) -> void:
+	# Asset-pass flow: authored dialogue card first; the interrogation opens
+	# when the player continues past it (finished signal).
+	_dialogue.open(suspect_id)
+
+
+func _on_dialogue_finished(suspect_id: String) -> void:
 	_interrogation.open(suspect_id, Investigation, Standing)
 	Tutorial.on_interrogation_started()
 	EventLog.log_action("Interrogating %s" % str(CaseData.SUSPECTS.get(suspect_id, {}).get("name", suspect_id)), "interrogation")

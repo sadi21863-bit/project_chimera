@@ -4,6 +4,7 @@ extends Node2D
 ## movement work. Mirrors the dorm's "exposes detective + npcs" contract.
 
 const DETECTIVE_SCENE := preload("res://scenes/player/detective.tscn")
+const PROP_VISUALS := preload("res://scripts/ui/prop_visuals.gd")
 
 @onready var _nav_region: NavigationRegion2D = $NavigationRegion2D
 
@@ -20,6 +21,7 @@ const SPOT_OFFSETS := [
 
 func _ready() -> void:
 	_spawn_search_points()
+	PROP_VISUALS.decorate_generic(self, "detective_room")
 	detective = DETECTIVE_SCENE.instantiate() as CharacterBody2D
 	add_child(detective)
 	detective.global_position = Vector2(400, 300)

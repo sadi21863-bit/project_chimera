@@ -12,9 +12,13 @@ func _process(_delta: float) -> bool:
 		var failures := 0
 
 		main._on_talk_requested("riley")
+		var dialogue = main.get_node("UI/DialoguePanel")
+		if not dialogue.visible:
+			failures += 1; print("FAIL: talk should open the dialogue card first")
+		main._on_dialogue_finished("riley")
 		var panel = main.get_node("UI/InterrogationPanel")
 		if not panel.visible:
-			failures += 1; print("FAIL: talk should open the interrogation panel")
+			failures += 1; print("FAIL: continuing past the dialogue card should open the interrogation panel")
 
 		st.adjust("riley", 0.9)
 		panel.select_topic("the_pills")

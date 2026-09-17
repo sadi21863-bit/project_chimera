@@ -5,6 +5,7 @@ extends Node2D
 ## contract every location scene follows (see detective_room.gd's comment).
 
 const DETECTIVE_SCENE := preload("res://scenes/player/detective.tscn")
+const PROP_VISUALS := preload("res://scripts/ui/prop_visuals.gd")
 
 var detective: CharacterBody2D = null
 var npcs: Array = []
@@ -19,6 +20,7 @@ const SPOT_OFFSETS := [
 
 func _ready() -> void:
 	_spawn_search_points()
+	PROP_VISUALS.decorate_generic(self, "campus")
 	detective = DETECTIVE_SCENE.instantiate() as CharacterBody2D
 	add_child(detective)
 	detective.global_position = Vector2(700, 750)

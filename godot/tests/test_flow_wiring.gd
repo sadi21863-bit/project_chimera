@@ -16,11 +16,18 @@ func _process(_delta: float) -> bool:
 		main._on_choice_made(true)
 		if gf.phase != 1:
 			failures += 1; print("FAIL: choosing murder should go INVESTIGATION")
+		# Accusations now go through the reveal screen: request opens it without
+		# committing; only confirming executes the accusation.
 		main._on_accuse_requested("sam")
+		var reveal = main.get_node("UI/AccusationReveal")
+		if not reveal.visible:
+			failures += 1; print("FAIL: accusation request should open the reveal screen")
+		main._on_accuse_confirmed("sam", "")
 		if gf.phase != 1:
 			failures += 1; print("FAIL: baseless accusation should not end the game")
 		inv.discover_clue("clue_wiring"); inv.discover_clue("clue_camera")
 		main._on_accuse_requested("sam")
+		main._on_accuse_confirmed("sam", "ending_sam")
 		if gf.phase != 2 or gf.current_ending_id != "ending_sam":
 			failures += 1; print("FAIL: built accusation should trigger ending_sam")
 

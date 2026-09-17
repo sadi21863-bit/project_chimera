@@ -18,6 +18,7 @@ extends Node2D
 const ACCESS_DATA := preload("res://scripts/access/access_data.gd")
 const CATCH_MODEL := preload("res://scripts/access/catch_model.gd")
 const DETECTIVE_SCENE := preload("res://scenes/player/detective.tscn")
+const PROP_VISUALS := preload("res://scripts/ui/prop_visuals.gd")
 const SPOT_OFFSETS := [Vector2(300, 220), Vector2(220, 300), Vector2(380, 300), Vector2(300, 350)]
 
 @export var room_id := ""
@@ -31,6 +32,13 @@ var _catch_meter := 0.0
 func _ready() -> void:
 	_spawn_search_points()
 	_spawn_detective()
+	# Asset-pass prop dressing: sub-rooms share the generic dresser (fitted to
+	# their small footprints); bedrooms use the bedroom dresser. Legacy flat
+	# ColorRect furniture stays as collision, hidden under the sprites.
+	if room_id in ["hallway", "kitchen", "common_room", "bathroom"]:
+		PROP_VISUALS.decorate_generic(self, room_id)
+	else:
+		PROP_VISUALS.decorate_bedroom(self, room_id)
 
 
 func _spawn_detective() -> void:
