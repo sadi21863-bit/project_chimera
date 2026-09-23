@@ -26,7 +26,10 @@ var mode: Mode = Mode.PLAY
 
 const CAMERA_SPEED := 300.0
 const ZOOM_MIN := 0.5
-const ZOOM_MAX := 2.0
+# Cap high enough that a ~190x160 bedroom can auto-fit the viewport (old 2.0 cap
+# left small rooms filling only ~1/3 of the screen).
+const ZOOM_MAX := 6.0
+const ZOOM_FIT_PADDING := 0.85
 
 var _dragging := false
 var _drag_start := Vector2.ZERO
@@ -75,6 +78,70 @@ func _load_location(id: String) -> void:
 	_location = scene.instantiate()
 	_host.add_child(_location)
 	_bind_location(_location)
+	_fit_camera_to_location(_location)
+
+
+## Zoom both cameras so the room's floor fills most of the viewport. Small dorm
+## bedrooms (~190x160) otherwise read as tiny islands of floor on a 1152x648 screen.
+func _fit_camera_to_location(loc: Node2D) -> void:
+	var rect := _location_floor_rect(loc)
+	if rect.size.x < 1.0 or rect.size.y < 1.0:
+		return
+	var vp := get_viewport().get_visible_rect().size
+	var fit := minf(vp.x / rect.size.x, vp.y / rect.size.y) * ZOOM_FIT_PADDING
+	fit = clampf(fit, ZOOM_MIN, ZOOM_MAX)
+	var z := Vector2(fit, fit)
+	if loc.detective != null:
+		var cam := loc.detective.get_node_or_null("Camera2D") as Camera2D
+		if cam != null:
+			cam.zoom = z
+	_camera.zoom = z
+	_camera.position = rect.get_center()
+
+
+func _location_floor_rect(loc: Node2D) -> Rect2:
+	# Prefer the walled enclosure when present: Floor/Grass tilemaps often spill
+	# past the walls (stray tiles), which under-zooms small rooms.
+	var walls := loc.get_node_or_null("Walls")
+	if walls != null:
+		var rect := Rect2()
+		var first := true
+		for child in walls.get_children():
+			if child is Control:
+				var r := (child as Control).get_global_rect()
+				rect = r if first else rect.merge(r)
+				first = false
+		if not first:
+			return rect
+	for node_name in ["Floor", "GrassLayer", "TileBase"]:
+		var floor_node := loc.get_node_or_null(node_name)
+		if floor_node is TileMapLayer:
+			var layer := floor_node as TileMapLayer
+			var used := layer.get_used_rect()
+			if used.size.x > 0 and used.size.y > 0:
+				var tile := Vector2i(16, 16)
+				if layer.tile_set != null:
+					tile = layer.tile_set.tile_size
+				var local_rect := Rect2(
+					Vector2(used.position * tile),
+					Vector2(used.size * tile)
+				)
+				return layer.get_global_transform() * local_rect
+		elif floor_node != null:
+			# crestwood_hall: Floor is a Node2D wrapping TileBase.
+			var nested := floor_node.get_node_or_null("TileBase")
+			if nested is TileMapLayer:
+				var layer2 := nested as TileMapLayer
+				var used2 := layer2.get_used_rect()
+				if used2.size.x > 0 and used2.size.y > 0:
+					var tile2 := Vector2i(16, 16)
+					if layer2.tile_set != null:
+						tile2 = layer2.tile_set.tile_size
+					return layer2.get_global_transform() * Rect2(
+						Vector2(used2.position * tile2),
+						Vector2(used2.size * tile2)
+					)
+	return Rect2()
 
 
 func _bind_location(loc: Node2D) -> void:

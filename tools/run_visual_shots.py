@@ -20,8 +20,8 @@ import sys
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent
-GODOT_WINDOWED = Path(r"C:\Users\aditya\Desktop\Godot_v4.7-stable_win64.exe")
-GODOT_CONSOLE = Path(r"C:\Users\aditya\Desktop\Godot_v4.7-stable_win64_console.exe")
+GODOT_WINDOWED = Path(r"C:\Users\aditya\Desktop\Godot472\Godot_v4.7.2-stable_win64.exe")
+GODOT_CONSOLE = Path(r"C:\Users\aditya\Desktop\Godot472\Godot_v4.7.2-stable_win64_console.exe")
 GODOT_PROJECT = PROJECT / "godot"
 CAPTURES = GODOT_PROJECT / "qa" / "captures"
 
@@ -29,8 +29,11 @@ SHOTS = [
     "cinematic",
     "story_choice",
     "dorm",
+    "bedroom",
     "case_panel",
     "interrogation",
+    "dialogue",
+    "accusation",
     "travel_map",
     "settings",
 ]
@@ -106,8 +109,8 @@ def main() -> int:
         baseline_dir = GODOT_PROJECT / "qa" / "baseline"
         baseline_dir.mkdir(parents=True, exist_ok=True)
         import shutil
-        for png in baseline_dir.glob("*.png"):
-            png.unlink()
+        # Only overwrite baselines for the shots just captured — never wipe
+        # siblings (a full --init still refreshes every shot in SHOTS).
         for shot in shots:
             shutil.copyfile(CAPTURES / f"{shot}.png", baseline_dir / f"{shot}.png")
             print(f"[init] baseline refreshed: {shot}")

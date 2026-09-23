@@ -17,7 +17,7 @@ extends SceneTree
 ##   Godot_v4.7-stable_win64.exe --path godot --fixed-fps 30 \
 ##       -s res://tools/visual_capture.gd -- shot=dorm settle=45 seed=1337
 ##
-## Shots: cinematic | story_choice | dorm | case_panel | interrogation | travel_map | settings
+## Shots: cinematic | story_choice | dorm | bedroom | case_panel | interrogation | dialogue | accusation | travel_map | settings
 
 const CAPTURE_DIR := "res://qa/captures/"
 const MAIN_SCENE := "res://scenes/main.tscn"
@@ -30,8 +30,11 @@ enum Step {
 	STORY_CHOICE,
 	INVESTIGATE,
 	DORM,
+	BEDROOM,
 	CASE_PANEL,
 	INTERROGATION,
+	DIALOGUE,
+	ACCUSATION,
 	TRAVEL_MAP,
 	SETTINGS,
 	DONE,
@@ -50,6 +53,7 @@ var _interrogation: CanvasLayer = null
 var _travel_map: CanvasLayer = null
 var _settings: CanvasLayer = null
 var _cinematic: CanvasLayer = null
+var _main: Node = null
 
 
 func _initialize() -> void:
@@ -88,8 +92,8 @@ func _process(_delta: float) -> bool:
 			_phase = Step.LOAD_MAIN
 		Step.LOAD_MAIN:
 			DirAccess.make_dir_recursive_absolute(CAPTURE_DIR)
-			var main: Node = load(MAIN_SCENE).instantiate()
-			root.add_child(main)
+			_main = load(MAIN_SCENE).instantiate()
+			root.add_child(_main)
 			_wait = 0
 			_phase = Step.WAIT_MAIN
 		Step.WAIT_MAIN:
@@ -127,6 +131,10 @@ func _process(_delta: float) -> bool:
 			if _wait < 5:
 				return false
 			_cinematic.cinematic_finished.emit()
+			# Replicate real post-cinematic state: in-game _finish() hides the
+			# panel before emitting; our frozen panel would otherwise cover
+			# every later shot.
+			_cinematic.visible = false
 			if _shot == "story_choice":
 				_start_capture()
 			else:
@@ -143,9 +151,21 @@ func _process(_delta: float) -> bool:
 				return false
 			if _shot == "dorm":
 				_start_capture()
+			elif _shot == "bedroom":
+				root.get_node("LocationManager").travel("bedroom_1")
+				_wait = 0
+				_phase = Step.BEDROOM
 			else:
 				_phase = Step.CASE_PANEL
 				_wait = 0
+		Step.BEDROOM:
+			if _wait < 20:
+				return false
+			if _shot == "bedroom":
+				_start_capture()
+			else:
+				push_error("VISUAL_CAPTURE: unexpected shot '%s' in BEDROOM phase" % _shot)
+				quit(2)
 		Step.CASE_PANEL:
 			if _wait < 5:
 				return false
@@ -165,9 +185,37 @@ func _process(_delta: float) -> bool:
 			_interrogation.open("alex", root.get_node("Investigation"), root.get_node("Standing"))
 			if _shot == "interrogation":
 				_start_capture()
+			elif _shot == "dialogue":
+				_interrogation.close()
+				_main.get_node("UI/DialoguePanel").open("alex")
+				_wait = 0
+				_phase = Step.DIALOGUE
+			elif _shot == "accusation":
+				_interrogation.close()
+				root.get_node("Investigation").discover_clue("clue_wiring")
+				root.get_node("Investigation").discover_clue("clue_camera")
+				_main._on_accuse_requested("sam")
+				_wait = 0
+				_phase = Step.ACCUSATION
 			else:
 				_phase = Step.TRAVEL_MAP
 				_wait = 0
+		Step.DIALOGUE:
+			if _wait < 10:
+				return false
+			if _shot == "dialogue":
+				_start_capture()
+			else:
+				push_error("VISUAL_CAPTURE: unexpected shot '%s' in DIALOGUE phase" % _shot)
+				quit(2)
+		Step.ACCUSATION:
+			if _wait < 10:
+				return false
+			if _shot == "accusation":
+				_start_capture()
+			else:
+				push_error("VISUAL_CAPTURE: unexpected shot '%s' in ACCUSATION phase" % _shot)
+				quit(2)
 		Step.TRAVEL_MAP:
 			if _wait < 5:
 				return false

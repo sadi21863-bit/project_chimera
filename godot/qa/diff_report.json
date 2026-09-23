@@ -1,0 +1,107 @@
+{
+	"pixel_tolerance": 0.0941176470588235,
+	"results": [
+		{
+			"baseline": false,
+			"brightness": 0.181487840492068,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "accusation.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.387530262783928,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "bedroom.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.327112278768674,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "case_panel.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.056119963521403,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "cinematic.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.205428880504134,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "dialogue.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.383017077894059,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "dorm.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.24016681051399,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "interrogation.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.0919825048032971,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "settings.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.0773741848457886,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "story_choice.png",
+			"status": "PASS",
+			"width": 1280
+		},
+		{
+			"baseline": false,
+			"brightness": 0.13664365838862,
+			"changed_bbox": [],
+			"changed_pct": 0.0,
+			"height": 720,
+			"name": "travel_map.png",
+			"status": "PASS",
+			"width": 1280
+		}
+	],
+	"tolerance_pct": 0.5,
+	"tool": "visual_diff"
+}
