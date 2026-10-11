@@ -4,11 +4,17 @@ extends CanvasLayer
 ## "[F] Talk to ..." for the nearest NPC, so they never compete for one key.
 
 @onready var _label: Label = $Label
+var _interactor: Interactor = null
 
 
 func bind(interactor: Interactor) -> void:
-	interactor.targets_changed.connect(_on_targets_changed)
-	_on_targets_changed(interactor.clue_target, interactor.npc_target)
+	if _interactor == interactor:
+		return
+	if is_instance_valid(_interactor) and _interactor.targets_changed.is_connected(_on_targets_changed):
+		_interactor.targets_changed.disconnect(_on_targets_changed)
+	_interactor = interactor
+	_interactor.targets_changed.connect(_on_targets_changed)
+	_on_targets_changed(_interactor.clue_target, _interactor.npc_target)
 
 
 func _on_targets_changed(clue: Interactable, npc: Interactable) -> void:

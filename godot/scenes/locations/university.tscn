@@ -1,7 +1,7 @@
 [gd_scene format=4]
 
 [ext_resource type="Script" path="res://scenes/locations/university.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/player/building_portal.gd" id="2"]
 [ext_resource type="TileSet" path="res://resources/tilesets/floor.tres" id="2_dauyo"]
 
 [sub_resource type="NavigationPolygon" id="navpoly"]
@@ -52,6 +52,9 @@ position = Vector2(200, 200)
 script = ExtResource("2")
 dest_id = "dorm"
 dest_label = "Crestwood Hall"
+building_id = "dorm"
+interior_entry_id = "main"
+return_area_id = "university"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToDorm" unique_id=32341293]
 shape = SubResource("door_shape")
@@ -112,6 +115,9 @@ position = Vector2(400, 200)
 script = ExtResource("2")
 dest_id = "campus"
 dest_label = "the campus"
+building_id = "campus"
+interior_entry_id = "main"
+return_area_id = "university"
 
 [node name="@CollisionShape2D@3" type="CollisionShape2D" parent="DoorToCampus" unique_id=1719027505]
 shape = SubResource("CircleShape2D_dauyo")

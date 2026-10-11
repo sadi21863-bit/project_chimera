@@ -29,6 +29,8 @@ script = ExtResource("1")
 
 [node name="LocationHost" type="Node2D" parent="." unique_id=969309871]
 
+[node name="OutdoorWorldHost" type="Node2D" parent="." unique_id=969309872]
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1904032549]
 position = Vector2(640, 360)
 

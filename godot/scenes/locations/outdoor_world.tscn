@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/locations/outdoor_world.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/locations/campus.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/locations/courtyard.tscn" id="3"]
+
+[sub_resource type="NavigationPolygon" id="bridge_nav"]
+vertices = PackedVector2Array(1280, 260, 1520, 260, 1520, 640, 1280, 640)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1280, 260, 1520, 260, 1520, 640, 1280, 640)])
+
+[node name="OutdoorWorld" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Campus" parent="." instance=ExtResource("2")]
+
+[node name="Courtyard" parent="." instance=ExtResource("3")]
+position = Vector2(1400, 0)
+
+[node name="NavigationBridge" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("bridge_nav")
+
+[node name="BridgeVisual" type="Polygon2D" parent="."]
+z_index = -5
+polygon = PackedVector2Array(1280, 260, 1520, 260, 1520, 640, 1280, 640)
+color = Color(0.32, 0.42, 0.25, 1)

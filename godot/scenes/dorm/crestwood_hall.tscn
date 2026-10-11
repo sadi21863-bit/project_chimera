@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" path="res://resources/tilesets/floor.tres" id="2_wx6aq"]
 [ext_resource type="Script" path="res://scripts/player/locked_door_trigger.gd" id="4_8csuf"]
 [ext_resource type="Script" path="res://scripts/ui/scene_decorator.gd" id="5_decorator"]
+[ext_resource type="Script" path="res://scripts/ui/archival_backdrop.gd" id="6_backdrop"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8csuf"]
 vertices = PackedVector2Array(1240, 255, 1240, 680, 1160, 500, 1160, 490, 40, 680, 660, 500, 500, 500, 60, 500, 40, 255, 60, 490, 650, 255, 660, 490, 450, 255, 500, 490, 40, 245, 40, 40, 1240, 40, 450, 245, 1240, 245, 650, 245)
@@ -64,6 +65,9 @@ size = Vector2(590, 10)
 
 [node name="CrestwoodHall" type="Node2D" unique_id=592589976]
 script = ExtResource("1")
+
+[node name="Backdrop" type="Node2D" parent="."]
+script = ExtResource("6_backdrop")
 
 [node name="Floor" type="Node2D" parent="." unique_id=1223005274]
 

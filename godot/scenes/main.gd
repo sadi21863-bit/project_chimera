@@ -5,6 +5,7 @@ enum Mode { PLAY, OBSERVER }
 var mode: Mode = Mode.PLAY
 
 @onready var _host: Node2D = $LocationHost
+@onready var _outdoor_host: Node2D = $OutdoorWorldHost
 @onready var _camera: Camera2D = $Camera2D
 @onready var _observer: Control = $UI/ObserverPanel
 @onready var _day_night: CanvasModulate = $DayNightModulate
@@ -30,17 +31,26 @@ const ZOOM_MIN := 0.5
 # left small rooms filling only ~1/3 of the screen).
 const ZOOM_MAX := 6.0
 const ZOOM_FIT_PADDING := 0.85
+const OUTDOOR_WORLD_SCENE := preload("res://scenes/locations/outdoor_world.tscn")
+const OUTDOOR_ENTRY_POSITIONS := {
+	"dorm": Vector2(962.0, 590.0),
+	"university": Vector2(437.0, 200.0),
+	"police_station": Vector2(437.0, 590.0),
+}
 
 var _dragging := false
 var _drag_start := Vector2.ZERO
 var _location = null
+var _outdoor_world: Node2D = null
+var _active_location_id := ""
+var _outdoor_return_positions: Dictionary = {}
 
 
 func _ready() -> void:
 	Scheduler.time_changed.connect(_update_day_night)
 	_update_day_night(Scheduler.get_hour(), 0, Scheduler.game_day)
+	LocationManager.location_changing.connect(_on_location_changing)
 	_load_location(LocationManager.current_id)
-	LocationManager.location_changing.connect(_load_location)
 	EventLog.log_action("Crestwood Hall simulation started", "system")
 	_story.choice_made.connect(_on_choice_made)
 	_story.settings_requested.connect(_settings.open)
@@ -70,15 +80,80 @@ func _ready() -> void:
 		_on_phase_changed(GameFlow.phase)
 
 
+func _on_location_changing(id: String) -> void:
+	var previous_id := _active_location_id
+	_active_location_id = id
+	_activate_location(id, previous_id)
+
+
 func _load_location(id: String) -> void:
+	_active_location_id = id
+	_activate_location(id, "")
+
+
+func _activate_location(id: String, previous_id: String) -> void:
+	if LocationManager.is_outdoor(id):
+		_activate_outdoor(id, previous_id)
+	else:
+		_activate_interior(id)
+
+
+func _activate_outdoor(id: String, previous_id: String) -> void:
+	var was_outdoor: bool = _outdoor_world != null and _location == _outdoor_world
+	var restore_position: Variant = _outdoor_return_positions.get(previous_id, null)
+	if restore_position == null:
+		restore_position = OUTDOOR_ENTRY_POSITIONS.get(previous_id, null)
+	if _outdoor_world == null:
+		_outdoor_world = OUTDOOR_WORLD_SCENE.instantiate()
+		_outdoor_host.add_child(_outdoor_world)
+	else:
+		_outdoor_world.set_active(true)
+	_outdoor_world.set_logical_area(id)
+	if was_outdoor:
+		return
+	if restore_position is Vector2:
+		_outdoor_world.set_detective_position(restore_position)
+	else:
+		_outdoor_world.move_detective_to_area(id)
+	if _location != null and _location != _outdoor_world:
+		SFXHelper.travel()
+		_location.queue_free()
+		_location = null
+	_location = _outdoor_world
+	_bind_location(_location)
+	_configure_outdoor_camera()
+	set_mode(Mode.PLAY)
+
+
+func _activate_interior(id: String) -> void:
+	if _outdoor_world != null:
+		_outdoor_world.set_active(false)
+		if _location == _outdoor_world:
+			_outdoor_return_positions[id] = _outdoor_world.get_detective_position()
+			_location = null
 	if _location != null:
 		SFXHelper.travel()
 		_location.queue_free()
+		_location = null
 	var scene: PackedScene = load(LocationManager.location_scene(id))
+	if scene == null:
+		push_error("Could not load location scene: %s" % id)
+		return
 	_location = scene.instantiate()
 	_host.add_child(_location)
 	_bind_location(_location)
 	_fit_camera_to_location(_location)
+
+
+func _configure_outdoor_camera() -> void:
+	if _outdoor_world == null:
+		return
+	var bounds: Rect2 = _outdoor_world.get_world_bounds()
+	_camera.limit_left = int(bounds.position.x)
+	_camera.limit_top = int(bounds.position.y)
+	_camera.limit_right = int(bounds.end.x)
+	_camera.limit_bottom = int(bounds.end.y)
+	_camera.zoom = Vector2.ONE
 
 
 ## Zoom both cameras so the room's floor fills most of the viewport. Small dorm
@@ -158,19 +233,34 @@ func _bind_location(loc: Node2D) -> void:
 			if ch is NpcInteractable:
 				if not ch.talk_requested.is_connected(_on_talk_requested):
 					ch.talk_requested.connect(_on_talk_requested)
-				if not ch.talk_requested.is_connected(func(_s): Tutorial.on_npc_approached()):
-					ch.talk_requested.connect(func(_s): Tutorial.on_npc_approached())
-	# Location-level interactables must wire even when loc.npcs is empty
-	for ch in loc.get_children():
-		if ch is SearchPoint:
-			if not ch.search_requested.is_connected(_on_search_requested):
-				ch.search_requested.connect(_on_search_requested)
-		elif ch is RestPoint:
-			if not ch.rest_requested.is_connected(_on_rest_requested):
-				ch.rest_requested.connect(_on_rest_requested)
-		elif ch is DoorTrigger:
-			if not ch.door_triggered.is_connected(func(d): Effects.fade_transition(func(): LocationManager.travel(d))):
-				ch.door_triggered.connect(func(d): Effects.fade_transition(func(): LocationManager.travel(d)))
+				if not ch.talk_requested.is_connected(_on_npc_approached):
+					ch.talk_requested.connect(_on_npc_approached)
+	for node in _walk_nodes(loc):
+		if node is SearchPoint:
+			if not node.search_requested.is_connected(_on_search_requested):
+				node.search_requested.connect(_on_search_requested)
+		elif node is RestPoint:
+			if not node.rest_requested.is_connected(_on_rest_requested):
+				node.rest_requested.connect(_on_rest_requested)
+		elif node is DoorTrigger:
+			if not node.door_triggered.is_connected(_on_door_triggered):
+				node.door_triggered.connect(_on_door_triggered)
+
+
+func _walk_nodes(root: Node) -> Array[Node]:
+	var nodes: Array[Node] = []
+	for child in root.get_children():
+		nodes.append(child)
+		nodes.append_array(_walk_nodes(child))
+	return nodes
+
+
+func _on_npc_approached(_suspect_id: String) -> void:
+	Tutorial.on_npc_approached()
+
+
+func _on_door_triggered(dest_id: String) -> void:
+	Effects.fade_transition(func(): LocationManager.travel(dest_id))
 
 
 func _process(delta: float) -> void:
@@ -419,6 +509,37 @@ func _on_free_text(suspect_id: String, text: String) -> void:
 		)
 	else:
 		_interrogation.show_response("Ask me something specific, detective.")
+
+
+func get_world_save_data() -> Dictionary:
+	var data := {
+		"outdoor_active": _outdoor_world != null and _location == _outdoor_world,
+		"return_positions": {},
+	}
+	for key in _outdoor_return_positions:
+		var pos: Vector2 = _outdoor_return_positions[key]
+		data["return_positions"][key] = {"x": pos.x, "y": pos.y}
+	if _outdoor_world != null:
+		var detective_position: Vector2 = _outdoor_world.get_detective_position()
+		data["detective_position"] = {"x": detective_position.x, "y": detective_position.y}
+	return data
+
+
+func load_world_save_data(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	var return_positions: Dictionary = data.get("return_positions", {})
+	for key in return_positions:
+		var raw_position: Variant = return_positions[key]
+		if raw_position is Dictionary:
+			_outdoor_return_positions[str(key)] = Vector2(
+				float(raw_position.get("x", 0.0)), float(raw_position.get("y", 0.0)))
+	if _outdoor_world == null or not bool(data.get("outdoor_active", false)):
+		return
+	var raw_position: Variant = data.get("detective_position", {})
+	if raw_position is Dictionary:
+		_outdoor_world.set_detective_position(Vector2(
+			float(raw_position.get("x", 0.0)), float(raw_position.get("y", 0.0))))
 
 
 func _on_new_game() -> void:

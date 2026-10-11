@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/locations/campus.gd" id="1_j27ie"]
 [ext_resource type="Texture2D" path="res://assets/buildings/campus_backdrop.png" id="2_o70an"]
-[ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="3_l4wsc"]
+[ext_resource type="Script" path="res://scripts/player/building_portal.gd" id="3_l4wsc"]
 [ext_resource type="TileSet" path="res://resources/tilesets/pipoya_outdoor.tres" id="4_pipoya"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obtox"]
@@ -58,6 +58,9 @@ position = Vector2(437, 200)
 script = ExtResource("3_l4wsc")
 dest_id = "university"
 dest_label = "University"
+building_id = "university"
+interior_entry_id = "main"
+return_area_id = "campus"
 
 [node name="@CollisionShape2D@2" type="CollisionShape2D" parent="DoorToUniversity" unique_id=68847149]
 shape = SubResource("CircleShape2D_obtox")
@@ -78,6 +81,9 @@ position = Vector2(437, 590)
 script = ExtResource("3_l4wsc")
 dest_id = "police_station"
 dest_label = "Police Station"
+building_id = "police_station"
+interior_entry_id = "main"
+return_area_id = "campus"
 
 [node name="@CollisionShape2D@3" type="CollisionShape2D" parent="DoorToPoliceStation" unique_id=1856844444]
 shape = SubResource("CircleShape2D_t48xs")
@@ -98,6 +104,9 @@ position = Vector2(962, 590)
 script = ExtResource("3_l4wsc")
 dest_id = "dorm"
 dest_label = "Crestwood Hall"
+building_id = "dorm"
+interior_entry_id = "main"
+return_area_id = "campus"
 
 [node name="@CollisionShape2D@4" type="CollisionShape2D" parent="DoorToDorm" unique_id=1533560835]
 shape = SubResource("CircleShape2D_j5kth")

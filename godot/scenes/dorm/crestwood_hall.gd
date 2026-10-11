@@ -237,6 +237,8 @@ func load_save_data(data: Dictionary) -> void:
 
 
 func _decorate_scene() -> void:
+	if get_node_or_null("Backdrop") != null:
+		return
 	var furniture := get_node_or_null("Furniture")
 	if furniture and furniture is SceneDecorator:
 		furniture.decorate()

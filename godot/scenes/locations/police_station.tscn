@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/locations/police_station.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/player/search_point.gd" id="2"]
 [ext_resource type="TileSet" path="res://resources/tilesets/floor.tres" id="2_07lu7"]
-[ext_resource type="Script" path="res://scripts/player/door_trigger.gd" id="4_81lny"]
+[ext_resource type="Script" path="res://scripts/player/building_portal.gd" id="4_81lny"]
 
 [sub_resource type="NavigationPolygon" id="navpoly"]
 vertices = PackedVector2Array(120, 120, 680, 120, 680, 480, 120, 480)
@@ -129,6 +129,9 @@ position = Vector2(500, 350)
 script = ExtResource("4_81lny")
 dest_id = "campus"
 dest_label = "the campus"
+building_id = "campus"
+interior_entry_id = "main"
+return_area_id = "police_station"
 
 [node name="@CollisionShape2D@4" type="CollisionShape2D" parent="DoorToCampus" unique_id=1095407838]
 shape = SubResource("CircleShape2D_wxn13")

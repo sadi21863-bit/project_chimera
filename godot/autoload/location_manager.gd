@@ -26,6 +26,8 @@ const LOCATIONS := {
 	"bathroom": {"name": "Bathroom", "scene": "res://scenes/dorm/bathroom.tscn", "travel_hours": 0.0},
 }
 
+const OUTDOOR_IDS := ["campus", "courtyard"]
+
 signal location_changing(dest_id: String)
 
 var current_id := "dorm"
@@ -41,7 +43,7 @@ func travel(dest_id: String) -> bool:
 	if not LOCATIONS.has(dest_id) or dest_id == current_id:
 		return false
 	var hours: float = float(LOCATIONS[dest_id]["travel_hours"])
-	if _scheduler != null and hours > 0.0:
+	if not (is_outdoor(current_id) and is_outdoor(dest_id)) and _scheduler != null and hours > 0.0:
 		_scheduler.advance_hours(hours)
 	current_id = dest_id
 	visited[dest_id] = true
@@ -59,6 +61,10 @@ func location_name(id: String) -> String:
 
 func location_scene(id: String) -> String:
 	return str(LOCATIONS[id]["scene"]) if LOCATIONS.has(id) else ""
+
+
+func is_outdoor(id: String) -> bool:
+	return OUTDOOR_IDS.has(id)
 
 
 func get_save_data() -> Dictionary:

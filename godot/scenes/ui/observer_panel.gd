@@ -38,6 +38,8 @@ func _ready() -> void:
 
 func bind_npcs(npcs: Array) -> void:
 	_npcs = npcs
+	_filter.clear()
+	_filter.add_item("All", 0)
 	for npc in npcs:
 		_filter.add_item(npc.display_name)
 	_relationship_graph.setup(npcs)
@@ -103,6 +105,7 @@ func _on_inject_pressed() -> void:
 
 func _on_save_pressed() -> void:
 	var hall := get_tree().root.get_node_or_null("Main/LocationHost/CrestwoodHall")
+	var main := get_tree().root.get_node_or_null("Main")
 	var data := {
 		"scheduler": Scheduler.get_save_data(),
 		"event_log": EventLog.get_save_data(),
@@ -112,6 +115,8 @@ func _on_save_pressed() -> void:
 		"case_file": CaseFile.get_save_data(),
 		"notebook": Notebook.get_save_data(),
 	}
+	if main != null and main.has_method("get_world_save_data"):
+		data["world"] = main.get_world_save_data()
 	if hall:
 		data["hall"] = hall.get_save_data()
 	SaveManager.save_game(SaveManager.DEFAULT_SLOT, data)
@@ -126,6 +131,9 @@ func _on_load_pressed() -> void:
 	GameFlow.load_save_data(data.get("game_flow", {}))
 	Consequences.load_save_data(data.get("consequences", {}))
 	LocationManager.load_save_data(data.get("location_manager", {}))
+	var main := get_tree().root.get_node_or_null("Main")
+	if main != null and main.has_method("load_world_save_data"):
+		main.load_world_save_data(data.get("world", {}))
 	CaseFile.load_save_data(data.get("case_file", {}))
 	Notebook.load_save_data(data.get("notebook", {}))
 	var hall := get_tree().root.get_node_or_null("Main/LocationHost/CrestwoodHall")

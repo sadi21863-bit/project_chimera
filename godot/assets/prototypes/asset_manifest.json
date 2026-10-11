@@ -1,0 +1,87 @@
+{
+  "prototype": "archival_cutaway_hero",
+  "status": "prototype",
+  "art_direction": "Archival Cutaway",
+  "runtime": "Godot 4.7.2 2D",
+  "source_renderer": "Blender 5.1.2",
+  "assets": [
+    {
+      "id": "room_day",
+      "path": "godot/assets/prototypes/archival_cutaway_room_day.png",
+      "source": "tools/blender/generate_archival_cutaway_hero.py",
+      "license": "Project-owned generated asset",
+      "status": "approved-for-prototype"
+    },
+    {
+      "id": "room_night",
+      "path": "godot/assets/prototypes/archival_cutaway_room_night.png",
+      "source": "tools/blender/generate_archival_cutaway_hero.py",
+      "license": "Project-owned generated asset",
+      "status": "approved-for-prototype"
+    },
+    {
+      "id": "room_glb",
+      "path": "godot/assets/prototypes/archival_cutaway_room.glb",
+      "source": "tools/blender/generate_archival_cutaway_hero.py",
+      "license": "Project-owned generated asset",
+      "status": "spike-only"
+    },
+    {
+      "id": "room_day_inked",
+      "path": "godot/assets/prototypes/archival_cutaway_room_day_inked.png",
+      "source": "tools/blender/apply_archival_treatment.py",
+      "license": "Project-owned generated asset",
+      "status": "approved-for-prototype"
+    },
+    {
+      "id": "room_night_inked",
+      "path": "godot/assets/prototypes/archival_cutaway_room_night_inked.png",
+      "source": "tools/blender/apply_archival_treatment.py",
+      "license": "Project-owned generated asset",
+      "status": "approved-for-prototype"
+    },
+    {
+      "id": "hero_scene",
+      "path": "godot/scenes/prototypes/archival_cutaway_hero.tscn",
+      "source": "Project-owned Godot scene",
+      "license": "Project-owned",
+      "status": "prototype"
+    },
+    {
+      "id": "civic_spike_scene",
+      "path": "godot/scenes/prototypes/civic_model_spike.tscn",
+      "source": "Project-owned Godot scene",
+      "license": "Project-owned",
+      "status": "spike-only"
+    },
+    {
+      "id": "dorm_backdrop_day_raw",
+      "path": "godot/assets/prototypes/archival_dorm_backdrop_day.png",
+      "source": "tools/blender/generate_archival_dorm_backdrop.py",
+      "license": "Project-owned generated asset",
+      "status": "source"
+    },
+    {
+      "id": "dorm_backdrop_night_raw",
+      "path": "godot/assets/prototypes/archival_dorm_backdrop_night.png",
+      "source": "tools/blender/generate_archival_dorm_backdrop.py",
+      "license": "Project-owned generated asset",
+      "status": "source"
+    },
+    {
+      "id": "dorm_backdrop_day_inked",
+      "path": "godot/assets/prototypes/archival_dorm_backdrop_day_inked.png",
+      "source": "tools/blender/apply_archival_treatment.py",
+      "license": "Project-owned generated asset",
+      "status": "live-crestwood-hall"
+    },
+    {
+      "id": "dorm_backdrop_night_inked",
+      "path": "godot/assets/prototypes/archival_dorm_backdrop_night_inked.png",
+      "source": "tools/blender/apply_archival_treatment.py",
+      "license": "Project-owned generated asset",
+      "status": "live-crestwood-hall"
+    }
+  ],
+  "external_assets": []
+}
