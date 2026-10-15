@@ -3,7 +3,7 @@
 	"results": [
 		{
 			"baseline": false,
-			"brightness": 0.181487840492068,
+			"brightness": 0.152544689394882,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -13,7 +13,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.387530262783928,
+			"brightness": 0.382423213797581,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -23,7 +23,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.327112278768674,
+			"brightness": 0.348131024723099,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -33,7 +33,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.056119963521403,
+			"brightness": 0.0368281377834941,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -43,7 +43,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.205428880504134,
+			"brightness": 0.211685007924022,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -53,7 +53,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.383017077894059,
+			"brightness": 0.403546671969095,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -63,7 +63,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.24016681051399,
+			"brightness": 0.226814458276787,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -73,7 +73,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.0919825048032971,
+			"brightness": 0.0821392767340911,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -83,7 +83,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.0773741848457886,
+			"brightness": 0.0746605181652479,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
@@ -93,7 +93,7 @@
 		},
 		{
 			"baseline": false,
-			"brightness": 0.13664365838862,
+			"brightness": 0.0900243771300477,
 			"changed_bbox": [],
 			"changed_pct": 0.0,
 			"height": 720,
