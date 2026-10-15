@@ -22,6 +22,13 @@ don't share memory or a runtime — treat this file as the handoff baton.
 
 ## Progress Log (append newest entries at the top)
 
+- **2026-10-15, Claude Code (opencode)**: native Windows export + QA rebaseline + repo cleanup; observer mode-label issue documented (not fixed).
+  1. **Native Windows build exported and shipped**. Added `godot/export_presets.cfg` (Windows Desktop, x86_64, excludes `tools/`, `tests/`, `qa/`, the unused nobodywho addon and the 3.1 GB `.gguf` weights) and gitignored `build/`. Export via `Godot_v4.7.2 --headless --path godot --export-release "Windows Desktop" "..\build\windows\ProjectChimera.exe"` → `ProjectChimera.exe` (104 MB) + `ProjectChimera.pck` (71 MB); verified it boots standalone with zero script errors. Uploaded as `project-chimera-windows-x64.zip` (99 MB) on release `v0.2.0-archival-cutaway`, which now leads with the native build and keeps the run-from-source zip as fallback. **Gotcha**: passing the preset name to `Start-Process` unquoted splits it to `Windows` and Godot exits with `Invalid export preset name` while still leaving a half-written `*.pck.tmp` on disk — always list the output dir, don't trust the exit.
+  2. **Visual QA rebaselined** on the Archival Cutaway look: `uv run tools/run_visual_shots.py --init` refreshed all 10 shots; gate run 10/10 PASS at 0.000%. `test_all` 15/15. Committed as `37252fd`.
+  3. **Deleted the stale `clean-main` branch** (remote + local) after re-verifying `ahead_by=0` immediately before the delete — it was 4 commits behind `main` and held nothing unique, so nothing was lost. A stale second branch was just a source of confusion about which tree is authoritative.
+  4. **Correction of my own earlier misdiagnosis**: `HANDOFF.md` was reported as encoding-corrupted (mojibake `?` in the title). It is **not** — strict UTF-8 decode passes with 0 replacement characters, the git blob renders `# Project Echo — Shared Coordination Document` correctly, and all 172 non-ASCII chars are legitimate (— – · × ° … → ↔ ≥ ✗). The garbage came from the Windows console using **code page 850**, which cannot render those glyphs. No repair was performed; "repairing" a healthy file would have damaged it. Lesson: validate bytes before claiming file corruption.
+  5. **Observer panel mode-label defect documented, deliberately NOT fixed** — see *Known issues / things to keep in mind* below. The bar reports `AI OFF` when the AI may be running perfectly well in LOCAL mode, because it keys off `server_online` rather than `resolve_mode()`; `get_mode_label()` already exists and the event log already tells the truth. Also captured the `TopBar` HBox width risk (+35% text) that must be checked before implementing. Awaiting a user decision.
+
 - **2026-09-22, Claude Code (opencode)**: Godot 4.7.2 port verification + SearchPoint orphan fix + visual QA rebaseline + MCP live re-verify.
   1. **Ported project to Godot 4.7.2** (`C:\Users\aditya\Desktop\Godot472\Godot_v4.7.2-stable_win64_console.exe`, verified `4.7.2.stable.official.ed1daf0bf`): repointed `tools/run_visual_shots.py`; headless `--import` clean.
   2. **Core test suites green on 4.7.2**: test_all, new_dorm_scenes 12/12, all_locations_load, prop_visuals, ui_node_paths, search/flow/interrogation wiring, full_playthrough, rest_wiring — all PASS.
@@ -482,6 +489,24 @@ startable (port 9876 last time). Once connected there, the next concrete steps a
   JSON files) — a known inconsistency, low priority to unify.
 - The real third-party "Locker" Godot addon was never adopted; `godot/addons/locker/save_manager.gd`
   is a hand-written stub matching its API shape.
+- **Observer panel top bar says `AI OFF` even when the AI is genuinely running**
+  (`godot/scenes/ui/observer_panel.gd:73`, OBSERVER mode = Tab). The line is
+  `var ai_text := "AI ON" if AIClient.server_online else "AI OFF"`, which keys off *server*
+  reachability — but the AI is never actually off: `AIClient.use_ai` defaults `true` and
+  `resolve_mode()` always returns SERVER → LOCAL → RULE_BASED. Two genuinely different states
+  therefore render identically as `AI OFF`: (a) FastAPI server down but NobodyWho loaded and
+  answering locally, (b) server down and no model, so we're on the deterministic rule fallback.
+  The player cannot tell "your local model works fine" from "you have degraded to rule-based".
+  `AIClient.get_mode_label()` (`ai_client.gd:59`) already returns the correct token, and
+  `ai_client.gd:81` already logs the truthful string to the event log
+  (`"AI server offline - using LOCAL"`) — so only the compact bar is wrong.
+  **Proposed fix, deliberately NOT implemented** (awaiting user decision):
+  `_status_label.text = "%s | AI: %s | %.1fx" % [pause_text, AIClient.get_mode_label(), Scheduler.speed_multiplier]`.
+  **Layout caveat to check first**: `TopBar` is an `HBoxContainer`, so a longer label grows
+  sideways and pushes `SpeedSlider`/`PlayBtn` right — `RUNNING | AI OFF | 1.0x` is 23 chars vs
+  `RUNNING | AI: RULE_BASED | 1.0x` at 31 chars (+35%), which could crowd at 1280×720. Prefer
+  abbreviating to `AI: SERVER` / `AI: LOCAL` / `AI: RULE` (~26 chars) to stay near the current
+  width. Only this one label is affected; the normal PLAY HUD has no AI indicator at all.
 
 ---
 
