@@ -18,6 +18,14 @@ enum AiMode { AUTO, SERVER, LOCAL, RULE_BASED }
 const BASE_URL := "http://localhost:8000"
 const MAX_CONCURRENT := 2
 const MAX_RETRIES := 3
+## Hard bound on a single /npc/decide HTTP call. Without it a connection that is accepted but
+## never answered keeps the request pending forever: `_active` is never decremented, the queue
+## freezes and the NPC decision callback is never delivered (CHI-003 defect #2).
+const DECIDE_TIMEOUT_SECONDS := 3.0
+## Health probe: hard bound so a hung backend cannot leave server_online unresolved, plus the
+## re-probe interval (previously the probe ran once and never again).
+const HEALTH_TIMEOUT_SECONDS := 3.0
+const HEALTH_INTERVAL_SECONDS := 15.0
 
 const NobodyWhoProvider := preload("res://scripts/ai/nobodywho_provider.gd")
 
@@ -30,6 +38,7 @@ var _queue: Array[Dictionary] = []
 var _active: int = 0
 var _requests: Array[HTTPRequest] = []
 var _retry_counts: Dictionary = {}
+var _health_busy := false
 
 
 func _ready() -> void:
@@ -38,6 +47,15 @@ func _ready() -> void:
 	add_child(_local_provider)
 	EventBus.subscribe("relationship_changed", _on_relationship_changed)
 	_check_health()
+	# The server can come up or go down after launch, and the old code probed exactly once in
+	# _ready(): a server started later was never discovered, and one that died left
+	# server_online latched true forever. Re-probe periodically; _on_health_completed only
+	# emits/logs when the answer actually changes.
+	var health_timer := Timer.new()
+	health_timer.wait_time = HEALTH_INTERVAL_SECONDS
+	health_timer.autostart = true
+	health_timer.timeout.connect(_check_health)
+	add_child(health_timer)
 
 
 ## Effective mode for this moment (resolves AUTO).
@@ -66,13 +84,23 @@ func get_mode_label() -> String:
 # --- Health (SERVER availability) ---
 
 func _check_health() -> void:
+	if _health_busy:
+		return  # never stack probes: one in flight is enough to know the current state
+	_health_busy = true
 	var req := HTTPRequest.new()
+	req.timeout = HEALTH_TIMEOUT_SECONDS
 	add_child(req)
 	req.request_completed.connect(_on_health_completed.bind(req))
-	req.request(BASE_URL + "/health")
+	var err := req.request(BASE_URL + "/health")
+	if err != OK:
+		# request() failed synchronously, so request_completed will never fire; resolve the
+		# probe here or _health_busy would stay set and block every later re-probe.
+		_on_health_completed(HTTPRequest.RESULT_CONNECTION_ERROR, 0, PackedStringArray(),
+			PackedByteArray(), req)
 
 
 func _on_health_completed(result: int, response_code: int, _headers: PackedStringArray, _body: PackedByteArray, req: HTTPRequest) -> void:
+	_health_busy = false
 	var was_online := server_online
 	server_online = result == HTTPRequest.RESULT_SUCCESS and response_code == 200
 	if was_online != server_online:
@@ -180,15 +208,12 @@ func _process_queue() -> void:
 func _send_decide_request(item: Dictionary) -> void:
 	_active += 1
 	var req := HTTPRequest.new()
+	req.timeout = DECIDE_TIMEOUT_SECONDS
 	add_child(req)
 	_requests.append(req)
 	var npc_id: String = item["npc_id"]
 	req.request_completed.connect(func(result, code, _h, body):
-		_active -= 1
-		_requests.erase(req)
-		req.queue_free()
-		_process_queue()
-
+		_release_request(req)
 		if result == HTTPRequest.RESULT_SUCCESS and code == 200:
 			_retry_counts.erase(npc_id)
 			var parsed = JSON.parse_string(body.get_string_from_utf8())
@@ -196,18 +221,61 @@ func _send_decide_request(item: Dictionary) -> void:
 				decision_received.emit(npc_id, parsed["action"])
 				item["callback"].call(parsed)
 				return
-
-		var retries: int = _retry_counts.get(npc_id, 0) + 1
-		_retry_counts[npc_id] = retries
-		if retries < MAX_RETRIES:
-			await get_tree().create_timer(pow(2, retries) * 0.5).timeout
-			_queue.push_front(item)
-			_process_queue()
-		else:
-			item["callback"].call({"action": _fallback_action(item["context"]), "source": "rule_based"})
+		if _is_unreachable(result):
+			# The backend is not there (or is not answering). A retry ladder only delays the
+			# fallback and leaves the NPC frozen, so deliver the rule-based decision now.
+			_deliver_fallback(item)
+			return
+		_retry_or_fallback(item)
 	)
 	var payload := JSON.stringify({"context": item["context"]})
-	req.request(BASE_URL + "/npc/decide", _headers(), HTTPClient.METHOD_POST, payload)
+	# request() reports "this never even started" synchronously. If that return code is
+	# discarded, request_completed above can never fire and the decision pipeline wedges
+	# with _active pinned and no fallback ever delivered (CHI-003 defect #2).
+	var err := req.request(BASE_URL + "/npc/decide", _headers(), HTTPClient.METHOD_POST, payload)
+	if err != OK:
+		_release_request(req)
+		_deliver_fallback(item)
+
+
+func _is_unreachable(result: int) -> bool:
+	return result in [
+		HTTPRequest.RESULT_CANT_RESOLVE,
+		HTTPRequest.RESULT_CANT_CONNECT,
+		HTTPRequest.RESULT_CONNECTION_ERROR,
+		HTTPRequest.RESULT_TIMEOUT,
+		HTTPRequest.RESULT_TLS_HANDSHAKE_ERROR,
+	]
+
+
+## Terminal delivery for one decide call. Always clears the per-NPC retry counter, otherwise
+## a single exhausted chain poisons every later decision for that NPC (the first failure would
+## immediately exceed MAX_RETRIES and never attempt a real request again).
+func _deliver_fallback(item: Dictionary) -> void:
+	_retry_counts.erase(item["npc_id"])
+	item["callback"].call({"action": _fallback_action(item["context"]), "source": "rule_based"})
+
+
+func _release_request(req: HTTPRequest) -> void:
+	_active -= 1
+	_requests.erase(req)
+	if is_instance_valid(req):
+		req.queue_free()
+	_process_queue()
+
+
+func _retry_or_fallback(item: Dictionary) -> void:
+	var npc_id: String = item["npc_id"]
+	var retries: int = _retry_counts.get(npc_id, 0) + 1
+	_retry_counts[npc_id] = retries
+	if retries >= MAX_RETRIES:
+		_deliver_fallback(item)
+		return
+	var delay: float = pow(2, retries) * 0.5
+	get_tree().create_timer(delay).timeout.connect(func():
+		_queue.push_front(item)
+		_process_queue()
+	)
 
 
 # --- Memory ---
