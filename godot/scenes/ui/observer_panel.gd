@@ -70,8 +70,13 @@ func _on_server_status(online: bool) -> void:
 
 func _update_status() -> void:
 	var pause_text := "PAUSED" if Scheduler.is_paused else "RUNNING"
-	var ai_text := "AI ON" if AIClient.server_online else "AI OFF"
-	_status_label.text = "%s | %s | %.1fx" % [pause_text, ai_text, Scheduler.speed_multiplier]
+	# Report the effective AI mode (resolve_mode), not server reachability alone: previously
+	# a working LOCAL model and the rule-based fallback both rendered as "AI OFF", so the
+	# player could not tell a healthy local model from a degraded one. Short labels keep the
+	# HBoxContainer top bar inside 1280x720.
+	_status_label.text = "%s | AI: %s | %.1fx" % [
+		pause_text, AIClient.get_mode_short_label(), Scheduler.speed_multiplier,
+	]
 
 
 func _refresh_log(_text: String, _cat: String, _id: String) -> void:

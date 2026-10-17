@@ -22,6 +22,12 @@ don't share memory or a runtime — treat this file as the handoff baton.
 
 ## Progress Log (append newest entries at the top)
 
+- **2026-10-16 (part 2), Claude Code (opencode)**: follow-up batch after `95fc102` — evidence doc, observer label fix, test batch.
+  1. **Evidence doc created**: `docs/evidence-baseline-2026-10-16.md` is now the in-repo point of record (replaces the read-only roadmap PDF): verified commit chain `483251c -> 37252fd -> ebc0481 -> 95fc102`, CHI-002 evidence + probe measurements, CHI-003 fix contract, harness rebuild history, native-export facts, environment lessons.
+  2. **Observer top bar FIXED** (was the deliberate open defect): `_update_status()` now shows the effective mode via new `AIClient.get_mode_short_label()` — `RUNNING | AI: SERVER | 1.0x` / `AI: LOCAL` / `AI: RULE` (short tokens keep the 1280x720 TopBar near its old width; worst case 25 chars vs the old 23). New regression test `godot/tests/test_observer_topbar_label.gd`: 27 checks GREEN, incl. TopBar fit / no-overlap / slider-width asserts with the longest token active.
+  3. **Remaining untracked tests committed**: 9 test files (test_effects, test_enhanced_interrogation, test_evidence_quality, test_music_manager, test_new_dorm_scenes, test_npc_relationships, test_particles, test_scheduled_events, test_sfx — 7 verified individually, all 9 via the suite) + 17 `.uid` sidecars, 8 of which belong to already-tracked tests (fresh clones could not parse them).
+  4. **Post-fix verification: full suite 71/71 green** (shards 24+24+23); visual QA gate re-verified 10/10 PASS at 0.000% drift, no baselines refreshed.
+
 - **2026-10-16, Claude Code (opencode)**: P0 AI-decision defect reproduced (CHI-002) and fixed (CHI-003); the test runner had to be rebuilt first because it had never actually run assertions.
   1. **`test_all.gd` was reporting green without testing anything.** The old runner counted `script.new()` inside `_initialize()`, which never executes under `--script`, so its "15/15" only proved 15 files *parsed*. Rewrote it as a real harness: discovers `test_*.gd`, spawns each in its own Godot process via `OS.execute`, uses the exit code, prints the first `FAIL:`/`SCRIPT ERROR` lines, supports `-- --filter=<s>` and `-- --shard=k/n`.
      - **Self-recursion bug in the first version**: discovery matched the runner itself (`test_all.gd` starts with `test_`), so it re-executed the whole suite from inside itself — **114 runaway Godot processes** before it was caught. Discovery now skips `test_all.gd`.
@@ -505,24 +511,11 @@ startable (port 9876 last time). Once connected there, the next concrete steps a
   JSON files) — a known inconsistency, low priority to unify.
 - The real third-party "Locker" Godot addon was never adopted; `godot/addons/locker/save_manager.gd`
   is a hand-written stub matching its API shape.
-- **Observer panel top bar says `AI OFF` even when the AI is genuinely running**
-  (`godot/scenes/ui/observer_panel.gd:73`, OBSERVER mode = Tab). The line is
-  `var ai_text := "AI ON" if AIClient.server_online else "AI OFF"`, which keys off *server*
-  reachability — but the AI is never actually off: `AIClient.use_ai` defaults `true` and
-  `resolve_mode()` always returns SERVER → LOCAL → RULE_BASED. Two genuinely different states
-  therefore render identically as `AI OFF`: (a) FastAPI server down but NobodyWho loaded and
-  answering locally, (b) server down and no model, so we're on the deterministic rule fallback.
-  The player cannot tell "your local model works fine" from "you have degraded to rule-based".
-  `AIClient.get_mode_label()` (`ai_client.gd:59`) already returns the correct token, and
-  `ai_client.gd:81` already logs the truthful string to the event log
-  (`"AI server offline - using LOCAL"`) — so only the compact bar is wrong.
-  **Proposed fix, deliberately NOT implemented** (awaiting user decision):
-  `_status_label.text = "%s | AI: %s | %.1fx" % [pause_text, AIClient.get_mode_label(), Scheduler.speed_multiplier]`.
-  **Layout caveat to check first**: `TopBar` is an `HBoxContainer`, so a longer label grows
-  sideways and pushes `SpeedSlider`/`PlayBtn` right — `RUNNING | AI OFF | 1.0x` is 23 chars vs
-  `RUNNING | AI: RULE_BASED | 1.0x` at 31 chars (+35%), which could crowd at 1280×720. Prefer
-  abbreviating to `AI: SERVER` / `AI: LOCAL` / `AI: RULE` (~26 chars) to stay near the current
-  width. Only this one label is affected; the normal PLAY HUD has no AI indicator at all.
+- ~~**Observer panel top bar says `AI OFF` even when the AI is genuinely running**~~ — **FIXED
+  2026-10-16**: `_update_status()` now renders the effective mode via `AIClient.get_mode_short_label()`
+  (`AI: SERVER` / `AI: LOCAL` / `AI: RULE`); regression test `godot/tests/test_observer_topbar_label.gd`
+  (27 checks, incl. the 1280x720 TopBar layout assert) is green. Details:
+  docs/evidence-baseline-2026-10-16.md section 10(a).
 
 ---
 

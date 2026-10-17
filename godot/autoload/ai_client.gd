@@ -81,6 +81,16 @@ func get_mode_label() -> String:
 		_: return "RULE_BASED"
 
 
+## Compact tokens for width-constrained UI bars. The observer top bar is an HBoxContainer at
+## 1280x720: the full "RULE_BASED" token inflates the status line by ~35% and crowds the
+## slider/play controls, so compact views get the abbreviated form.
+func get_mode_short_label() -> String:
+	match resolve_mode():
+		AiMode.SERVER: return "SERVER"
+		AiMode.LOCAL: return "LOCAL"
+		_: return "RULE"
+
+
 # --- Health (SERVER availability) ---
 
 func _check_health() -> void:
