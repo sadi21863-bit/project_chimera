@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Vulkan 1.2.170 - Forward+ - Using Device #0: AMD - AMD Radeon (TM) R5 M330
+
+MCPBridge: Listening on port 9879
+MCPBridge: Client connected
+ERROR: The InputMap action "notebook" doesn't exist. Did you mean "toggle_notebook"?
+   at: event_get_action_status (core/input/input_map.cpp:292)
+ERROR: The InputMap action "notebook" doesn't exist. Did you mean "toggle_notebook"?
+   at: event_get_action_status (core/input/input_map.cpp:292)
+ERROR: The InputMap action "notebook" doesn't exist. Did you mean "toggle_notebook"?
+   at: event_get_action_status (core/input/input_map.cpp:292)
+ERROR: The InputMap action "notebook" doesn't exist. Did you mean "toggle_notebook"?
+   at: event_get_action_status (core/input/input_map.cpp:292)

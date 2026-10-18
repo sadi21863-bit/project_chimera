@@ -1,0 +1,106 @@
+{
+  "pid": 7684,
+  "baseline_state": {
+    "day": 1,
+    "discovered_clues": [
+      "clue_keys",
+      "clue_pills",
+      "clue_wiring",
+      "clue_camera",
+      "clue_rehearsal",
+      "clue_moved_object",
+      "clue_sketch"
+    ],
+    "evidence_count": 7,
+    "hour": 7.0,
+    "location": "dorm",
+    "phase": 0,
+    "standing": {
+      "alex": -0.2,
+      "casey": 0.0,
+      "jordan": 0.0,
+      "morgan": 0.0,
+      "riley": 0.0,
+      "sam": 0.0
+    }
+  },
+  "post_choice_state": {
+    "day": 1,
+    "discovered_clues": [
+      "clue_keys",
+      "clue_pills",
+      "clue_wiring",
+      "clue_camera",
+      "clue_rehearsal",
+      "clue_moved_object",
+      "clue_sketch"
+    ],
+    "evidence_count": 7,
+    "hour": 7.06666666666667,
+    "location": "dorm",
+    "phase": 1,
+    "standing": {
+      "alex": -0.2,
+      "casey": 0.0,
+      "jordan": 0.0,
+      "morgan": 0.0,
+      "riley": 0.0,
+      "sam": 0.0
+    }
+  },
+  "baseline_ai_client": {
+    "raw": "[\"RULE_BASED\", false, 0, 0, 0]"
+  },
+  "final_ai_client": {
+    "raw": "[\"RULE_BASED\", false, 0, 0, 0]"
+  },
+  "baseline_npcs": {
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/NPC": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@61": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@62": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@63": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@64": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@65": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    }
+  },
+  "final_npcs": {
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/NPC": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@61": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@62": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@63": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@64": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    },
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@65": {
+      "bb": "[\"MISSING\", \"MISSING\", -2]"
+    }
+  },
+  "baseline_log_lines": 5,
+  "final_log_total_lines": 7,
+  "new_log_lines": [
+    "[08:00 Day 1] Jordan moving to bathroom",
+    "[09:00 Day 1] Casey moving to kitchen"
+  ],
+  "samples": 30,
+  "game_log_tail": [],
+  "duration_capture_s": 210
+}
