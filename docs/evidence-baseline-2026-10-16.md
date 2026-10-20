@@ -207,10 +207,23 @@ terminates [git].
 
 ## 8. Current verification status (2026-10-16)
 
-- **71 test files executed, 71/71 green** [recorded] — re-run AFTER the observer label fix, so it
-  covers the final state of both follow-up commits. On-disk cross-check: 72 `test_*.gd` files
-  exist, of which one is the runner itself (`test_all.gd`, excluded by discovery) — 71 executed
-  [worktree]. Run as three shards: **24 + 24 + 23** [recorded].
+- **77 test files executed, 77/77 green** [recorded] — re-run after the model-download-flow work
+  (2026-10-20), so it covers the final state. On-disk cross-check: 78 `test_*.gd` files exist, of
+  which one is the runner itself (`test_all.gd`, excluded by discovery) — 77 executed [worktree].
+  Run as three shards: **26 + 26 + 25** [recorded]. (Earlier counts in this document: 71/71 then
+  70/70; the suite grew with the new model-flow tests.)
+- **Packaged-game re-validation: PASS** [recorded] — the re-exported Windows build (2026-10-20)
+  completes full NPC decision cycles: 29 AI actions executed with real NPC movement (casey 793 px,
+  morgan 633 px, sam 377 px, jordan 223 px) and room transitions (`bedroom_6↔bedroom_1` ×6,
+  `bedroom_5→bedroom_1→kitchen`); `ai_decision_seq` climbs monotonically (sam 0→22, casey 0→18,
+  morgan 0→11, jordan 0→4) so NPCs re-enter eligibility; zero duplicate/stacked requests
+  (`AIClient._queue/_active/_requests` = 0 at every sample, minimum 14 game-minutes between two
+  publishes for one NPC against a 5 s gate); game alive throughout; RULE_BASED mode reported as
+  expected; zero gdextension / nobodywho / AI-decision lines in the packaged log. Method and
+  per-assertion evidence: `docs/exe-gameplay-validation.md` Part 2.
+- **Local-AI runtime loader: 10 checks / 0 failures** [recorded]
+  (`godot/tests/test_local_ai_runtime.gd`) — DLL discovery, runtime `.gdextension` generation with
+  an absolute library path, `GDExtensionManager.load_extension` → `ClassDB` registration, idempotency.
 - **CHI-002 suite: 30 checks / 0 failures** [recorded] on top of a RED 14/28 pre-fix run (section 5).
 - **Observer top-bar label suite: 27 checks / 0 failures** [recorded]
   (`godot/tests/test_observer_topbar_label.gd`): per-mode token mapping, no "AI OFF" in any mode,
@@ -249,47 +262,73 @@ terminates [git].
   (headless boot green at HEAD, section 8) — evidence about the *engine* is strong; evidence about
   the *packaged export* stops at the boot check. Do not treat (a) as covering (b).
 
-**Accepted limitation — LOCAL model inference unavailable in the release.** The export excludes
-`models/*` (the 3.1 GB `.gguf` weights) [worktree: exclude filter verified], so the shipped build
-can only run **SERVER or RULE_BASED** AI; LOCAL inference is unavailable in the release [follows
-from the filter + the mode fallback ordering]. This is effectively forced by archive size and is
-recorded as an accepted limitation pending a product decision.
+### 9.1 Re-export and packaged re-validation (2026-10-20)
+
+- Rebuilt from the fixed tree: `build/windows/ProjectChimera.exe` **109,137,408 bytes** (18:23) and
+  `ProjectChimera.pck` **74,114,524 bytes** (18:27) [worktree]. Build is scripted:
+  `tools/build-windows.ps1` (export + stage the Local-AI runtime).
+- The NobodyWho GDExtension is **not** in the PCK and is **not** auto-loaded — an engine-startup
+  load measured ~43 s of init on this hardware, versus ~2.4 s for a runtime load, so it ships as a
+  loose file next to the executable (`build/windows/addons/nobodywho/libnobodywho-…dll`,
+  78,617,600 bytes) and is loaded on demand by the new `LocalAI` autoload. See
+  `docs/model-download-flow-design.md` §12.
+- **Gameplay re-validation: PASS** — every assertion from the failed original package now passes
+  (29 AI actions, real movement and room transitions, `ai_decision_seq` climbing, no duplicate
+  requests, game alive, RULE_BASED mode, zero gdextension/AI-decision log lines). Evidence:
+  `docs/exe-gameplay-validation.md` Part 2.
+- The rebuilt executable is **not published** — a new release/tag needs an owner decision (section
+  10a).
+
+**Accepted limitation — LOCAL model inference is not in the shipped build *by default*.** The export
+still excludes `models/*` (the 3.1 GB `.gguf` weights) [worktree: exclude filter verified], so a
+fresh install can only run **SERVER or RULE_BASED**; LOCAL is now reachable *if* the player opts in
+— the game downloads a GGUF on demand and loads the inference runtime on request
+(`docs/model-download-flow-design.md`). The runtime DLL ships untracked in git (repo policy), so a
+fresh clone cannot produce that build until the DLL is restored.
 
 ## 10. Still open
 
-**(a) Observer panel mode-label defect — FIXED on 2026-10-16** (was documented as known-but-not-
-fixed in commit `ebc0481` [git]; the defect as it existed: `godot/scenes/ui/observer_panel.gd:73`
-was `var ai_text := "AI ON" if AIClient.server_online else "AI OFF"`, keying the top bar off
-server reachability instead of `resolve_mode()`, so LOCAL and RULE_BASED both rendered as
-"AI OFF" and the player could not tell "local model works fine" from "degraded to rules").
+**(a) The shipped v0.2.0 release was broken; the re-exported build is validated but not published.**
+`docs/exe-gameplay-validation.md` Part 1 documents the original package (2026-10-15 pck) shipping
+the pre-fix AI leaf: the published `v0.2.0-archival-cutaway` asset therefore cannot complete an
+NPC decision cycle. Part 2 documents the re-exported build (2026-10-20) passing every assertion.
+**Open:** the rebuilt executable is not published — a new release/tag for it needs an owner
+decision, and the `v0.2.0` notes were corrected in place to state the defect honestly.
 
-The fix, committed together with this document:
+**(b) Navigation wedge (pre-existing, surfaced by the re-validation)** — `alex` and `riley` never
+become AI-eligible: their `ScheduleBranch` stays in `MoveToMarker` because `_navigating` never
+clears, even though the nav mesh is present (20 verts / 12 polys) and the target is reachable; the
+agent is physically blocked (`alex` pinned at 500,520 for 45 s+). The root selector therefore never
+reaches the AIBranch — this is a movement bug, not an AI bug, and it also explains part of the
+original package's symptom. Recoverability is untested (a remediation experiment aborted on a
+harness bug).
 
-- New `AIClient.get_mode_short_label()` returns the compact token — `SERVER` / `LOCAL` / `RULE`
-  (`get_mode_label()` still returns the full `RULE_BASED` for logs).
-- `_update_status()` now renders `RUNNING | AI: <mode> | 1.0x`.
-- Short tokens were chosen over full labels because `TopBar` is an `HBoxContainer` at 1280x720:
-  the abbreviated worst case (`RUNNING | AI: SERVER | 1.0x`, 25 chars) stays near the old width
-  (23 chars), while the full form (31 chars) is +35%.
-- Covered by `godot/tests/test_observer_topbar_label.gd` — 27 checks (section 8), including the
-  TopBar fit/overlap/slider-width layout assert with the longest token active.
+**(c) `_fallback_action()` maps any "bedroom" goal to `bedroom_1`** — so the AI drags NPCs out of
+their own rooms and the schedule walks them back (29 such lines in one 5-game-hour session; 6
+round trips for one NPC).
 
-**(b) Untracked test files — RESOLVED on 2026-10-16.** The brief said ~7; the verified count was
-**9 untracked `.gd` test files** plus **17 untracked `.uid` sidecars** under `godot/tests/`
-[git: `git status --porcelain godot/tests`]. The `.gd` files — `test_effects.gd`,
-`test_enhanced_interrogation.gd`, `test_evidence_quality.gd`, `test_music_manager.gd`,
-`test_new_dorm_scenes.gd`, `test_npc_relationships.gd`, `test_particles.gd`,
-`test_scheduled_events.gd`, `test_sfx.gd` — were verified individually (7 of 9 run one-by-one,
-all PASS exit 0; all 9 exercised again in the 71/71 suite, section 8) and committed together with
-the 17 `.uid` sidecars, 8 of which belong to already-tracked tests whose sidecars were missing
-(fresh clones could not parse them). Committed in the untracked-test follow-up commit named in
-section 2.
+**(d) LOCAL decision wall-clock cap** (design doc §9.4) — a downloaded 1 B model on this CPU class
+was measured at 90 s+ per decision, and the `request_ai_decision` leaf holds `WAITING` with no
+deadline. Needs a product decision (a cap changes freeze semantics).
 
-**(c) Non-code-confirmed roadmap items remain unstarted by design** (art, dialogue, presentation).
-The acceptance criterion gating them: an NPC receives, validates, executes and changes world
-state, then becomes eligible again with no duplicate requests and no lost responses. The CHI-002
-`npc.tscn` branch integration check (test 8, section 5) now covers exactly this, so the gate can
-be evaluated mechanically rather than by eyeball.
+**(e) Model download flow — remaining product decisions** (design doc §9.2–§9.7): catalog contents
+(Qwen dropped on merit, gemma as an optional second entry), auto-download on first run, the
+Llama-3.2 / NobodyWho attribution paragraphs for the credits screen, and installer-channel limits
+for the loose 78.6 MB runtime DLL. The DLL is shipped untracked in git (repo policy), so a fresh
+clone builds the game but not the LOCAL-AI runtime until the DLL is restored (size and SHA-256
+pinned in `docs/model-download-flow-design.md` §11).
+
+**(f) Non-code-confirmed roadmap items remain unstarted by design** (art, dialogue, presentation) —
+now researched in depth: `docs/roadmap-research/art.md`, `dialogue.md`, `presentation.md`. Each
+track states what exists (cited), what the roadmap demands (quoted), the gap analysis, a
+prioritized proposal with the first three builds, and the open questions that need the owner
+(art-bible scope, localization, branching depth, music licensing, renderer policy).
+
+**(g) Smaller verified defects** — `InputMap action "notebook" doesn't exist` (the relationship
+panel listens for an action named `notebook`; the map defines `toggle_notebook`); `story_choice`
+leaves the StoryScreen overlay up over the live HUD; `EventLog.get_filtered(x)` filters by
+`npc_id`, not by category; present-evidence is implemented and tested but has no live UI caller.
+
 
 ## 11. Environment lessons that cost time
 

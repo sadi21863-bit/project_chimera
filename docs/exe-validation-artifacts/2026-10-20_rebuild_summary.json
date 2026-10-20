@@ -1,0 +1,5023 @@
+{
+  "pid": 13212,
+  "npc_paths": [
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/NPC",
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@74",
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@75",
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@76",
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@77",
+    "/root/Main/LocationHost/CrestwoodHall/NPCs/@CharacterBody2D@78"
+  ],
+  "baseline": {
+    "state": {
+      "day": 1,
+      "discovered_clues": [],
+      "evidence_count": 1,
+      "hour": 7.0,
+      "location": "dorm",
+      "phase": 0,
+      "standing": {
+        "alex": -0.2,
+        "casey": 0.0,
+        "jordan": 0.0,
+        "morgan": 0.0,
+        "riley": 0.0,
+        "sam": 0.0
+      }
+    },
+    "time": {
+      "day": 1,
+      "hour": 7.0
+    },
+    "ai": [
+      "RULE_BASED",
+      "RULE",
+      false,
+      false,
+      0,
+      0,
+      0,
+      false,
+      ""
+    ],
+    "nav": null,
+    "log_lines": 5
+  },
+  "post_choice_state": {
+    "day": 1,
+    "discovered_clues": [],
+    "evidence_count": 1,
+    "hour": 7.1,
+    "location": "dorm",
+    "phase": 1,
+    "standing": {
+      "alex": -0.2,
+      "casey": 0.0,
+      "jordan": 0.0,
+      "morgan": 0.0,
+      "riley": 0.0,
+      "sam": 0.0
+    }
+  },
+  "final_ai": [
+    "RULE_BASED",
+    "RULE",
+    false,
+    false,
+    0,
+    0,
+    0,
+    false,
+    ""
+  ],
+  "final_nav": null,
+  "ai_category_lines": [],
+  "movement_category_lines": [],
+  "new_log_lines": [
+    "[07:05 Day 1] Jordan moving to bedroom_1",
+    "[07:05 Day 1] Sam moving to bedroom_1",
+    "[07:05 Day 1] Casey moving to bedroom_1",
+    "[07:07 Day 1] Jordan decided to move to bedroom_1",
+    "[07:07 Day 1] Jordan moving to bedroom_2",
+    "[07:09 Day 1] Jordan arrived at bedroom_2",
+    "[07:09 Day 1] Sam decided to move to bedroom_1",
+    "[07:09 Day 1] Sam moving to bedroom_3",
+    "[07:13 Day 1] Sam arrived at bedroom_3",
+    "[07:15 Day 1] Casey decided to move to bedroom_1",
+    "[07:15 Day 1] Casey moving to bedroom_6",
+    "[07:25 Day 1] Casey arrived at bedroom_6",
+    "[07:27 Day 1] Jordan moving to bedroom_1",
+    "[07:29 Day 1] Jordan decided to move to bedroom_1",
+    "[07:29 Day 1] Jordan moving to bedroom_2",
+    "[07:29 Day 1] Sam moving to bedroom_1",
+    "[07:31 Day 1] Jordan arrived at bedroom_2",
+    "[07:33 Day 1] Sam decided to move to bedroom_1",
+    "[07:33 Day 1] Sam moving to bedroom_3",
+    "[07:35 Day 1] Casey moving to bedroom_1",
+    "[07:36 Day 1] Sam arrived at bedroom_3",
+    "[07:45 Day 1] Casey decided to move to bedroom_1",
+    "[07:45 Day 1] Casey moving to bedroom_6",
+    "[07:49 Day 1] Jordan moving to bedroom_1",
+    "[07:51 Day 1] Jordan decided to move to bedroom_1",
+    "[07:51 Day 1] Jordan moving to bedroom_2",
+    "[07:53 Day 1] Jordan arrived at bedroom_2",
+    "[07:53 Day 1] Sam moving to bedroom_1",
+    "[07:54 Day 1] Casey arrived at bedroom_6",
+    "[07:57 Day 1] Sam decided to move to bedroom_1",
+    "[07:57 Day 1] Sam moving to bedroom_3",
+    "[08:00 Day 1] Jordan moving to bathroom",
+    "[08:00 Day 1] Sam arrived at bedroom_3",
+    "[08:05 Day 1] Casey moving to bedroom_1",
+    "[08:15 Day 1] Casey decided to move to bedroom_1",
+    "[08:15 Day 1] Casey moving to bedroom_6",
+    "[08:17 Day 1] Sam moving to bedroom_1",
+    "[08:21 Day 1] Sam decided to move to bedroom_1",
+    "[08:21 Day 1] Sam moving to bedroom_3",
+    "[08:24 Day 1] Sam arrived at bedroom_3",
+    "[08:25 Day 1] Casey arrived at bedroom_6",
+    "[08:35 Day 1] Casey moving to bedroom_1",
+    "[08:41 Day 1] Sam moving to bedroom_1",
+    "[08:45 Day 1] Sam decided to move to bedroom_1",
+    "[08:45 Day 1] Sam moving to bedroom_3",
+    "[08:45 Day 1] Casey decided to move to bedroom_1",
+    "[08:45 Day 1] Casey moving to bedroom_6",
+    "[08:49 Day 1] Sam arrived at bedroom_3",
+    "[08:55 Day 1] Casey arrived at bedroom_6",
+    "[09:00 Day 1] Casey moving to kitchen",
+    "[09:05 Day 1] Morgan moving to bedroom_1",
+    "[09:05 Day 1] Sam moving to bedroom_1",
+    "[09:09 Day 1] Sam decided to move to bedroom_1",
+    "[09:09 Day 1] Sam moving to bedroom_3",
+    "[09:11 Day 1] Morgan decided to move to bedroom_1",
+    "[09:11 Day 1] Morgan arrived at bedroom_5",
+    "[09:13 Day 1] Sam arrived at bedroom_3",
+    "[09:25 Day 1] Morgan moving to bedroom_1",
+    "[09:25 Day 1] Morgan decided to move to bedroom_1",
+    "[09:25 Day 1] Morgan moving to bedroom_5",
+    "[09:29 Day 1] Sam moving to bedroom_1",
+    "[09:33 Day 1] Morgan arrived at bedroom_5",
+    "[09:33 Day 1] Sam decided to move to bedroom_1",
+    "[09:33 Day 1] Sam moving to bedroom_3",
+    "[09:35 Day 1] Casey moving to bedroom_1",
+    "[09:37 Day 1] Sam arrived at bedroom_3",
+    "[09:41 Day 1] Casey decided to move to bedroom_1",
+    "[09:41 Day 1] Casey arrived at bedroom_6",
+    "[09:53 Day 1] Morgan moving to bedroom_1",
+    "[09:53 Day 1] Sam moving to bedroom_1",
+    "[09:55 Day 1] Casey moving to bedroom_1",
+    "[09:55 Day 1] Casey decided to move to bedroom_1",
+    "[09:55 Day 1] Casey moving to bedroom_6",
+    "[09:57 Day 1] Sam decided to move to bedroom_1",
+    "[09:57 Day 1] Sam moving to bedroom_3",
+    "[10:01 Day 1] Morgan decided to move to bedroom_1",
+    "[10:01 Day 1] Sam arrived at bedroom_3",
+    "[10:01 Day 1] Morgan moving to bedroom_5",
+    "[10:05 Day 1] Casey arrived at bedroom_6",
+    "[10:08 Day 1] Morgan arrived at bedroom_5",
+    "[10:17 Day 1] Sam moving to bedroom_1",
+    "[10:21 Day 1] Sam decided to move to bedroom_1",
+    "[10:21 Day 1] Sam moving to bedroom_3",
+    "[10:21 Day 1] Morgan moving to bedroom_1",
+    "[10:25 Day 1] Sam arrived at bedroom_3",
+    "[10:25 Day 1] Casey moving to bedroom_1",
+    "[10:29 Day 1] Morgan decided to move to bedroom_1",
+    "[10:29 Day 1] Morgan moving to bedroom_5",
+    "[10:35 Day 1] Casey decided to move to bedroom_1",
+    "[10:35 Day 1] Casey moving to bedroom_6",
+    "[10:36 Day 1] Morgan arrived at bedroom_5",
+    "[10:41 Day 1] Sam moving to bedroom_1",
+    "[10:45 Day 1] Casey arrived at bedroom_6",
+    "[10:45 Day 1] Sam decided to move to bedroom_1",
+    "[10:45 Day 1] Sam moving to bedroom_3",
+    "[10:49 Day 1] Sam arrived at bedroom_3",
+    "[10:49 Day 1] Morgan moving to bedroom_1",
+    "[10:55 Day 1] Casey moving to bedroom_1",
+    "[10:57 Day 1] Morgan decided to move to bedroom_1",
+    "[10:57 Day 1] Morgan moving to bedroom_5",
+    "[11:00 Day 1] Sam moving to kitchen",
+    "[11:04 Day 1] Morgan arrived at kitchen",
+    "[11:05 Day 1] Casey decided to move to bedroom_1",
+    "[11:05 Day 1] Casey moving to bedroom_6",
+    "[11:15 Day 1] Casey arrived at bedroom_6",
+    "[11:25 Day 1] Casey moving to bedroom_1",
+    "[11:30 Day 1] Morgan moving to common_room",
+    "[11:35 Day 1] Casey decided to move to bedroom_1",
+    "[11:35 Day 1] Casey moving to bedroom_6",
+    "[11:35 Day 1] Sam moving to bedroom_1",
+    "[11:39 Day 1] Sam decided to move to bedroom_1",
+    "[11:39 Day 1] Sam arrived at bedroom_3",
+    "[11:45 Day 1] Casey arrived at bedroom_6",
+    "[11:55 Day 1] Sam moving to bedroom_1",
+    "[11:55 Day 1] Casey moving to bedroom_1",
+    "[11:55 Day 1] Sam decided to move to bedroom_1",
+    "[11:55 Day 1] Sam moving to bedroom_3",
+    "[11:59 Day 1] Sam arrived at bedroom_3"
+  ],
+  "seq_history": {
+    "alex": [
+      [
+        138.41,
+        -2
+      ],
+      [
+        148.57,
+        -2
+      ],
+      [
+        159.21,
+        -2
+      ],
+      [
+        169.65,
+        -2
+      ],
+      [
+        181.13,
+        -2
+      ],
+      [
+        193.4,
+        -2
+      ],
+      [
+        202.41,
+        -2
+      ],
+      [
+        211.48,
+        -2
+      ],
+      [
+        221.46,
+        -2
+      ],
+      [
+        230.86,
+        -2
+      ],
+      [
+        240.33,
+        -2
+      ],
+      [
+        250.41,
+        -2
+      ],
+      [
+        261.97,
+        -2
+      ],
+      [
+        276.97,
+        -2
+      ],
+      [
+        287.61,
+        -2
+      ],
+      [
+        297.13,
+        -2
+      ],
+      [
+        306.39,
+        -2
+      ],
+      [
+        315.87,
+        -2
+      ],
+      [
+        325.06,
+        -2
+      ],
+      [
+        334.67,
+        -2
+      ],
+      [
+        343.02,
+        -2
+      ],
+      [
+        353.87,
+        -2
+      ],
+      [
+        363.39,
+        -2
+      ],
+      [
+        371.45,
+        -2
+      ],
+      [
+        380.4,
+        -2
+      ],
+      [
+        390.24,
+        -2
+      ],
+      [
+        398.95,
+        -2
+      ],
+      [
+        408.98,
+        -2
+      ],
+      [
+        417.74,
+        -2
+      ],
+      [
+        429.52,
+        -2
+      ]
+    ],
+    "jordan": [
+      [
+        138.41,
+        0
+      ],
+      [
+        148.57,
+        1
+      ],
+      [
+        159.21,
+        2
+      ],
+      [
+        169.65,
+        3
+      ],
+      [
+        181.13,
+        4
+      ],
+      [
+        193.4,
+        4
+      ],
+      [
+        202.41,
+        4
+      ],
+      [
+        211.48,
+        4
+      ],
+      [
+        221.46,
+        4
+      ],
+      [
+        230.86,
+        4
+      ],
+      [
+        240.33,
+        4
+      ],
+      [
+        250.41,
+        4
+      ],
+      [
+        261.97,
+        4
+      ],
+      [
+        276.97,
+        4
+      ],
+      [
+        287.61,
+        4
+      ],
+      [
+        297.13,
+        4
+      ],
+      [
+        306.39,
+        4
+      ],
+      [
+        315.87,
+        4
+      ],
+      [
+        325.06,
+        4
+      ],
+      [
+        334.67,
+        4
+      ],
+      [
+        343.02,
+        4
+      ],
+      [
+        353.87,
+        4
+      ],
+      [
+        363.39,
+        4
+      ],
+      [
+        371.45,
+        4
+      ],
+      [
+        380.4,
+        4
+      ],
+      [
+        390.24,
+        4
+      ],
+      [
+        398.95,
+        4
+      ],
+      [
+        408.98,
+        4
+      ],
+      [
+        417.74,
+        4
+      ],
+      [
+        429.52,
+        4
+      ]
+    ],
+    "sam": [
+      [
+        138.41,
+        0
+      ],
+      [
+        148.57,
+        1
+      ],
+      [
+        159.21,
+        2
+      ],
+      [
+        169.65,
+        3
+      ],
+      [
+        181.13,
+        4
+      ],
+      [
+        193.4,
+        5
+      ],
+      [
+        202.41,
+        5
+      ],
+      [
+        211.48,
+        6
+      ],
+      [
+        221.46,
+        7
+      ],
+      [
+        230.86,
+        8
+      ],
+      [
+        240.33,
+        8
+      ],
+      [
+        250.41,
+        10
+      ],
+      [
+        261.97,
+        10
+      ],
+      [
+        276.97,
+        12
+      ],
+      [
+        287.61,
+        12
+      ],
+      [
+        297.13,
+        13
+      ],
+      [
+        306.39,
+        14
+      ],
+      [
+        315.87,
+        15
+      ],
+      [
+        325.06,
+        16
+      ],
+      [
+        334.67,
+        16
+      ],
+      [
+        343.02,
+        17
+      ],
+      [
+        353.87,
+        18
+      ],
+      [
+        363.39,
+        19
+      ],
+      [
+        371.45,
+        19
+      ],
+      [
+        380.4,
+        19
+      ],
+      [
+        390.24,
+        19
+      ],
+      [
+        398.95,
+        19
+      ],
+      [
+        408.98,
+        20
+      ],
+      [
+        417.74,
+        21
+      ],
+      [
+        429.52,
+        22
+      ]
+    ],
+    "riley": [
+      [
+        138.41,
+        -2
+      ],
+      [
+        148.57,
+        -2
+      ],
+      [
+        159.21,
+        -2
+      ],
+      [
+        169.65,
+        -2
+      ],
+      [
+        181.13,
+        -2
+      ],
+      [
+        193.4,
+        -2
+      ],
+      [
+        202.41,
+        -2
+      ],
+      [
+        211.48,
+        -2
+      ],
+      [
+        221.46,
+        -2
+      ],
+      [
+        230.86,
+        -2
+      ],
+      [
+        240.33,
+        -2
+      ],
+      [
+        250.41,
+        -2
+      ],
+      [
+        261.97,
+        -2
+      ],
+      [
+        276.97,
+        -2
+      ],
+      [
+        287.61,
+        -2
+      ],
+      [
+        297.13,
+        -2
+      ],
+      [
+        306.39,
+        -2
+      ],
+      [
+        315.87,
+        -2
+      ],
+      [
+        325.06,
+        -2
+      ],
+      [
+        334.67,
+        -2
+      ],
+      [
+        343.02,
+        -2
+      ],
+      [
+        353.87,
+        -2
+      ],
+      [
+        363.39,
+        -2
+      ],
+      [
+        371.45,
+        -2
+      ],
+      [
+        380.4,
+        -2
+      ],
+      [
+        390.24,
+        -2
+      ],
+      [
+        398.95,
+        -2
+      ],
+      [
+        408.98,
+        -2
+      ],
+      [
+        417.74,
+        -2
+      ],
+      [
+        429.52,
+        -2
+      ]
+    ],
+    "morgan": [
+      [
+        138.41,
+        -2
+      ],
+      [
+        148.57,
+        -2
+      ],
+      [
+        159.21,
+        -2
+      ],
+      [
+        169.65,
+        -2
+      ],
+      [
+        181.13,
+        -2
+      ],
+      [
+        193.4,
+        -2
+      ],
+      [
+        202.41,
+        -2
+      ],
+      [
+        211.48,
+        -2
+      ],
+      [
+        221.46,
+        -2
+      ],
+      [
+        230.86,
+        -2
+      ],
+      [
+        240.33,
+        -2
+      ],
+      [
+        250.41,
+        0
+      ],
+      [
+        261.97,
+        1
+      ],
+      [
+        276.97,
+        2
+      ],
+      [
+        287.61,
+        2
+      ],
+      [
+        297.13,
+        3
+      ],
+      [
+        306.39,
+        4
+      ],
+      [
+        315.87,
+        4
+      ],
+      [
+        325.06,
+        5
+      ],
+      [
+        334.67,
+        6
+      ],
+      [
+        343.02,
+        6
+      ],
+      [
+        353.87,
+        7
+      ],
+      [
+        363.39,
+        8
+      ],
+      [
+        371.45,
+        8
+      ],
+      [
+        380.4,
+        9
+      ],
+      [
+        390.24,
+        10
+      ],
+      [
+        398.95,
+        11
+      ],
+      [
+        408.98,
+        11
+      ],
+      [
+        417.74,
+        11
+      ],
+      [
+        429.52,
+        11
+      ]
+    ],
+    "casey": [
+      [
+        138.41,
+        0
+      ],
+      [
+        148.57,
+        1
+      ],
+      [
+        159.21,
+        2
+      ],
+      [
+        169.65,
+        2
+      ],
+      [
+        181.13,
+        3
+      ],
+      [
+        193.4,
+        4
+      ],
+      [
+        202.41,
+        4
+      ],
+      [
+        211.48,
+        5
+      ],
+      [
+        221.46,
+        6
+      ],
+      [
+        230.86,
+        6
+      ],
+      [
+        240.33,
+        7
+      ],
+      [
+        250.41,
+        7
+      ],
+      [
+        261.97,
+        7
+      ],
+      [
+        276.97,
+        7
+      ],
+      [
+        287.61,
+        8
+      ],
+      [
+        297.13,
+        9
+      ],
+      [
+        315.87,
+        10
+      ],
+      [
+        325.06,
+        11
+      ],
+      [
+        334.67,
+        12
+      ],
+      [
+        343.02,
+        12
+      ],
+      [
+        353.87,
+        13
+      ],
+      [
+        363.39,
+        14
+      ],
+      [
+        371.45,
+        14
+      ],
+      [
+        380.4,
+        14
+      ],
+      [
+        390.24,
+        15
+      ],
+      [
+        398.95,
+        16
+      ],
+      [
+        408.98,
+        16
+      ],
+      [
+        417.74,
+        17
+      ],
+      [
+        429.52,
+        18
+      ]
+    ]
+  },
+  "action_history": {
+    "alex": [
+      [
+        138.41,
+        "MISSING"
+      ],
+      [
+        148.57,
+        "MISSING"
+      ],
+      [
+        159.21,
+        "MISSING"
+      ],
+      [
+        169.65,
+        "MISSING"
+      ],
+      [
+        181.13,
+        "MISSING"
+      ],
+      [
+        193.4,
+        "MISSING"
+      ],
+      [
+        202.41,
+        "MISSING"
+      ],
+      [
+        211.48,
+        "MISSING"
+      ],
+      [
+        221.46,
+        "MISSING"
+      ],
+      [
+        230.86,
+        "MISSING"
+      ],
+      [
+        240.33,
+        "MISSING"
+      ],
+      [
+        250.41,
+        "MISSING"
+      ],
+      [
+        261.97,
+        "MISSING"
+      ],
+      [
+        276.97,
+        "MISSING"
+      ],
+      [
+        287.61,
+        "MISSING"
+      ],
+      [
+        297.13,
+        "MISSING"
+      ],
+      [
+        306.39,
+        "MISSING"
+      ],
+      [
+        315.87,
+        "MISSING"
+      ],
+      [
+        325.06,
+        "MISSING"
+      ],
+      [
+        334.67,
+        "MISSING"
+      ],
+      [
+        343.02,
+        "MISSING"
+      ],
+      [
+        353.87,
+        "MISSING"
+      ],
+      [
+        363.39,
+        "MISSING"
+      ],
+      [
+        371.45,
+        "MISSING"
+      ],
+      [
+        380.4,
+        "MISSING"
+      ],
+      [
+        390.24,
+        "MISSING"
+      ],
+      [
+        398.95,
+        "MISSING"
+      ],
+      [
+        408.98,
+        "MISSING"
+      ],
+      [
+        417.74,
+        "MISSING"
+      ],
+      [
+        429.52,
+        "MISSING"
+      ]
+    ],
+    "jordan": [
+      [
+        138.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        148.57,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        159.21,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        169.65,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        181.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        193.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        202.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        211.48,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        221.46,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        230.86,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        240.33,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        250.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        261.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        276.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        287.61,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        297.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        306.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        315.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        325.06,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        334.67,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        343.02,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        353.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        363.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        371.45,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        380.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        390.24,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        398.95,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        408.98,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        417.74,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        429.52,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ]
+    ],
+    "sam": [
+      [
+        138.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        148.57,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        159.21,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        169.65,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        181.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        193.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        202.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        211.48,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        221.46,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        230.86,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        240.33,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        250.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        261.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        276.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        287.61,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        297.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        306.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        315.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        325.06,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        334.67,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        343.02,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        353.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        363.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        371.45,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        380.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        390.24,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        398.95,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        408.98,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        417.74,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        429.52,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ]
+    ],
+    "riley": [
+      [
+        138.41,
+        "MISSING"
+      ],
+      [
+        148.57,
+        "MISSING"
+      ],
+      [
+        159.21,
+        "MISSING"
+      ],
+      [
+        169.65,
+        "MISSING"
+      ],
+      [
+        181.13,
+        "MISSING"
+      ],
+      [
+        193.4,
+        "MISSING"
+      ],
+      [
+        202.41,
+        "MISSING"
+      ],
+      [
+        211.48,
+        "MISSING"
+      ],
+      [
+        221.46,
+        "MISSING"
+      ],
+      [
+        230.86,
+        "MISSING"
+      ],
+      [
+        240.33,
+        "MISSING"
+      ],
+      [
+        250.41,
+        "MISSING"
+      ],
+      [
+        261.97,
+        "MISSING"
+      ],
+      [
+        276.97,
+        "MISSING"
+      ],
+      [
+        287.61,
+        "MISSING"
+      ],
+      [
+        297.13,
+        "MISSING"
+      ],
+      [
+        306.39,
+        "MISSING"
+      ],
+      [
+        315.87,
+        "MISSING"
+      ],
+      [
+        325.06,
+        "MISSING"
+      ],
+      [
+        334.67,
+        "MISSING"
+      ],
+      [
+        343.02,
+        "MISSING"
+      ],
+      [
+        353.87,
+        "MISSING"
+      ],
+      [
+        363.39,
+        "MISSING"
+      ],
+      [
+        371.45,
+        "MISSING"
+      ],
+      [
+        380.4,
+        "MISSING"
+      ],
+      [
+        390.24,
+        "MISSING"
+      ],
+      [
+        398.95,
+        "MISSING"
+      ],
+      [
+        408.98,
+        "MISSING"
+      ],
+      [
+        417.74,
+        "MISSING"
+      ],
+      [
+        429.52,
+        "MISSING"
+      ]
+    ],
+    "morgan": [
+      [
+        138.41,
+        "MISSING"
+      ],
+      [
+        148.57,
+        "MISSING"
+      ],
+      [
+        159.21,
+        "MISSING"
+      ],
+      [
+        169.65,
+        "MISSING"
+      ],
+      [
+        181.13,
+        "MISSING"
+      ],
+      [
+        193.4,
+        "MISSING"
+      ],
+      [
+        202.41,
+        "MISSING"
+      ],
+      [
+        211.48,
+        "MISSING"
+      ],
+      [
+        221.46,
+        "MISSING"
+      ],
+      [
+        230.86,
+        "MISSING"
+      ],
+      [
+        240.33,
+        "MISSING"
+      ],
+      [
+        250.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        261.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        276.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        287.61,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        297.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        306.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        315.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        325.06,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        334.67,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        343.02,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        353.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        363.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        371.45,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        380.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        390.24,
+        "{'action': 'idle', 'reason': 'schedule fallback'}"
+      ],
+      [
+        398.95,
+        "{'action': 'idle', 'reason': 'schedule fallback'}"
+      ],
+      [
+        408.98,
+        "{'action': 'idle', 'reason': 'schedule fallback'}"
+      ],
+      [
+        417.74,
+        "{'action': 'idle', 'reason': 'schedule fallback'}"
+      ],
+      [
+        429.52,
+        "{'action': 'idle', 'reason': 'schedule fallback'}"
+      ]
+    ],
+    "casey": [
+      [
+        138.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        148.57,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        159.21,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        169.65,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        181.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        193.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        202.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        211.48,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        221.46,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        230.86,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        240.33,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        250.41,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        261.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        276.97,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        287.61,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        297.13,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        315.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        325.06,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        334.67,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        343.02,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        353.87,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        363.39,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        371.45,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        380.4,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        390.24,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        398.95,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        408.98,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        417.74,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ],
+      [
+        429.52,
+        "{'action': 'move', 'target_room': 'bedroom_1', 'reason': 'schedule fal"
+      ]
+    ]
+  },
+  "samples": [
+    {
+      "t": 138.41,
+      "game": {
+        "day": 1,
+        "hour": 7.18333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": false,
+          "action_running": false,
+          "x": 277.333312988281,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 0,
+          "leaf_state": "2",
+          "gate_cd": "4.56656266666667"
+        },
+        "sam": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 423.999877929688,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 0,
+          "leaf_state": "3",
+          "gate_cd": "1.04963300000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003540039063,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 152.004669189453,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 0,
+          "leaf_state": "2",
+          "gate_cd": "0.41676266666668"
+        }
+      },
+      "new_log": [
+        "[07:05 Day 1] Jordan moving to bedroom_1",
+        "[07:05 Day 1] Sam moving to bedroom_1",
+        "[07:05 Day 1] Casey moving to bedroom_1",
+        "[07:07 Day 1] Jordan decided to move to bedroom_1",
+        "[07:07 Day 1] Jordan moving to bedroom_2",
+        "[07:09 Day 1] Jordan arrived at bedroom_2",
+        "[07:09 Day 1] Sam decided to move to bedroom_1",
+        "[07:09 Day 1] Sam moving to bedroom_3",
+        "[07:13 Day 1] Sam arrived at bedroom_3",
+        "[07:15 Day 1] Casey decided to move to bedroom_1",
+        "[07:15 Day 1] Casey moving to bedroom_6"
+      ]
+    },
+    {
+      "t": 148.57,
+      "game": {
+        "day": 1,
+        "hour": 7.35
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": false,
+          "action_running": false,
+          "x": 277.333312988281,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 1,
+          "leaf_state": "2",
+          "gate_cd": "4.30002800000001"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 1,
+          "leaf_state": "3",
+          "gate_cd": "0.73350400000002"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003173828125,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.000061035156,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 1,
+          "leaf_state": "3",
+          "gate_cd": "4.31669400000001"
+        }
+      },
+      "new_log": [
+        "[07:25 Day 1] Casey arrived at bedroom_6"
+      ]
+    },
+    {
+      "t": 159.21,
+      "game": {
+        "day": 1,
+        "hour": 7.53333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": false,
+          "action_running": false,
+          "x": 277.333312988281,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 2,
+          "leaf_state": "3",
+          "gate_cd": "0.25019000000002"
+        },
+        "sam": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 215.998764038086,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 2,
+          "leaf_state": "3",
+          "gate_cd": "1.07515733333336"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003112792969,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 829.334716796875,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 2,
+          "leaf_state": "3",
+          "gate_cd": "3.93337600000001"
+        }
+      },
+      "new_log": [
+        "[07:27 Day 1] Jordan moving to bedroom_1",
+        "[07:29 Day 1] Jordan decided to move to bedroom_1",
+        "[07:29 Day 1] Jordan moving to bedroom_2",
+        "[07:29 Day 1] Sam moving to bedroom_1",
+        "[07:31 Day 1] Jordan arrived at bedroom_2",
+        "[07:33 Day 1] Sam decided to move to bedroom_1",
+        "[07:33 Day 1] Sam moving to bedroom_3",
+        "[07:35 Day 1] Casey moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 169.65,
+      "game": {
+        "day": 1,
+        "hour": 7.71666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": false,
+          "action_running": false,
+          "x": 277.333312988281,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 3,
+          "leaf_state": "3",
+          "gate_cd": "0.43351600000002"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 3,
+          "leaf_state": "3",
+          "gate_cd": "3.93337600000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.002990722656,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 262.670989990234,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 2,
+          "leaf_state": "2",
+          "gate_cd": "0.10019600000002"
+        }
+      },
+      "new_log": [
+        "[07:36 Day 1] Sam arrived at bedroom_3",
+        "[07:45 Day 1] Casey decided to move to bedroom_1",
+        "[07:45 Day 1] Casey moving to bedroom_6"
+      ]
+    },
+    {
+      "t": 181.13,
+      "game": {
+        "day": 1,
+        "hour": 7.9
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": false,
+          "action_running": false,
+          "x": 277.333312988281,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "3",
+          "gate_cd": "1.46625988888891"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": true,
+          "x": 283.998809814453,
+          "y": 579.999572753906,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "3",
+          "gate_cd": "3.0995158888889"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.00390625,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.000061035156,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 3,
+          "leaf_state": "3",
+          "gate_cd": "2.61980966666667"
+        }
+      },
+      "new_log": [
+        "[07:49 Day 1] Jordan moving to bedroom_1",
+        "[07:51 Day 1] Jordan decided to move to bedroom_1",
+        "[07:51 Day 1] Jordan moving to bedroom_2",
+        "[07:53 Day 1] Jordan arrived at bedroom_2",
+        "[07:53 Day 1] Sam moving to bedroom_1",
+        "[07:54 Day 1] Casey arrived at bedroom_6",
+        "[07:57 Day 1] Sam decided to move to bedroom_1",
+        "[07:57 Day 1] Sam moving to bedroom_3"
+      ]
+    },
+    {
+      "t": 193.4,
+      "game": {
+        "day": 1,
+        "hour": 8.1
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 5,
+          "leaf_state": "3",
+          "gate_cd": "4.73333333333333"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003662109375,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 670.670471191406,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "3",
+          "gate_cd": "1.95000000000001"
+        }
+      },
+      "new_log": [
+        "[08:00 Day 1] Jordan moving to bathroom",
+        "[08:00 Day 1] Sam arrived at bedroom_3",
+        "[08:05 Day 1] Casey moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 202.41,
+      "game": {
+        "day": 1,
+        "hour": 8.25
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 5,
+          "leaf_state": "2",
+          "gate_cd": "1.28333333333335"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003784179688,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 266.671020507813,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "0.10000000000001"
+        }
+      },
+      "new_log": [
+        "[08:15 Day 1] Casey decided to move to bedroom_1",
+        "[08:15 Day 1] Casey moving to bedroom_6"
+      ]
+    },
+    {
+      "t": 211.48,
+      "game": {
+        "day": 1,
+        "hour": 8.4
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 418.66650390625,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 6,
+          "leaf_state": "3",
+          "gate_cd": "1.0917906666667"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003540039063,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.000061035156,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 5,
+          "leaf_state": "3",
+          "gate_cd": "4.11666666666667"
+        }
+      },
+      "new_log": [
+        "[08:17 Day 1] Sam moving to bedroom_1",
+        "[08:21 Day 1] Sam decided to move to bedroom_1",
+        "[08:21 Day 1] Sam moving to bedroom_3",
+        "[08:24 Day 1] Sam arrived at bedroom_3",
+        "[08:25 Day 1] Casey arrived at bedroom_6"
+      ]
+    },
+    {
+      "t": 221.46,
+      "game": {
+        "day": 1,
+        "hour": 8.56666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 7,
+          "leaf_state": "3",
+          "gate_cd": "0.65000000000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003662109375,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 786.668701171875,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 6,
+          "leaf_state": "3",
+          "gate_cd": "3.40000000000001"
+        }
+      },
+      "new_log": [
+        "[08:35 Day 1] Casey moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 230.86,
+      "game": {
+        "day": 1,
+        "hour": 8.71666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": true,
+          "x": 183.998886108398,
+          "y": 579.999572753906,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 8,
+          "leaf_state": "3",
+          "gate_cd": "1.85000000000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003173828125,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 185.337875366211,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 6,
+          "leaf_state": "2",
+          "gate_cd": "0.10000000000001"
+        }
+      },
+      "new_log": [
+        "[08:41 Day 1] Sam moving to bedroom_1",
+        "[08:45 Day 1] Sam decided to move to bedroom_1",
+        "[08:45 Day 1] Sam moving to bedroom_3",
+        "[08:45 Day 1] Casey decided to move to bedroom_1",
+        "[08:45 Day 1] Casey moving to bedroom_6"
+      ]
+    },
+    {
+      "t": 240.33,
+      "game": {
+        "day": 1,
+        "hour": 8.86666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 8,
+          "leaf_state": "2",
+          "gate_cd": "1.26666666666668"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": false,
+          "x": 660.00341796875,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.000061035156,
+          "y": 580.0,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 7,
+          "leaf_state": "3",
+          "gate_cd": "3.11666666666667"
+        }
+      },
+      "new_log": [
+        "[08:49 Day 1] Sam arrived at bedroom_3",
+        "[08:55 Day 1] Casey arrived at bedroom_6"
+      ]
+    },
+    {
+      "t": 250.41,
+      "game": {
+        "day": 1,
+        "hour": 9.05
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": true,
+          "x": 417.333160400391,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 10,
+          "leaf_state": "3",
+          "gate_cd": "4.76666666666667"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": true,
+          "x": 538.085021972656,
+          "y": 533.598327636719,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 0,
+          "leaf_state": "3",
+          "gate_cd": "3.48333333333334"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003540039063,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 7,
+          "leaf_state": "3",
+          "gate_cd": "0.15000000000001"
+        }
+      },
+      "new_log": [
+        "[09:00 Day 1] Casey moving to kitchen",
+        "[09:05 Day 1] Morgan moving to bedroom_1",
+        "[09:05 Day 1] Sam moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 261.97,
+      "game": {
+        "day": 1,
+        "hour": 9.23333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 10,
+          "leaf_state": "2",
+          "gate_cd": "3.46666666666667"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 123.298889160156,
+          "y": 579.633911132813,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 1,
+          "leaf_state": "3",
+          "gate_cd": "1.33333333333335"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": false,
+          "x": 660.00390625,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 7,
+          "leaf_state": "3",
+          "gate_cd": "0.15000000000001"
+        }
+      },
+      "new_log": [
+        "[09:09 Day 1] Sam decided to move to bedroom_1",
+        "[09:09 Day 1] Sam moving to bedroom_3",
+        "[09:11 Day 1] Morgan decided to move to bedroom_1",
+        "[09:11 Day 1] Morgan arrived at bedroom_5",
+        "[09:13 Day 1] Sam arrived at bedroom_3"
+      ]
+    },
+    {
+      "t": 276.97,
+      "game": {
+        "day": 1,
+        "hour": 9.48333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": true,
+          "x": 286.665496826172,
+          "y": 579.999572753906,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 12,
+          "leaf_state": "3",
+          "gate_cd": "3.13333333333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 656.631469726563,
+          "y": 579.940856933594,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 2,
+          "leaf_state": "3",
+          "gate_cd": "5.0"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003784179688,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 7,
+          "leaf_state": "2",
+          "gate_cd": "2.68333333333334"
+        }
+      },
+      "new_log": [
+        "[09:25 Day 1] Morgan moving to bedroom_1",
+        "[09:25 Day 1] Morgan decided to move to bedroom_1",
+        "[09:25 Day 1] Morgan moving to bedroom_5",
+        "[09:29 Day 1] Sam moving to bedroom_1",
+        "[09:33 Day 1] Morgan arrived at bedroom_5",
+        "[09:33 Day 1] Sam decided to move to bedroom_1",
+        "[09:33 Day 1] Sam moving to bedroom_3"
+      ]
+    },
+    {
+      "t": 287.61,
+      "game": {
+        "day": 1,
+        "hour": 9.66666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 12,
+          "leaf_state": "2",
+          "gate_cd": "1.81801333333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.998046875,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 2,
+          "leaf_state": "2",
+          "gate_cd": "1.05973000000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 123.297973632813,
+          "y": 579.634033203125,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 8,
+          "leaf_state": "2",
+          "gate_cd": "2.92669366666667"
+        }
+      },
+      "new_log": [
+        "[09:35 Day 1] Casey moving to bedroom_1",
+        "[09:37 Day 1] Sam arrived at bedroom_3",
+        "[09:41 Day 1] Casey decided to move to bedroom_1",
+        "[09:41 Day 1] Casey arrived at bedroom_6"
+      ]
+    },
+    {
+      "t": 297.13,
+      "game": {
+        "day": 1,
+        "hour": 9.81666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 13,
+          "leaf_state": "2",
+          "gate_cd": "1.90949600000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.998046875,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 3,
+          "leaf_state": "2",
+          "gate_cd": "0.80121066666668"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 123.297973632813,
+          "y": 579.634033203125,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 9,
+          "leaf_state": "2",
+          "gate_cd": "2.64979100000001"
+        }
+      },
+      "new_log": []
+    },
+    {
+      "t": 306.39,
+      "game": {
+        "day": 1,
+        "hour": 9.96666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 301.332275390625,
+          "y": 579.999755859375,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 14,
+          "leaf_state": "3",
+          "gate_cd": "1.09175133333336"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": true,
+          "x": 196.631942749023,
+          "y": 579.999389648438,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "3.03333333333334"
+        }
+      },
+      "new_log": [
+        "[09:53 Day 1] Morgan moving to bedroom_1",
+        "[09:53 Day 1] Sam moving to bedroom_1",
+        "[09:55 Day 1] Casey moving to bedroom_1",
+        "[09:55 Day 1] Casey decided to move to bedroom_1",
+        "[09:55 Day 1] Casey moving to bedroom_6",
+        "[09:57 Day 1] Sam decided to move to bedroom_1",
+        "[09:57 Day 1] Sam moving to bedroom_3",
+        "[10:01 Day 1] Morgan decided to move to bedroom_1",
+        "[10:01 Day 1] Sam arrived at bedroom_3",
+        "[10:01 Day 1] Morgan moving to bedroom_5"
+      ]
+    },
+    {
+      "t": 315.87,
+      "game": {
+        "day": 1,
+        "hour": 10.1333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 15,
+          "leaf_state": "3",
+          "gate_cd": "3.41666666666667"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.53333333333335"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.626586914063,
+          "y": 579.998352050781,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 10,
+          "leaf_state": "3",
+          "gate_cd": "0.21666666666668"
+        }
+      },
+      "new_log": [
+        "[10:05 Day 1] Casey arrived at bedroom_6",
+        "[10:08 Day 1] Morgan arrived at bedroom_5"
+      ]
+    },
+    {
+      "t": 325.06,
+      "game": {
+        "day": 1,
+        "hour": 10.2833333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": true,
+          "x": 315.999053955078,
+          "y": 579.999450683594,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 16,
+          "leaf_state": "3",
+          "gate_cd": "3.50000000000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 5,
+          "leaf_state": "2",
+          "gate_cd": "1.65000000000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.626586914063,
+          "y": 579.998352050781,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 11,
+          "leaf_state": "3",
+          "gate_cd": "0.31666666666668"
+        }
+      },
+      "new_log": [
+        "[10:17 Day 1] Sam moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 334.67,
+      "game": {
+        "day": 1,
+        "hour": 10.4333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 16,
+          "leaf_state": "2",
+          "gate_cd": "3.612638"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": true,
+          "x": 172.632034301758,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 6,
+          "leaf_state": "2",
+          "gate_cd": "2.71263800000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 641.964111328125,
+          "y": 579.998352050781,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 12,
+          "leaf_state": "3",
+          "gate_cd": "1.57930466666668"
+        }
+      },
+      "new_log": [
+        "[10:21 Day 1] Sam decided to move to bedroom_1",
+        "[10:21 Day 1] Sam moving to bedroom_3",
+        "[10:21 Day 1] Morgan moving to bedroom_1",
+        "[10:25 Day 1] Sam arrived at bedroom_3",
+        "[10:25 Day 1] Casey moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 343.02,
+      "game": {
+        "day": 1,
+        "hour": 10.5833333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 17,
+          "leaf_state": "3",
+          "gate_cd": "0.20032600000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 6,
+          "leaf_state": "2",
+          "gate_cd": "1.11263800000001"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 381.965087890625,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 12,
+          "leaf_state": "2",
+          "gate_cd": "0.08333333333335"
+        }
+      },
+      "new_log": [
+        "[10:29 Day 1] Morgan decided to move to bedroom_1",
+        "[10:29 Day 1] Morgan moving to bedroom_5",
+        "[10:35 Day 1] Casey decided to move to bedroom_1",
+        "[10:35 Day 1] Casey moving to bedroom_6",
+        "[10:36 Day 1] Morgan arrived at bedroom_5"
+      ]
+    },
+    {
+      "t": 353.87,
+      "game": {
+        "day": 1,
+        "hour": 10.7666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 251.998626708984,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 18,
+          "leaf_state": "3",
+          "gate_cd": "1.08333333333335"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 7,
+          "leaf_state": "2",
+          "gate_cd": "1.00039800000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.626586914063,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 13,
+          "leaf_state": "3",
+          "gate_cd": "1.36250400000001"
+        }
+      },
+      "new_log": [
+        "[10:41 Day 1] Sam moving to bedroom_1",
+        "[10:45 Day 1] Casey arrived at bedroom_6",
+        "[10:45 Day 1] Sam decided to move to bedroom_1",
+        "[10:45 Day 1] Sam moving to bedroom_3",
+        "[10:49 Day 1] Sam arrived at bedroom_3",
+        "[10:49 Day 1] Morgan moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 363.39,
+      "game": {
+        "day": 1,
+        "hour": 10.9166666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 437.333312988281,
+          "y": 579.999633789063,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 19,
+          "leaf_state": "3",
+          "gate_cd": "3.93333333333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "bedroom_5",
+          "nav": true,
+          "action_running": true,
+          "x": 147.298797607422,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 8,
+          "leaf_state": "2",
+          "gate_cd": "2.41666666666668"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 736.629333496094,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 14,
+          "leaf_state": "3",
+          "gate_cd": "2.76666666666667"
+        }
+      },
+      "new_log": [
+        "[10:55 Day 1] Casey moving to bedroom_1",
+        "[10:57 Day 1] Morgan decided to move to bedroom_1",
+        "[10:57 Day 1] Morgan moving to bedroom_5"
+      ]
+    },
+    {
+      "t": 371.45,
+      "game": {
+        "day": 1,
+        "hour": 11.05
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 19,
+          "leaf_state": "3",
+          "gate_cd": "0.15663333333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 8,
+          "leaf_state": "2",
+          "gate_cd": "1.30000000000001"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 209.964309692383,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 14,
+          "leaf_state": "2",
+          "gate_cd": "0.10000000000001"
+        }
+      },
+      "new_log": [
+        "[11:00 Day 1] Sam moving to kitchen",
+        "[11:04 Day 1] Morgan arrived at kitchen",
+        "[11:05 Day 1] Casey decided to move to bedroom_1",
+        "[11:05 Day 1] Casey moving to bedroom_6"
+      ]
+    },
+    {
+      "t": 380.4,
+      "game": {
+        "day": 1,
+        "hour": 11.2
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 19,
+          "leaf_state": "3",
+          "gate_cd": "0.15663333333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 9,
+          "leaf_state": "2",
+          "gate_cd": "2.65000000000001"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 901.960144042969,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 14,
+          "leaf_state": "2",
+          "gate_cd": "0.10000000000001"
+        }
+      },
+      "new_log": [
+        "[11:15 Day 1] Casey arrived at bedroom_6"
+      ]
+    },
+    {
+      "t": 390.24,
+      "game": {
+        "day": 1,
+        "hour": 11.3666666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 19,
+          "leaf_state": "3",
+          "gate_cd": "0.15663333333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": false,
+          "action_running": false,
+          "x": 756.629943847656,
+          "y": 579.999938964844,
+          "action": {
+            "action": "idle",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 10,
+          "leaf_state": "2",
+          "gate_cd": "2.81666666666667"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.626586914063,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 15,
+          "leaf_state": "2",
+          "gate_cd": "0.45000000000001"
+        }
+      },
+      "new_log": []
+    },
+    {
+      "t": 398.95,
+      "game": {
+        "day": 1,
+        "hour": 11.5166666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 19,
+          "leaf_state": "2",
+          "gate_cd": "1.40000000000001"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003295898438,
+          "y": 520.066528320313,
+          "action": {
+            "action": "idle",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 11,
+          "leaf_state": "3",
+          "gate_cd": "2.15000000000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 135.297927856445,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 16,
+          "leaf_state": "2",
+          "gate_cd": "0.26740533333335"
+        }
+      },
+      "new_log": [
+        "[11:25 Day 1] Casey moving to bedroom_1",
+        "[11:30 Day 1] Morgan moving to common_room",
+        "[11:35 Day 1] Casey decided to move to bedroom_1",
+        "[11:35 Day 1] Casey moving to bedroom_6",
+        "[11:35 Day 1] Sam moving to bedroom_1"
+      ]
+    },
+    {
+      "t": 408.98,
+      "game": {
+        "day": 1,
+        "hour": 11.6833333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 123.32300567627,
+          "y": 579.475891113281,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 20,
+          "leaf_state": "2",
+          "gate_cd": "3.30833733333334"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": true,
+          "action_running": false,
+          "x": 660.00390625,
+          "y": 520.066528320313,
+          "action": {
+            "action": "idle",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 11,
+          "leaf_state": "3",
+          "gate_cd": "2.15000000000001"
+        },
+        "casey": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 760.628967285156,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 16,
+          "leaf_state": "2",
+          "gate_cd": "0.10073866666668"
+        }
+      },
+      "new_log": [
+        "[11:39 Day 1] Sam decided to move to bedroom_1",
+        "[11:39 Day 1] Sam arrived at bedroom_3"
+      ]
+    },
+    {
+      "t": 417.74,
+      "game": {
+        "day": 1,
+        "hour": 11.8333333333333
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 123.32300567627,
+          "y": 579.475891113281,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 21,
+          "leaf_state": "2",
+          "gate_cd": "3.86666666666667"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003784179688,
+          "y": 520.066528320313,
+          "action": {
+            "action": "idle",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 11,
+          "leaf_state": "3",
+          "gate_cd": "2.15000000000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": false,
+          "action_running": false,
+          "x": 916.626586914063,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 17,
+          "leaf_state": "2",
+          "gate_cd": "2.18333333333334"
+        }
+      },
+      "new_log": [
+        "[11:45 Day 1] Casey arrived at bedroom_6"
+      ]
+    },
+    {
+      "t": 429.52,
+      "game": {
+        "day": 1,
+        "hour": 12.0166666666667
+      },
+      "ai": [
+        "RULE_BASED",
+        "RULE",
+        false,
+        false,
+        0,
+        0,
+        0,
+        false,
+        ""
+      ],
+      "npcs": {
+        "alex": {
+          "room": "bedroom_1",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "jordan": {
+          "room": "bedroom_2",
+          "nav": true,
+          "action_running": false,
+          "x": 499.999786376953,
+          "y": 520.066528320313,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 4,
+          "leaf_state": "2",
+          "gate_cd": "1.18333333333335"
+        },
+        "sam": {
+          "room": "bedroom_3",
+          "nav": false,
+          "action_running": false,
+          "x": 436.6572265625,
+          "y": 579.993957519531,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 22,
+          "leaf_state": "3",
+          "gate_cd": "1.60087866666668"
+        },
+        "riley": {
+          "room": "bedroom_4",
+          "nav": true,
+          "action_running": false,
+          "x": 639.268859863281,
+          "y": 271.880523681641,
+          "action": "MISSING",
+          "source": "MISSING",
+          "seq": -2,
+          "leaf_state": "0",
+          "gate_cd": "0.0"
+        },
+        "morgan": {
+          "room": "kitchen",
+          "nav": true,
+          "action_running": false,
+          "x": 660.003784179688,
+          "y": 520.066528320313,
+          "action": {
+            "action": "idle",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 11,
+          "leaf_state": "3",
+          "gate_cd": "2.15000000000001"
+        },
+        "casey": {
+          "room": "bedroom_6",
+          "nav": true,
+          "action_running": true,
+          "x": 239.29753112793,
+          "y": 579.999938964844,
+          "action": {
+            "action": "move",
+            "target_room": "bedroom_1",
+            "reason": "schedule fallback"
+          },
+          "source": "rule_based",
+          "seq": 18,
+          "leaf_state": "2",
+          "gate_cd": "1.56675466666668"
+        }
+      },
+      "new_log": [
+        "[11:55 Day 1] Sam moving to bedroom_1",
+        "[11:55 Day 1] Casey moving to bedroom_1",
+        "[11:55 Day 1] Sam decided to move to bedroom_1",
+        "[11:55 Day 1] Sam moving to bedroom_3",
+        "[11:59 Day 1] Sam arrived at bedroom_3"
+      ]
+    }
+  ],
+  "tcp_calls": 37,
+  "ipc_calls": 348,
+  "ipc_badjson": 26,
+  "game_log": {
+    "mtime": 1792503064.4694598,
+    "before_mtime": 1792501921.675547,
+    "before_size": 107,
+    "lines": 9,
+    "errors": [
+      "ERROR: The InputMap action \"notebook\" doesn't exist. Did you mean \"toggle_notebook\"?",
+      "ERROR: The InputMap action \"notebook\" doesn't exist. Did you mean \"toggle_notebook\"?"
+    ],
+    "gdextension_lines": []
+  }
+}
