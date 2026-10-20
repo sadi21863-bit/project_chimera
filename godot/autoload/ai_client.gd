@@ -10,6 +10,7 @@ extends Node
 ## signals are unchanged, so behavior-tree leaves and the observer panel need no edits.
 
 signal server_status_changed(online: bool)
+signal local_ready_changed(ready: bool)
 signal decision_received(npc_id: String, action: Dictionary)
 signal mode_changed(mode: int)
 
@@ -67,6 +68,23 @@ func resolve_mode() -> AiMode:
 	if _local_provider != null and _local_provider.is_ready():
 		return AiMode.LOCAL
 	return AiMode.RULE_BASED
+
+
+## True when the LOCAL runtime (NobodyWho GDExtension) is present — independent of whether
+## a model file has been downloaded/is loaded.
+func local_available() -> bool:
+	return _local_provider != null and _local_provider.is_available()
+
+
+## Re-evaluate LOCAL readiness (after a model download finished or a model was removed) and
+## broadcast the new state; the next request_decision resolves LOCAL/RULE_BASED accordingly.
+func refresh_local_provider() -> void:
+	if _local_provider == null:
+		return
+	_local_provider.reload_model()
+	var ready: bool = _local_provider.is_ready()
+	local_ready_changed.emit(ready)
+	EventLog.log_action("LOCAL AI model %s" % ("ready" if ready else "missing"), "system")
 
 
 func set_mode(mode: AiMode) -> void:

@@ -16,6 +16,7 @@ extends Node
 const DEFAULT_MODEL_PATH := "res://models/model.gguf"
 const MODEL_PATH_SETTING := "echo/nobodywho_model_path"
 const CONTEXT_LENGTH := 512
+const ModelCatalog := preload("res://scripts/ai/model_catalog.gd")
 
 const SYSTEM_PROMPT := "You are an NPC decision engine in a dorm simulation. Read the character and situation, then output exactly one JSON action object and nothing else."
 
@@ -26,16 +27,42 @@ var _chat: Object = null
 var _busy: bool = false
 var _pending: Callable = Callable()
 var _model_path: String = ""
+# Test seam: when set, the downloaded-models branch of _resolve_model_path() consults this
+# directory instead of the real user://models, so tests stay deterministic on machines that
+# already hold a downloaded model.
+var catalog_dir_override: String = ""
+
+signal ready_changed(ready: bool)
 
 
 func _ready() -> void:
 	if not is_available():
 		return
 	_model_path = _resolve_model_path()
-	if not _model_path.begins_with("hf://") and not _model_path.begins_with("https://"):
-		if not FileAccess.file_exists(_model_path):
-			push_warning("NobodyWho: model file not found at %s — LOCAL mode inert until provided." % _model_path)
-			return
+	if not _path_usable(_model_path):
+		push_warning("NobodyWho: model file not found at %s — LOCAL mode inert until provided." % _model_path)
+		ready_changed.emit(false)
+		return
+	_build_model_and_chat()
+	ready_changed.emit(true)
+
+
+func reload_model() -> void:
+	if not is_available():
+		return
+	if _busy and _chat != null and is_instance_valid(_chat):
+		_chat.call("stop_generation")
+	_teardown()
+	_model_path = _resolve_model_path()
+	if not _path_usable(_model_path):
+		_model_path = ""
+		ready_changed.emit(false)
+		return
+	_build_model_and_chat()
+	ready_changed.emit(is_ready())
+
+
+func _build_model_and_chat() -> void:
 	_model = ClassDB.instantiate("NobodyWhoModel")
 	_model.set("model_path", _model_path)
 	# Force CPU-only. GPU offload drives low-VRAM/mobile GPUs (the norm for this project's target
@@ -60,6 +87,22 @@ func _ready() -> void:
 	# (AIClient._extract_json), with a graceful rule-based fallback when parsing fails.
 	# (Minor 1B artifact: occasional word doubling like "HeyHey" — cosmetic, action stays valid.)
 	_chat.call("start_worker")
+
+
+func _teardown() -> void:
+	for node in [_chat, _model]:
+		if node != null and is_instance_valid(node):
+			node.queue_free()
+	_chat = null
+	_model = null
+	_busy = false
+	_pending = Callable()
+
+
+func _path_usable(path: String) -> bool:
+	if path.begins_with("hf://") or path.begins_with("https://"):
+		return true
+	return FileAccess.file_exists(path)
 
 
 ## Stop any in-flight generation before the engine tears down nodes — quitting mid-generation
@@ -108,6 +151,10 @@ func _on_worker_failed(error: String) -> void:
 
 
 func _resolve_model_path() -> String:
+	for key in ModelCatalog.REQUIREMENTS:
+		var user_path := ModelCatalog.model_file_path(str(key))
+		if FileAccess.file_exists(user_path):
+			return ProjectSettings.globalize_path(user_path)
 	if ProjectSettings.has_setting(MODEL_PATH_SETTING):
 		var configured := str(ProjectSettings.get_setting(MODEL_PATH_SETTING))
 		if not configured.is_empty():

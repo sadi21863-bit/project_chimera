@@ -362,3 +362,95 @@ Runner integration is automatic: `tests/test_all.gd` discovers by prefix; nothin
 5. **P0-e — settings screen section + observer entry point** (§5.3, §6.4): progress UI wired to signals; T3. Observer *"Settings"* button is the only non-AI-file touch.
 6. **P1 — polish + honest UX**: mode label repaint (already in 5); local-decide timeout (open question §9.4) if signed off; `models/README.md` §6.6 note; credits-screen attribution (§9.6); size graded second catalog entry (§9.3).
 7. **P2 — deferred**: runtime-GDExtension-download alternative (only if a "small installer" product constraint appears); nobodywho-native downloader reroute once a release with progress callbacks is pinned; "delete model" UI affordance polished.
+
+---
+
+## 12. Architecture amendment — runtime loading supersedes the §3.1 bundle decision
+
+**§3.1's "bundle the extension inside the export" decision is REVERSED.** It was measured to be
+unacceptable on this hardware:
+
+| Measurement (this machine, 2026-10-18) | Value |
+|---|---|
+| Godot boot with the extension auto-loaded at startup | **52 s** (of which ~43 s is the extension) |
+| Godot boot without the extension (dev) | 9–17 s |
+| `GDExtensionManager.load_extension()` of the SAME library at runtime | **2.4 s** |
+| Test-suite cost with the extension auto-loaded | ~43 s per test process (71 tests ≈ 50 min) |
+| Test-suite cost without auto-load | ~5 s per test process (shards: 26/26/25 files, ~2–5 min) |
+
+Auto-loading the extension would give every player a ~45-second wait before the first frame and
+would put extension init on every launch. The extension is therefore **not** in the PCK and **not**
+auto-loaded; it is loaded on demand.
+
+### 12.1 How it works now
+
+1. The player downloads a GGUF into `user://models/` (ModelDownload — unchanged).
+2. `LocalAI.enable()` (new autoload, `godot/autoload/local_ai.gd`) writes a runtime
+   `.gdextension` config into `user://nobodywho_runtime.gdextension` whose `[libraries]` entry
+   points at the **absolute OS path** of the loose DLL, then calls
+   `GDExtensionManager.load_extension(<absolute path>)` → status `OK`,
+   `ClassDB.class_exists("NobodyWhoModel")` becomes true.
+3. `AIClient.refresh_local_provider()` re-resolves the model path (user:// first) and LOCAL goes live.
+
+**Godot 4.7 accepts the config only when it is addressed by absolute OS path.** Passing the
+`user://` alias fails with *"GDExtension dynamic library not found: 'user://nw_runtime.gdextension'"*
+(status `1`) — verified directly, not assumed. The probe script that established this is
+`godot/tools/try_runtime_ext.gd`.
+
+### 12.2 Layout and packaging
+
+- Release: the DLL ships **loose** next to the executable at
+  `<exe dir>/addons/nobodywho/libnobodywho-godot-x86_64-pc-windows-msvc-release.dll`; the game
+  looks there first, then in `res://addons/nobodywho/` (dev checkout).
+- `tools/build-windows.ps1` exports the game and stages that DLL (the export filter keeps
+  `addons/nobodywho/*` excluded, so the engine never auto-loads it).
+- `godot/addons/nobodywho/nobodywho.gdextension` was **removed from the project** — with it present
+  the engine embeds it in the export's extension list and loads it at startup, which is exactly the
+  cost this section exists to avoid. The runtime config is generated in code instead.
+- The DLL stays **untracked in git** (repo policy: large native binaries stay out of the repo), so
+  a fresh clone builds the game but not the LOCAL-AI runtime until the DLL is restored. Size
+  (78,617,600 B) and SHA-256
+  (`f08a8f72b53fa19ecf38b277af0e54f820816bcd295af2761814cf759f5c4141`) are pinned in §11.
+- The settings screen distinguishes *runtime shipped* (DLL present) from *runtime loaded*
+  (classes registered) and offers an explicit **Enable Local AI** action; the observer panel
+  flips `AI: RULE` → `AI: LOCAL` on `AIClient.local_ready_changed`.
+
+### 12.3 Consequences
+
+- The GDExtension "missing library" error family disappears from dev and release (the old benign
+  noise came from the export embedding a reference to an excluded resource).
+- LOCAL is only reachable after an explicit download + enable; nothing changes for players who
+  never opt in (fast boot, SERVER/RULE_BASED as before).
+- §9.1 (DLL restoration + pin) is resolved as in §11; the remaining open questions (§9.2–§9.7)
+  still need owner input — §9.4 (per-decision wall-clock cap) in particular, since a downloaded
+  1 B model on this CPU class was measured at 90 s+ per decision.
+
+## 11. Implementation record (2026-10-18)
+
+Decisions taken during implementation (this section is a log, not a design):
+
+- **§9.1 resolved — legacy 4.5-API DLL pinned; provider API kept as-is.** The restored DLL is the
+  existing on-device build, which initializes as `godot-rust (API v4.5.stable.official, runtime
+  v4.7.2.stable.official)` and exposes the Node-style legacy API our provider already drives.
+  Pin: `libnobodywho-godot-x86_64-pc-windows-msvc-release.dll`, 78,617,600 bytes,
+  SHA-256 `f08a8f72b53fa19ecf38b277af0e54f820816bcd295af2761814cf759f5c4141`
+  (verified with `certutil -hashfile`). Restore path: the gitignored hot-reload temp
+  `godot/addons/nobodywho/~libnobodywho-…release.dll` copied back to the canonical name via
+  .NET `File.Copy` (PowerShell 5.1 `Get-Item` cannot resolve `~`-prefixed names); headless
+  load verified with `godot/tools/check_nobodywho_dll.gd` (both `NobodyWhoModel` and
+  `NobodyWhoChat` registered in ClassDB, `is_available()` true, exit 0).
+- **§9.3 condition met — gemma added to the catalog.** The recorded LFS oid
+  `2d448a9aab894b8e8e18168cf3f490cb9f65632222f29f93514ac9ecc754debe` was re-verified byte-exact
+  against the local `godot/models/gemma-2-2b-it-Q8_0.gguf` (size 2,784,495,456), so the catalog
+  entry's URL + checksum are pinned with the same confidence as Llama's.
+- **Provider seam for tests:** `NobodyWhoProvider.catalog_dir_override` (empty by default) lets
+  tests point the downloaded-models branch of `_resolve_model_path()` at a fixture directory.
+- **Resolution order note:** the shipped project setting
+  `echo/nobodywho_model_path = res://models/Llama-3.2-1B-Instruct-Q4_K_M.gguf` is retained on
+  purpose — it keeps stock dev checkouts inert while the file lives in `models/disabled/`, and
+  the downloader heals drift by writing `user://models/<key>.gguf`, which wins over the setting.
+- **Small simplifications vs. the flow spec:** the "auto-retry when part < 95 % complete"
+  sub-clause is unreachable as written (sub-size parts *resume* instead of reaching VERIFYING),
+  so the mismatch path always deletes and fails; per-chunk meta re-save is skipped (the etag is
+  written once at probe time); CHECKING trusts an existing final file without re-verifying its
+  checksum (a full 771 MB re-hash on every open costs seconds for no added safety).

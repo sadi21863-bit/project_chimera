@@ -28,6 +28,7 @@ func _ready() -> void:
 	Scheduler.speed_changed.connect(_on_speed_changed)
 	EventLog.entry_added.connect(_refresh_log)
 	AIClient.server_status_changed.connect(_on_server_status)
+	AIClient.local_ready_changed.connect(_on_local_ready)
 	EventBus.subscribe("relationship_changed", _on_relationship_changed)
 	_relationship_graph.node_clicked.connect(select_npc)
 
@@ -66,6 +67,16 @@ func _on_speed_changed(mult: float) -> void:
 
 func _on_server_status(online: bool) -> void:
 	_update_status()
+
+
+func _on_local_ready(_ready: bool) -> void:
+	_update_status()
+
+
+func _on_settings_pressed() -> void:
+	var settings := get_node_or_null("../SettingsScreen")
+	if settings != null:
+		settings.open()
 
 
 func _update_status() -> void:

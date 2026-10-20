@@ -19,6 +19,15 @@ folder. Override explicitly via the `echo/nobodywho_model_path` project setting 
 
 > GGUF files are large and are **not** committed to the repo. Keep them local.
 
+## Runtime download (in-game)
+
+The game can download a model itself (Settings → Local AI → Download), so no manual placement is
+needed. Files land in `user://models/` (`%APPDATA%\Godot\app_userdata\Project Chimera\models\` on
+Windows) and are verified against a pinned SHA-256 before use. The provider resolves in this order:
+downloaded model in `user://models/` → `echo/nobodywho_model_path` setting → `res://models/model.gguf`
+→ first `.gguf` auto-discovered in this folder. Partial downloads resume via HTTP Range; a failed
+integrity check is deleted and retried from scratch on the next Download press.
+
 ## Hardware reality & model choice (verified on this machine)
 
 This machine's GPU (AMD Radeon R5 M330, ~1.7 GB VRAM) only fits very small models:

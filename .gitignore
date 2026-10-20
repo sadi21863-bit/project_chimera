@@ -33,7 +33,10 @@ Thumbs.db
 # Raw downloaded CC0 asset packs (source zips, not project content — see HANDOFF.md)
 /asset dump/
 
-# Large Godot native extension binary removed from GitHub uploads
+# Large Godot native extension binary: kept out of GitHub uploads.
+# It ships LOOSE next to the executable in the release zip (staged by
+# tools/build-windows.ps1) and is loaded on demand by the LocalAI autoload.
+# Size and SHA-256 are pinned in docs/model-download-flow-design.md section 11.
 
 godot/addons/nobodywho/libnobodywho-godot-x86_64-pc-windows-msvc-release.dll
 

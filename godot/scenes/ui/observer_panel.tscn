@@ -56,6 +56,10 @@ text = "Save"
 layout_mode = 2
 text = "Load"
 
+[node name="SettingsBtn" type="Button" parent="Margin/VBox/TopBar"]
+layout_mode = 2
+text = "Settings"
+
 [node name="SpeedSlider" type="HSlider" parent="Margin/VBox/TopBar"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
@@ -134,6 +138,7 @@ text = "Click an NPC to inspect."
 [connection signal="pressed" from="Margin/VBox/TopBar/PauseBtn" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="Margin/VBox/TopBar/SaveBtn" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Margin/VBox/TopBar/LoadBtn" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Margin/VBox/TopBar/SettingsBtn" to="." method="_on_settings_pressed"]
 [connection signal="value_changed" from="Margin/VBox/TopBar/SpeedSlider" to="." method="_on_speed_slider_changed"]
 [connection signal="pressed" from="Margin/VBox/HSplit/LeftPanel/InjectRow/InjectBtn" to="." method="_on_inject_pressed"]
 [connection signal="item_selected" from="Margin/VBox/HSplit/LeftPanel/FilterRow/FilterOption" to="." method="_on_filter_changed"]
